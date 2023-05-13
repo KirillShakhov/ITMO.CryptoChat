@@ -1,7 +1,7 @@
 import AVFoundation
 import UIKit
 
-class ScannerView: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
 
@@ -84,11 +84,14 @@ class ScannerView: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     }
 
     func found(code: String) {
-        print(code)
-        let alert = UIAlertController(title: "Result", message: code, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-        captureSession.stopRunning()
+        weak var pvc = self.presentingViewController
+        self.dismiss(animated: true, completion: {
+            let storyboard = UIStoryboard(name: "InviteAccept", bundle: nil)
+            guard let vc = storyboard.instantiateViewController(identifier: "InviteAccept") as? InviteAcceptViewController else { return }
+            vc.code = code
+            vc.modalPresentationStyle = .popover
+            pvc?.present(vc, animated:true)
+        })
     }
 
     override var prefersStatusBarHidden: Bool {

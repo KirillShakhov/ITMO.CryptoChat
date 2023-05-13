@@ -1,0 +1,54 @@
+//
+//  CreatorQrViewController.swift
+//  CryptoChat
+//
+//  Created by Кирилл Шахов on 13.05.2023.
+//
+
+import UIKit
+
+class CreatorQrViewController: UIViewController {
+
+
+    @IBOutlet weak var qrImage: UIImageView!
+    @IBOutlet weak var dateExpiredSelect: UISegmentedControl!
+    @IBOutlet var generateButton: UIView!
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func generateCode(_ sender: Any) {
+        
+        let randomString = randomString(length: 20)
+        let image = generateQRCode(from: "Code: "+randomString)
+        qrImage.image = image
+        
+//        let alert = UIAlertController(title: "Result", message: "Hello", preferredStyle: UIAlertController.Style.alert)
+//        alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
+//        self.present(alert, animated: true, completion: nil)
+
+    }
+    
+    func randomString(length: Int) -> String {
+      let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+      return String((0..<length).map{ _ in letters.randomElement()! })
+    }
+    
+    func generateQRCode(from string: String) -> UIImage? {
+        let data = string.data(using: String.Encoding.ascii)
+
+        if let filter = CIFilter(name: "CIQRCodeGenerator") {
+            filter.setValue(data, forKey: "inputMessage")
+            let transform = CGAffineTransform(scaleX: 3, y: 3)
+
+            if let output = filter.outputImage?.transformed(by: transform) {
+                return UIImage(ciImage: output)
+            }
+        }
+        return nil
+    }
+}
