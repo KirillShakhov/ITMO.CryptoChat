@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CryptoChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="CryptoChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -77,6 +77,9 @@
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="baseBackgroundColor" red="0.71831634325931482" green="0.0" blue="0.89310312931111113" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="CreateQr:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bw3-H9-2or"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ziy-wU-0ud">
                                         <rect key="frame" x="234" y="0.0" width="150" height="45"/>
@@ -88,6 +91,9 @@
                                         <buttonConfiguration key="configuration" style="gray" title="Scan" buttonSize="large">
                                             <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="ScanQr:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EeH-jn-FwR"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -121,6 +127,10 @@
                             <constraint firstItem="Amn-WA-SJv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yDF-r9-eGO"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="CreateQrButton" destination="ooi-fR-PJB" id="7QN-OB-SMS"/>
+                        <outlet property="ScanButton" destination="ziy-wU-0ud" id="XaT-s4-rqA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
