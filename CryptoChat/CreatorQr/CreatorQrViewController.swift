@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import QRCode
 
 class CreatorQrViewController: UIViewController {
 
@@ -14,10 +15,11 @@ class CreatorQrViewController: UIViewController {
     @IBOutlet weak var dateExpiredSelect: UISegmentedControl!
     @IBOutlet var generateButton: UIView!
     
+    @IBOutlet weak var scanMe: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        scanMe.isHidden = true
         // Do any additional setup after loading the view.
     }
     
@@ -26,7 +28,8 @@ class CreatorQrViewController: UIViewController {
         let randomString = randomString(length: 20)
         let image = generateQRCode(from: "Code: "+randomString)
         qrImage.image = image
-        
+        scanMe.isHidden = false
+
 //        let alert = UIAlertController(title: "Result", message: "Hello", preferredStyle: UIAlertController.Style.alert)
 //        alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
 //        self.present(alert, animated: true, completion: nil)
@@ -39,16 +42,41 @@ class CreatorQrViewController: UIViewController {
     }
     
     func generateQRCode(from string: String) -> UIImage? {
-        let data = string.data(using: String.Encoding.ascii)
-
-        if let filter = CIFilter(name: "CIQRCodeGenerator") {
-            filter.setValue(data, forKey: "inputMessage")
-            let transform = CGAffineTransform(scaleX: 3, y: 3)
-
-            if let output = filter.outputImage?.transformed(by: transform) {
-                return UIImage(ciImage: output)
-            }
-        }
-        return nil
+//        let data = string.data(using: String.Encoding.ascii)
+//        if let filter = CIFilter(name: "CIQRCodeGenerator") {
+//            filter.setValue(data, forKey: "inputMessage")
+//            let transform = CGAffineTransform(scaleX: 10, y: 10)
+//
+//            if let output = filter.outputImage?.transformed(by: transform) {
+//                return UIImage(ciImage: output)
+//            }
+//        }
+        
+        let doc = QRCode.Document(utf8String: string, errorCorrection: .high)
+//        doc.design.shape.offPixels = QRCode.PixelShape.Horizontal(insetFraction: 0.4, cornerRadiusFraction: 1)
+//
+//        if (dateExpiredSelect.selectedSegmentIndex == 0){
+//            doc.design.shape.onPixels = QRCode.PixelShape.Circle()
+//
+//            doc.design.shape.eye = QRCode.EyeShape.BarsHorizontal()
+//            doc.design.style.onPixels = QRCode.FillStyle.Solid(UIColor.systemGreen.cgColor)
+//            doc.design.style.offPixels = QRCode.FillStyle.Solid(UIColor.systemGreen.withAlphaComponent(0.4).cgColor)
+//        }
+//        else{
+//            doc.design.shape.onPixels = QRCode.PixelShape.Pointy()
+//
+//            doc.design.shape.eye = QRCode.EyeShape.Edges()
+//
+//            doc.design.style.onPixels = QRCode.FillStyle.Solid(UIColor.systemPink.cgColor)
+//            doc.design.style.offPixels = QRCode.FillStyle.Solid(UIColor.systemPink.withAlphaComponent(0.4).cgColor)
+//        }
+        
+        doc.design.shape.onPixels = QRCode.PixelShape.Circle()
+        doc.design.shape.eye = QRCode.EyeShape.Squircle()
+        
+        let generated = doc.cgImage(CGSize(width: 500, height: 500))!
+        let image:UIImage = UIImage.init(cgImage: generated)
+        return image
+//        return nil
     }
 }

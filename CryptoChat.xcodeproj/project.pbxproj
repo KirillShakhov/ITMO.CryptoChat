@@ -20,6 +20,7 @@
 		ED92731F2A1014DD00F520C6 /* CreatorQrViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED92731E2A1014DD00F520C6 /* CreatorQrViewController.swift */; };
 		ED9273232A101CAA00F520C6 /* InviteAccept.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED9273222A101CAA00F520C6 /* InviteAccept.storyboard */; };
 		ED9273252A101CB800F520C6 /* InviteAcceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9273242A101CB800F520C6 /* InviteAcceptViewController.swift */; };
+		ED9273282A102EE100F520C6 /* QRCode in Frameworks */ = {isa = PBXBuildFile; productRef = ED9273272A102EE100F520C6 /* QRCode */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED9273282A102EE100F520C6 /* QRCode in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +138,9 @@
 			dependencies = (
 			);
 			name = CryptoChat;
+			packageProductDependencies = (
+				ED9273272A102EE100F520C6 /* QRCode */,
+			);
 			productName = CryptoChat;
 			productReference = ED9272F72A0FE7C400F520C6 /* CryptoChat.app */;
 			productType = "com.apple.product-type.application";
@@ -164,6 +169,9 @@
 				Base,
 			);
 			mainGroup = ED9272EE2A0FE7C400F520C6;
+			packageReferences = (
+				ED9273262A102EE100F520C6 /* XCRemoteSwiftPackageReference "qrcode" */,
+			);
 			productRefGroup = ED9272F82A0FE7C400F520C6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -418,6 +426,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		ED9273262A102EE100F520C6 /* XCRemoteSwiftPackageReference "qrcode" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dagronf/qrcode.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 14.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		ED9273272A102EE100F520C6 /* QRCode */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ED9273262A102EE100F520C6 /* XCRemoteSwiftPackageReference "qrcode" */;
+			productName = QRCode;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = ED9272EF2A0FE7C400F520C6 /* Project object */;
 }

@@ -47,9 +47,9 @@
                                 </segments>
                             </segmentedControl>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scan_me" translatesAutoresizingMaskIntoConstraints="NO" id="0OY-mb-yQP">
-                                <rect key="frame" x="-95" y="300" width="494" height="219"/>
+                                <rect key="frame" x="-70" y="300" width="469" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="219" id="IQB-pm-6M1"/>
+                                    <constraint firstAttribute="height" constant="200" id="IQB-pm-6M1"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -57,7 +57,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="mHN-Tx-9iX" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="15" id="3J8-QJ-MA0"/>
-                            <constraint firstItem="0OY-mb-yQP" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="-95" id="6sA-Ap-PP1"/>
+                            <constraint firstItem="0OY-mb-yQP" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="-70" id="6sA-Ap-PP1"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="0OY-mb-yQP" secondAttribute="trailing" constant="15" id="QJE-W0-N4R"/>
                             <constraint firstItem="BWt-42-F2A" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="15" id="URa-Mn-pcZ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="mHN-Tx-9iX" secondAttribute="bottom" constant="45" id="XWP-8M-6a6"/>
@@ -74,6 +74,7 @@
                         <outlet property="dateExpiredSelect" destination="BWt-42-F2A" id="QnX-AI-YTr"/>
                         <outlet property="generateButton" destination="5EZ-qb-Rvc" id="cuu-Yb-Njy"/>
                         <outlet property="qrImage" destination="Tvm-Pa-cbE" id="mcd-0J-5JT"/>
+                        <outlet property="scanMe" destination="0OY-mb-yQP" id="TBi-5T-m9A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
