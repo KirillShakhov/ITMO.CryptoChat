@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -108,6 +109,50 @@
                                     <constraint firstAttribute="height" constant="45" id="wX5-jW-XM1"/>
                                 </constraints>
                             </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zgy-gO-3jL">
+                                <rect key="frame" x="15" y="124" width="384" height="683"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Hb6-Fe-tV0">
+                                    <size key="itemSize" width="360" height="70"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="qSj-Vk-d9l">
+                                        <rect key="frame" x="12" y="0.0" width="360" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="MCA-Kj-NSF">
+                                            <rect key="frame" x="0.0" y="0.0" width="360" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="2if-hn-98x">
+                                        <rect key="frame" x="12" y="80" width="360" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="bkM-qv-opP">
+                                            <rect key="frame" x="0.0" y="0.0" width="360" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="fHO-fe-rVc">
+                                        <rect key="frame" x="12" y="160" width="360" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="3L0-Dt-JaM">
+                                            <rect key="frame" x="0.0" y="0.0" width="360" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="bMW-fJ-0EH">
+                                        <rect key="frame" x="12" y="240" width="360" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Cj5-L9-7HE">
+                                            <rect key="frame" x="0.0" y="0.0" width="360" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -119,17 +164,22 @@
                             <constraint firstItem="D20-Gy-AH6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="GxU-L2-tZ1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Amn-WA-SJv" secondAttribute="trailing" constant="15" id="LDE-R7-hAs"/>
                             <constraint firstItem="Amn-WA-SJv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Tws-om-186"/>
+                            <constraint firstItem="zgy-gO-3jL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="VpI-Lv-VgG"/>
                             <constraint firstItem="D20-Gy-AH6" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="cEY-1g-2z9"/>
+                            <constraint firstItem="D20-Gy-AH6" firstAttribute="top" secondItem="zgy-gO-3jL" secondAttribute="bottom" constant="10" id="d7U-x0-rXn"/>
                             <constraint firstItem="Amn-WA-SJv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="frM-so-KPm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zgy-gO-3jL" secondAttribute="trailing" constant="15" id="ftg-hr-Uf8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="D20-Gy-AH6" secondAttribute="trailing" constant="15" id="gNb-jr-IfS"/>
                             <constraint firstItem="D20-Gy-AH6" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="moL-er-E3h"/>
                             <constraint firstItem="D20-Gy-AH6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="tJf-Na-XB0"/>
+                            <constraint firstItem="zgy-gO-3jL" firstAttribute="top" secondItem="Amn-WA-SJv" secondAttribute="bottom" constant="10" id="upQ-Wc-bVO"/>
                             <constraint firstItem="Amn-WA-SJv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yDF-r9-eGO"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="CreateQrButton" destination="ooi-fR-PJB" id="7QN-OB-SMS"/>
                         <outlet property="ScanButton" destination="ziy-wU-0ud" id="XaT-s4-rqA"/>
+                        <outlet property="chatList" destination="zgy-gO-3jL" id="Cja-j2-fVA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

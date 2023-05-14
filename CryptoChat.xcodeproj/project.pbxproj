@@ -21,6 +21,8 @@
 		ED9273232A101CAA00F520C6 /* InviteAccept.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED9273222A101CAA00F520C6 /* InviteAccept.storyboard */; };
 		ED9273252A101CB800F520C6 /* InviteAcceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9273242A101CB800F520C6 /* InviteAcceptViewController.swift */; };
 		ED9273282A102EE100F520C6 /* QRCode in Frameworks */ = {isa = PBXBuildFile; productRef = ED9273272A102EE100F520C6 /* QRCode */; };
+		ED92732C2A114B1800F520C6 /* ChatViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED92732A2A114B1800F520C6 /* ChatViewCell.swift */; };
+		ED92732D2A114B1800F520C6 /* ChatViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED92732B2A114B1800F520C6 /* ChatViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		ED92731E2A1014DD00F520C6 /* CreatorQrViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatorQrViewController.swift; sourceTree = "<group>"; };
 		ED9273222A101CAA00F520C6 /* InviteAccept.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InviteAccept.storyboard; sourceTree = "<group>"; };
 		ED9273242A101CB800F520C6 /* InviteAcceptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteAcceptViewController.swift; sourceTree = "<group>"; };
+		ED92732A2A114B1800F520C6 /* ChatViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewCell.swift; sourceTree = "<group>"; };
+		ED92732B2A114B1800F520C6 /* ChatViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,7 @@
 		ED9272F92A0FE7C400F520C6 /* CryptoChat */ = {
 			isa = PBXGroup;
 			children = (
+				ED9273292A114B0300F520C6 /* ChatList */,
 				ED9273212A101C6F00F520C6 /* InviteAccept */,
 				ED9273202A10152700F520C6 /* Home */,
 				ED92731B2A10148E00F520C6 /* CreatorQr */,
@@ -120,6 +125,15 @@
 				ED9273242A101CB800F520C6 /* InviteAcceptViewController.swift */,
 			);
 			path = InviteAccept;
+			sourceTree = "<group>";
+		};
+		ED9273292A114B0300F520C6 /* ChatList */ = {
+			isa = PBXGroup;
+			children = (
+				ED92732A2A114B1800F520C6 /* ChatViewCell.swift */,
+				ED92732B2A114B1800F520C6 /* ChatViewCell.xib */,
+			);
+			path = ChatList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,6 +204,7 @@
 				ED9273072A0FE7C600F520C6 /* LaunchScreen.storyboard in Resources */,
 				ED9273232A101CAA00F520C6 /* InviteAccept.storyboard in Resources */,
 				ED92730F2A0FFA0100F520C6 /* CreateQR.storyboard in Resources */,
+				ED92732D2A114B1800F520C6 /* ChatViewCell.xib in Resources */,
 				ED9273042A0FE7C600F520C6 /* Assets.xcassets in Resources */,
 				ED92731D2A1014CB00F520C6 /* CreatorQr.storyboard in Resources */,
 				ED9273022A0FE7C400F520C6 /* Main.storyboard in Resources */,
@@ -207,6 +222,7 @@
 				ED92731F2A1014DD00F520C6 /* CreatorQrViewController.swift in Sources */,
 				ED9273252A101CB800F520C6 /* InviteAcceptViewController.swift in Sources */,
 				ED9272FB2A0FE7C400F520C6 /* AppDelegate.swift in Sources */,
+				ED92732C2A114B1800F520C6 /* ChatViewCell.swift in Sources */,
 				ED9272FD2A0FE7C400F520C6 /* SceneDelegate.swift in Sources */,
 				ED9273162A0FFCF000F520C6 /* ScannerViewController.swift in Sources */,
 			);
