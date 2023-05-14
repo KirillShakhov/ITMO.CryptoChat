@@ -8,10 +8,9 @@
 import UIKit
 
 class ChatViewCell: UICollectionViewCell {
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
 }

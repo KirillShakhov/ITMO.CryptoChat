@@ -120,3 +120,13 @@ extension MainViewController: UICollectionViewDataSource{
         
     }
 }
+
+extension MainViewController: UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
+    {
+        if collectionView == self.chatList {
+            return CGSize(width: self.chatList.visibleSize.width, height: 70.0)
+        }
+        return CGSize(width: 100.0, height: 100.0)
+    }
+}
