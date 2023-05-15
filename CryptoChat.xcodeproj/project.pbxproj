@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		ED9272FB2A0FE7C400F520C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9272FA2A0FE7C400F520C6 /* AppDelegate.swift */; };
 		ED9272FD2A0FE7C400F520C6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9272FC2A0FE7C400F520C6 /* SceneDelegate.swift */; };
-		ED9273022A0FE7C400F520C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED9273002A0FE7C400F520C6 /* Main.storyboard */; };
+		ED9273022A0FE7C400F520C6 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED9273002A0FE7C400F520C6 /* Home.storyboard */; };
 		ED9273042A0FE7C600F520C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED9273032A0FE7C600F520C6 /* Assets.xcassets */; };
 		ED9273072A0FE7C600F520C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED9273052A0FE7C600F520C6 /* LaunchScreen.storyboard */; };
 		ED92730F2A0FFA0100F520C6 /* CreateQR.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED92730E2A0FFA0100F520C6 /* CreateQR.storyboard */; };
-		ED9273112A0FFAB400F520C6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9273102A0FFAB400F520C6 /* MainViewController.swift */; };
+		ED9273112A0FFAB400F520C6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9273102A0FFAB400F520C6 /* HomeViewController.swift */; };
 		ED9273162A0FFCF000F520C6 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9273142A0FFCF000F520C6 /* ScannerViewController.swift */; };
 		ED9273192A10004600F520C6 /* ScannerView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED9273182A10004600F520C6 /* ScannerView.storyboard */; };
 		ED92731D2A1014CB00F520C6 /* CreatorQr.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED92731C2A1014CB00F520C6 /* CreatorQr.storyboard */; };
@@ -31,18 +31,20 @@
 		ED92733E2A12744900F520C6 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED92733C2A12744900F520C6 /* AuthController.swift */; };
 		ED9273402A12769100F520C6 /* LoadingAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED92733F2A12769100F520C6 /* LoadingAuthViewController.swift */; };
 		ED9273432A12786B00F520C6 /* StoryBoardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9273422A12786B00F520C6 /* StoryBoardManager.swift */; };
+		ED9273462A12898D00F520C6 /* Password.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED9273452A12898D00F520C6 /* Password.storyboard */; };
+		ED9273482A128E7800F520C6 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9273472A128E7800F520C6 /* PasswordViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		ED9272F72A0FE7C400F520C6 /* CryptoChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED9272FA2A0FE7C400F520C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED9272FC2A0FE7C400F520C6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		ED9273012A0FE7C400F520C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		ED9273012A0FE7C400F520C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
 		ED9273032A0FE7C600F520C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED9273062A0FE7C600F520C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED9273082A0FE7C600F520C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED92730E2A0FFA0100F520C6 /* CreateQR.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateQR.storyboard; sourceTree = "<group>"; };
-		ED9273102A0FFAB400F520C6 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		ED9273102A0FFAB400F520C6 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		ED9273142A0FFCF000F520C6 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		ED9273182A10004600F520C6 /* ScannerView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScannerView.storyboard; sourceTree = "<group>"; };
 		ED92731C2A1014CB00F520C6 /* CreatorQr.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreatorQr.storyboard; sourceTree = "<group>"; };
@@ -59,6 +61,8 @@
 		ED92733C2A12744900F520C6 /* AuthController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
 		ED92733F2A12769100F520C6 /* LoadingAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAuthViewController.swift; sourceTree = "<group>"; };
 		ED9273422A12786B00F520C6 /* StoryBoardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBoardManager.swift; sourceTree = "<group>"; };
+		ED9273452A12898D00F520C6 /* Password.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Password.storyboard; sourceTree = "<group>"; };
+		ED9273472A128E7800F520C6 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +96,7 @@
 		ED9272F92A0FE7C400F520C6 /* CryptoChat */ = {
 			isa = PBXGroup;
 			children = (
+				ED9273442A12897C00F520C6 /* Password */,
 				ED92733A2A12743800F520C6 /* Auth */,
 				ED9273352A1272B700F520C6 /* FirstSettings */,
 				ED9273302A115C9A00F520C6 /* Dialog */,
@@ -132,8 +137,8 @@
 		ED9273202A10152700F520C6 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				ED9273102A0FFAB400F520C6 /* MainViewController.swift */,
-				ED9273002A0FE7C400F520C6 /* Main.storyboard */,
+				ED9273102A0FFAB400F520C6 /* HomeViewController.swift */,
+				ED9273002A0FE7C400F520C6 /* Home.storyboard */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -190,6 +195,15 @@
 				ED9273422A12786B00F520C6 /* StoryBoardManager.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		ED9273442A12897C00F520C6 /* Password */ = {
+			isa = PBXGroup;
+			children = (
+				ED9273452A12898D00F520C6 /* Password.storyboard */,
+				ED9273472A128E7800F520C6 /* PasswordViewController.swift */,
+			);
+			path = Password;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,12 +275,13 @@
 				ED9273372A1272FC00F520C6 /* FirstSettings.storyboard in Resources */,
 				ED9273072A0FE7C600F520C6 /* LaunchScreen.storyboard in Resources */,
 				ED9273232A101CAA00F520C6 /* InviteAccept.storyboard in Resources */,
+				ED9273462A12898D00F520C6 /* Password.storyboard in Resources */,
 				ED92730F2A0FFA0100F520C6 /* CreateQR.storyboard in Resources */,
 				ED92732D2A114B1800F520C6 /* ChatViewCell.xib in Resources */,
 				ED9273042A0FE7C600F520C6 /* Assets.xcassets in Resources */,
 				ED92731D2A1014CB00F520C6 /* CreatorQr.storyboard in Resources */,
 				ED92733D2A12744900F520C6 /* Auth.storyboard in Resources */,
-				ED9273022A0FE7C400F520C6 /* Main.storyboard in Resources */,
+				ED9273022A0FE7C400F520C6 /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,12 +292,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED9273112A0FFAB400F520C6 /* MainViewController.swift in Sources */,
+				ED9273112A0FFAB400F520C6 /* HomeViewController.swift in Sources */,
 				ED92731F2A1014DD00F520C6 /* CreatorQrViewController.swift in Sources */,
 				ED9273432A12786B00F520C6 /* StoryBoardManager.swift in Sources */,
 				ED9273252A101CB800F520C6 /* InviteAcceptViewController.swift in Sources */,
 				ED9273392A12730A00F520C6 /* FirstSettingsViewController.swift in Sources */,
 				ED9272FB2A0FE7C400F520C6 /* AppDelegate.swift in Sources */,
+				ED9273482A128E7800F520C6 /* PasswordViewController.swift in Sources */,
 				ED9273342A115EC200F520C6 /* DialogViewController.swift in Sources */,
 				ED92732C2A114B1800F520C6 /* ChatViewCell.swift in Sources */,
 				ED9273402A12769100F520C6 /* LoadingAuthViewController.swift in Sources */,
@@ -295,12 +311,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		ED9273002A0FE7C400F520C6 /* Main.storyboard */ = {
+		ED9273002A0FE7C400F520C6 /* Home.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				ED9273012A0FE7C400F520C6 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Home.storyboard;
 			sourceTree = "<group>";
 		};
 		ED9273052A0FE7C600F520C6 /* LaunchScreen.storyboard */ = {
@@ -440,7 +456,7 @@
 				INFOPLIST_FILE = CryptoChat/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = Auth;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -468,7 +484,7 @@
 				INFOPLIST_FILE = CryptoChat/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = Auth;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

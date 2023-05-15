@@ -32,7 +32,8 @@ class LoadingAuthViewController: UIViewController {
 //        else{
         sleep(1)
 //        goToView(name: "Main", withIdentifier: "Main")
-        StoryBoardManager.goToView(self, name: "FirstSettings", withIdentifier: "FirstSettings")
+//        StoryBoardManager.goToView(self, name: "FirstSettings", withIdentifier: "FirstSettings")
+        StoryBoardManager.goToView(self, name: "Password", withIdentifier: "Password")
 //        }
     }
 }

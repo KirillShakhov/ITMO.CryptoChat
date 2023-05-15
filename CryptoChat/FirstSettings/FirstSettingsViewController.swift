@@ -36,8 +36,12 @@ class FirstSettingsViewController: UIViewController {
     }
 
     @IBAction func create(_ sender: Any) {
-        uuid = UUID().uuidString
-        uuidLabel.text = "uuid: "+uuid
+//        uuid = UUID().uuidString
+//        uuidLabel.text = "uuid: "+uuid
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "Home") as! HomeViewController
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class HomeViewController: UIViewController {
     @IBOutlet weak var CreateQrButton: UIButton!
     
     @IBOutlet weak var ScanButton: UIButton!
@@ -58,7 +58,7 @@ class MainViewController: UIViewController {
     }
 }
 
-extension MainViewController: UICollectionViewDelegate{
+extension HomeViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChatViewCell", for: indexPath) as! ChatViewCell
 //        let recipe = recipes[indexPath.item]
@@ -89,7 +89,7 @@ extension MainViewController: UICollectionViewDelegate{
     }
 }
 
-extension MainViewController: UICollectionViewDataSource{
+extension HomeViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3
     }
@@ -102,7 +102,7 @@ extension MainViewController: UICollectionViewDataSource{
     }
 }
 
-extension MainViewController: UICollectionViewDelegateFlowLayout{
+extension HomeViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
         if collectionView == self.chatList {
