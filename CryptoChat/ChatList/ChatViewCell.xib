@@ -67,7 +67,7 @@
                                     <fragment content="Смотри какой у меня кот">
                                         <attributes>
                                             <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                            <font key="NSFont" size="12" name="Helvetica"/>
+                                            <font key="NSFont" size="16" name="Helvetica"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>

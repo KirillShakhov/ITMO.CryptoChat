@@ -23,6 +23,14 @@
 		ED9273282A102EE100F520C6 /* QRCode in Frameworks */ = {isa = PBXBuildFile; productRef = ED9273272A102EE100F520C6 /* QRCode */; };
 		ED92732C2A114B1800F520C6 /* ChatViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED92732A2A114B1800F520C6 /* ChatViewCell.swift */; };
 		ED92732D2A114B1800F520C6 /* ChatViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED92732B2A114B1800F520C6 /* ChatViewCell.xib */; };
+		ED9273322A115CAC00F520C6 /* Dialog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED9273312A115CAC00F520C6 /* Dialog.storyboard */; };
+		ED9273342A115EC200F520C6 /* DialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9273332A115EC200F520C6 /* DialogViewController.swift */; };
+		ED9273372A1272FC00F520C6 /* FirstSettings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED9273362A1272FC00F520C6 /* FirstSettings.storyboard */; };
+		ED9273392A12730A00F520C6 /* FirstSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9273382A12730A00F520C6 /* FirstSettingsViewController.swift */; };
+		ED92733D2A12744900F520C6 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED92733B2A12744900F520C6 /* Auth.storyboard */; };
+		ED92733E2A12744900F520C6 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED92733C2A12744900F520C6 /* AuthController.swift */; };
+		ED9273402A12769100F520C6 /* LoadingAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED92733F2A12769100F520C6 /* LoadingAuthViewController.swift */; };
+		ED9273432A12786B00F520C6 /* StoryBoardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9273422A12786B00F520C6 /* StoryBoardManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +51,14 @@
 		ED9273242A101CB800F520C6 /* InviteAcceptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteAcceptViewController.swift; sourceTree = "<group>"; };
 		ED92732A2A114B1800F520C6 /* ChatViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewCell.swift; sourceTree = "<group>"; };
 		ED92732B2A114B1800F520C6 /* ChatViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatViewCell.xib; sourceTree = "<group>"; };
+		ED9273312A115CAC00F520C6 /* Dialog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dialog.storyboard; sourceTree = "<group>"; };
+		ED9273332A115EC200F520C6 /* DialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogViewController.swift; sourceTree = "<group>"; };
+		ED9273362A1272FC00F520C6 /* FirstSettings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FirstSettings.storyboard; sourceTree = "<group>"; };
+		ED9273382A12730A00F520C6 /* FirstSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSettingsViewController.swift; sourceTree = "<group>"; };
+		ED92733B2A12744900F520C6 /* Auth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
+		ED92733C2A12744900F520C6 /* AuthController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
+		ED92733F2A12769100F520C6 /* LoadingAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAuthViewController.swift; sourceTree = "<group>"; };
+		ED9273422A12786B00F520C6 /* StoryBoardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBoardManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,11 +92,15 @@
 		ED9272F92A0FE7C400F520C6 /* CryptoChat */ = {
 			isa = PBXGroup;
 			children = (
+				ED92733A2A12743800F520C6 /* Auth */,
+				ED9273352A1272B700F520C6 /* FirstSettings */,
+				ED9273302A115C9A00F520C6 /* Dialog */,
 				ED9273292A114B0300F520C6 /* ChatList */,
 				ED9273212A101C6F00F520C6 /* InviteAccept */,
 				ED9273202A10152700F520C6 /* Home */,
 				ED92731B2A10148E00F520C6 /* CreatorQr */,
 				ED92731A2A10147600F520C6 /* ScannerView */,
+				ED9273412A12784900F520C6 /* Utils */,
 				ED9272FA2A0FE7C400F520C6 /* AppDelegate.swift */,
 				ED9272FC2A0FE7C400F520C6 /* SceneDelegate.swift */,
 				ED9273032A0FE7C600F520C6 /* Assets.xcassets */,
@@ -134,6 +154,42 @@
 				ED92732B2A114B1800F520C6 /* ChatViewCell.xib */,
 			);
 			path = ChatList;
+			sourceTree = "<group>";
+		};
+		ED9273302A115C9A00F520C6 /* Dialog */ = {
+			isa = PBXGroup;
+			children = (
+				ED9273312A115CAC00F520C6 /* Dialog.storyboard */,
+				ED9273332A115EC200F520C6 /* DialogViewController.swift */,
+			);
+			path = Dialog;
+			sourceTree = "<group>";
+		};
+		ED9273352A1272B700F520C6 /* FirstSettings */ = {
+			isa = PBXGroup;
+			children = (
+				ED9273362A1272FC00F520C6 /* FirstSettings.storyboard */,
+				ED9273382A12730A00F520C6 /* FirstSettingsViewController.swift */,
+			);
+			path = FirstSettings;
+			sourceTree = "<group>";
+		};
+		ED92733A2A12743800F520C6 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				ED92733B2A12744900F520C6 /* Auth.storyboard */,
+				ED92733C2A12744900F520C6 /* AuthController.swift */,
+				ED92733F2A12769100F520C6 /* LoadingAuthViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		ED9273412A12784900F520C6 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				ED9273422A12786B00F520C6 /* StoryBoardManager.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,12 +257,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED9273192A10004600F520C6 /* ScannerView.storyboard in Resources */,
+				ED9273322A115CAC00F520C6 /* Dialog.storyboard in Resources */,
+				ED9273372A1272FC00F520C6 /* FirstSettings.storyboard in Resources */,
 				ED9273072A0FE7C600F520C6 /* LaunchScreen.storyboard in Resources */,
 				ED9273232A101CAA00F520C6 /* InviteAccept.storyboard in Resources */,
 				ED92730F2A0FFA0100F520C6 /* CreateQR.storyboard in Resources */,
 				ED92732D2A114B1800F520C6 /* ChatViewCell.xib in Resources */,
 				ED9273042A0FE7C600F520C6 /* Assets.xcassets in Resources */,
 				ED92731D2A1014CB00F520C6 /* CreatorQr.storyboard in Resources */,
+				ED92733D2A12744900F520C6 /* Auth.storyboard in Resources */,
 				ED9273022A0FE7C400F520C6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -220,9 +279,14 @@
 			files = (
 				ED9273112A0FFAB400F520C6 /* MainViewController.swift in Sources */,
 				ED92731F2A1014DD00F520C6 /* CreatorQrViewController.swift in Sources */,
+				ED9273432A12786B00F520C6 /* StoryBoardManager.swift in Sources */,
 				ED9273252A101CB800F520C6 /* InviteAcceptViewController.swift in Sources */,
+				ED9273392A12730A00F520C6 /* FirstSettingsViewController.swift in Sources */,
 				ED9272FB2A0FE7C400F520C6 /* AppDelegate.swift in Sources */,
+				ED9273342A115EC200F520C6 /* DialogViewController.swift in Sources */,
 				ED92732C2A114B1800F520C6 /* ChatViewCell.swift in Sources */,
+				ED9273402A12769100F520C6 /* LoadingAuthViewController.swift in Sources */,
+				ED92733E2A12744900F520C6 /* AuthController.swift in Sources */,
 				ED9272FD2A0FE7C400F520C6 /* SceneDelegate.swift in Sources */,
 				ED9273162A0FFCF000F520C6 /* ScannerViewController.swift in Sources */,
 			);

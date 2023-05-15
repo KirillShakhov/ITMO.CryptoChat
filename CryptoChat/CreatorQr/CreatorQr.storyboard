@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qr_mock" translatesAutoresizingMaskIntoConstraints="NO" id="Tvm-Pa-cbE">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qr_prop" translatesAutoresizingMaskIntoConstraints="NO" id="Tvm-Pa-cbE">
                                 <rect key="frame" x="82" y="150" width="250" height="250"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="m1s-Mh-G26"/>
@@ -83,7 +83,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="qr_mock" width="1200" height="1200"/>
+        <image name="qr_prop" width="1007" height="1009"/>
         <image name="scan_me" width="849" height="657"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

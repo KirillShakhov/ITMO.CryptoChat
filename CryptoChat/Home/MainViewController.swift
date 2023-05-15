@@ -94,30 +94,11 @@ extension MainViewController: UICollectionViewDataSource{
         return 3
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let recipe = recipes[indexPath.item]
-        
-//        let storyboard = UIStoryboard(name: "RecipeCard", bundle: nil)
-//        guard let vc = storyboard.instantiateViewController(identifier: "RecipeCard") as? RecipeCard else { return }
-//
-//        vc.recipe = recipe
-//
-//        DispatchQueue.global().async {
-//            if let data = try? Data(contentsOf: URL(string: recipe.image)!) {
-//                if let image = UIImage(data: data) {
-//                    DispatchQueue.main.async {
-//                        vc.cardImage.image = image
-//                    }
-//                }
-//            }
-//        }
-//
-//
-////        let vc = storyboard.instantiateViewController(withIdentifier: "RecipeCard")
-//        vc.modalPresentationStyle = .fullScreen
-//
-////        self.navigationController?.pushViewController(vc, animated: true)
-//        present(vc, animated:true)
-        
+        let storyboard = UIStoryboard(name: "Dialog", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(identifier: "Dialog") as? DialogViewController else { return }
+        vc.modalPresentationStyle = .popover
+        self.navigationController?.pushViewController(vc, animated: true)
+        present(vc, animated:true)
     }
 }
 
