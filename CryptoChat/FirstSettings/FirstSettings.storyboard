@@ -23,9 +23,14 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q0D-3q-Go8">
                                         <rect key="frame" x="157" y="50" width="100" height="100"/>
                                         <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="auth" translatesAutoresizingMaskIntoConstraints="NO" id="4QH-C4-ncE">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                <gestureRecognizers/>
+                                            </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="thE-SU-nfe">
                                                 <rect key="frame" x="25" y="27" width="50" height="46"/>
                                                 <color key="tintColor" systemColor="systemGray2Color"/>
+                                                <gestureRecognizers/>
                                                 <imageReference key="image" image="plus" catalog="system" symbolScale="default" variableValue="1"/>
                                             </imageView>
                                         </subviews>
@@ -35,7 +40,11 @@
                                             <constraint firstAttribute="height" constant="100" id="Ez8-5c-1nO"/>
                                             <constraint firstAttribute="bottom" secondItem="thE-SU-nfe" secondAttribute="bottom" constant="25" id="GMh-yz-X7C"/>
                                             <constraint firstItem="thE-SU-nfe" firstAttribute="leading" secondItem="Q0D-3q-Go8" secondAttribute="leading" constant="25" id="WwW-6B-RGz"/>
+                                            <constraint firstItem="4QH-C4-ncE" firstAttribute="top" secondItem="Q0D-3q-Go8" secondAttribute="top" id="ayz-eR-04J"/>
+                                            <constraint firstAttribute="trailing" secondItem="4QH-C4-ncE" secondAttribute="trailing" id="hsk-ns-kae"/>
+                                            <constraint firstItem="4QH-C4-ncE" firstAttribute="leading" secondItem="Q0D-3q-Go8" secondAttribute="leading" id="hwW-zr-2gQ"/>
                                             <constraint firstAttribute="width" constant="100" id="jvC-Lj-UcN"/>
+                                            <constraint firstAttribute="bottom" secondItem="4QH-C4-ncE" secondAttribute="bottom" id="lpa-Fn-NKz"/>
                                             <constraint firstAttribute="trailing" secondItem="thE-SU-nfe" secondAttribute="trailing" constant="25" id="mMa-2D-QGe"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
@@ -98,6 +107,9 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Создать">
                                     <color key="baseBackgroundColor" red="0.88416475059999999" green="0.65117198229999995" blue="0.97925764319999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="create:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="QMc-Dg-QH6"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -112,7 +124,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="avatarImage" destination="4QH-C4-ncE" id="Mcp-tr-alH"/>
+                        <outlet property="avatarView" destination="Q0D-3q-Go8" id="fLu-m9-ewK"/>
                         <outlet property="nameField" destination="SrZ-LQ-ysb" id="yK0-CW-V21"/>
+                        <outlet property="plusImage" destination="thE-SU-nfe" id="8w1-Qu-6Zn"/>
+                        <outlet property="uuidLabel" destination="Kus-XM-Y2V" id="Zlq-ga-ZAY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -121,6 +137,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="auth" width="1920" height="1281"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
