@@ -11,8 +11,7 @@ import Foundation
 public class InviteController{
     
     
-    public static func createInvite() -> String {
-        let userUuid = UserController.getUuid()
+    public static func createInvite() -> String? {
         let inviteUuid = UUID().uuidString
         
         var dayComponent = DateComponents()
@@ -20,28 +19,22 @@ public class InviteController{
         let theCalendar = Calendar.current
         let dateExpired = theCalendar.date(byAdding: dayComponent, to: Date())
         
-        if let key = AES256.generateSymmetricEncryptionKey(),
-           let iv = AES256.generateSymmetricEncryptionKey()
+        if let dateExpired = dateExpired?.formatted(),
+           let aesKey = AES256.generate256bitKey(),
+           let hmacKey = AES256.generate256bitKey()
         {
-            print("key "+key)
-            let aes = AES256(key: key, iv: iv)
-            let crypt = aes.aesEncrypt("1") ?? "nil"
-            print("encrypt "+crypt)
-            print("dencrypt "+(aes.aesDecrypt(crypt) ?? "nil"))
+            let invite = Invite(uuid: inviteUuid, userUuid: UserController.getUuid(), dateExpired: dateExpired, aesKey: aesKey, hmacKey: hmacKey)
+                            
+            let data = [
+                invite.dateExpired,
+                invite.uuid,
+                invite.userUuid,
+                invite.aesKey,
+                invite.hmacKey
+            ]
+                    
+            return JsonUtil.toJson(data: data)
         }
-        
-        let invite = Invite(uuid: inviteUuid, userUuid: userUuid, dateExpired: dateExpired?.formatted() ?? "nil")
-        
-        let data = [
-            invite.uuid,
-            invite.dateExpired,
-            invite.userUuid
-        ]
-        do {
-            let jsonData = try JSONEncoder().encode(data)
-            let jsonString = String(data: jsonData, encoding: .utf8)!
-            return jsonString
-        } catch { print(error) }
-        return "nil"
+        return nil
     }
 }

@@ -41,7 +41,7 @@ public class AES256{
         return String(data: decrypt, encoding: .utf8)?.trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
-    internal static func generateSymmetricEncryptionKey() -> String? {
+    internal static func generate256bitKey() -> String? {
         var keyData = Data(count: 32)
         let result = keyData.withUnsafeMutableBytes {
           SecRandomCopyBytes(kSecRandomDefault, 32, $0.baseAddress!)

@@ -6,8 +6,16 @@
 //
 
 import Foundation
+import UIKit
 
 public class UserController{
+    public static func getUsername() -> String {
+        return "kirill"
+    }
+    
+    public static func getAvatar() -> UIImage {
+        return UIImage(named: "avatar_example")!
+    }
     
     public static func getUuid() -> String {
         return UUID().uuidString

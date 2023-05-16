@@ -24,17 +24,15 @@ class CreatorQrViewController: UIViewController {
     }
     
     @IBAction func generateCode(_ sender: Any) {
-        
-        let randomString = randomString(length: 20)
-//        let image = generateQRCode(from: "Code: "+randomString)
-        let image = generateQRCode(from: InviteController.createInvite())
-        qrImage.image = image
-        scanMe.isHidden = false
-
-//        let alert = UIAlertController(title: "Result", message: "Hello", preferredStyle: UIAlertController.Style.alert)
-//        alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
-//        self.present(alert, animated: true, completion: nil)
-
+        if let invite = InviteController.createInvite(){
+            let image = generateQRCode(from: invite)
+            qrImage.image = image
+            scanMe.isHidden = false
+            return
+        }
+        let alert = UIAlertController(title: "Ошибка", message: "Ошибка при создании приглашения", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Закрыть", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func randomString(length: Int) -> String {
