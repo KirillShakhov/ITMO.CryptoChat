@@ -19,12 +19,14 @@ public enum MessageState{
 }
 
 public struct Message{
+    var me: Bool
     var type: MessageType
     var state: MessageState
     var data: String
     var date: Date
     
-    init(type: MessageType, state: MessageState, data: String, date: Date) {
+    init(me: Bool, type: MessageType, state: MessageState, data: String, date: Date) {
+        self.me = me
         self.type = type
         self.state = state
         self.data = data

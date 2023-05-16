@@ -17,10 +17,10 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BUn-e5-Dly">
-                        <rect key="frame" x="0.0" y="0.0" width="464" height="74"/>
+                        <rect key="frame" x="0.0" y="0.0" width="404" height="74"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0UP-X9-VRU">
-                                <rect key="frame" x="304" y="44" width="150" height="20"/>
+                                <rect key="frame" x="244" y="44" width="150" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="GOZ-aD-11Z"/>
                                     <constraint firstAttribute="height" constant="20" id="w6Q-eZ-brd"/>
@@ -36,7 +36,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vib-ha-eyX">
-                                <rect key="frame" x="10" y="10" width="444" height="30"/>
+                                <rect key="frame" x="10" y="10" width="384" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="LX7-be-Pse"/>
                                 </constraints>
@@ -73,13 +73,14 @@
             <constraints>
                 <constraint firstItem="BUn-e5-Dly" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="6Mq-hQ-s4s"/>
                 <constraint firstItem="BUn-e5-Dly" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Lz5-Tp-sYb"/>
-                <constraint firstAttribute="trailing" secondItem="BUn-e5-Dly" secondAttribute="trailing" id="dhK-XX-ha1"/>
+                <constraint firstAttribute="trailing" secondItem="BUn-e5-Dly" secondAttribute="trailing" constant="60" id="dhK-XX-ha1"/>
                 <constraint firstAttribute="bottom" secondItem="BUn-e5-Dly" secondAttribute="bottom" id="voX-TL-0jO"/>
             </constraints>
             <size key="customSize" width="464" height="74"/>
             <connections>
                 <outlet property="dateLabel" destination="0UP-X9-VRU" id="k19-px-KAt"/>
                 <outlet property="textLabel" destination="vib-ha-eyX" id="b8Z-zo-kDx"/>
+                <outlet property="viewMessage" destination="BUn-e5-Dly" id="zmN-rO-hGM"/>
             </connections>
             <point key="canvasLocation" x="-4.5801526717557248" y="17.605633802816904"/>
         </collectionViewCell>

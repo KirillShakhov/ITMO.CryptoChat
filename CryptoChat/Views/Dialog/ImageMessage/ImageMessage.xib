@@ -78,7 +78,9 @@
             <size key="customSize" width="387" height="254"/>
             <connections>
                 <outlet property="dateLabel" destination="2yQ-6L-efu" id="LiD-sb-G9d"/>
+                <outlet property="dateView" destination="np6-3T-zMq" id="Mtc-mr-fQU"/>
                 <outlet property="image" destination="69z-vX-KPu" id="FKc-8e-ftv"/>
+                <outlet property="viewMessage" destination="gyY-yB-eRP" id="BXD-JX-S4g"/>
             </connections>
             <point key="canvasLocation" x="319.84732824427482" y="91.549295774647888"/>
         </collectionViewCell>

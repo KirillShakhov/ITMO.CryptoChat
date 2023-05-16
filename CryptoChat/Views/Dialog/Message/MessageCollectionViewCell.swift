@@ -11,6 +11,9 @@ class MessageCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    
+    @IBOutlet weak var viewMessage: UIView!
+    
     var message: Message?
     
     override func awakeFromNib() {
@@ -26,6 +29,10 @@ class MessageCollectionViewCell: UICollectionViewCell {
             }
             else{
                 textLabel.text = "Вложение"
+            }
+            if (message.me){
+                viewMessage.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 60).isActive = true
+                viewMessage.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
             }
         }
         else{

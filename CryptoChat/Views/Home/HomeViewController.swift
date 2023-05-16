@@ -109,6 +109,11 @@ extension HomeViewController: UICollectionViewDataSource{
         vc.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(vc, animated: true)
         present(vc, animated:true)
+        vc.messagesList.reloadData()
+        vc.messagesList.performBatchUpdates(nil, completion: {
+            (result) in
+            vc.scrollToLast()
+        })
     }
 }
 
@@ -121,3 +126,4 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
         return CGSize(width: 100.0, height: 100.0)
     }
 }
+

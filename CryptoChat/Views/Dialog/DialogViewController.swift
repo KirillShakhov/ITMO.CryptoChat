@@ -32,6 +32,12 @@ class DialogViewController: UIViewController {
             avatarImage.image = UIImage(named: "avatar_mock")
         }
     }
+
+    func scrollToLast(){
+        let lastItemIndex = self.messagesList.numberOfItems(inSection: 0) - 1
+        let indexPath:IndexPath = IndexPath(item: lastItemIndex, section: 0)
+        self.messagesList.scrollToItem(at: indexPath, at: .bottom, animated: false)
+    }
     
     @IBAction func back(_ sender: Any) {
         dismiss(animated: true)

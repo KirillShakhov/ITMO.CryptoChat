@@ -10,6 +10,8 @@ import UIKit
 class ImageMessage: UICollectionViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var viewMessage: UIView!
+    @IBOutlet weak var dateView: UIView!
     var message: Message?
 
     override func awakeFromNib() {
@@ -23,5 +25,13 @@ class ImageMessage: UICollectionViewCell {
             image.image = UIImage(data: dataDecoded)
         }
         dateLabel.text = message?.date.formatted()
+        
+        if message?.me ?? false {
+            viewMessage.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 40).isActive = true
+            viewMessage.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
+        }
+        dateView.leftAnchor.constraint(equalTo: viewMessage.leftAnchor, constant: 10).isActive = true
+        viewMessage.layoutIfNeeded()
+
     }
 }
