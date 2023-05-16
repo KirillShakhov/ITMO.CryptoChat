@@ -16,10 +16,19 @@ public class InviteController{
         let inviteUuid = UUID().uuidString
         
         var dayComponent = DateComponents()
-        dayComponent.day = 1 // For removing one day (yesterday): -1
+        dayComponent.day = 1
         let theCalendar = Calendar.current
         let dateExpired = theCalendar.date(byAdding: dayComponent, to: Date())
         
+        if let key = AES256.generateSymmetricEncryptionKey(),
+           let iv = AES256.generateSymmetricEncryptionKey()
+        {
+            print("key "+key)
+            let aes = AES256(key: key, iv: iv)
+            let crypt = aes.aesEncrypt("1") ?? "nil"
+            print("encrypt "+crypt)
+            print("dencrypt "+(aes.aesDecrypt(crypt) ?? "nil"))
+        }
         
         let invite = Invite(uuid: inviteUuid, userUuid: userUuid, dateExpired: dateExpired?.formatted() ?? "nil")
         

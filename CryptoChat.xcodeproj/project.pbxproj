@@ -37,7 +37,7 @@
 		EDDCBB7E2A13390800F8C0CD /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDCBB7D2A13390800F8C0CD /* UserController.swift */; };
 		EDDCBB802A133A4E00F8C0CD /* Invite.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDCBB7F2A133A4E00F8C0CD /* Invite.swift */; };
 		EDDCBB822A133C4000F8C0CD /* Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDCBB812A133C4000F8C0CD /* Base64.swift */; };
-		EDFD47972A1305C600A074B4 /* AES.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD47962A1305C600A074B4 /* AES.swift */; };
+		EDFD47972A1305C600A074B4 /* AES256.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD47962A1305C600A074B4 /* AES256.swift */; };
 		EDFD479C2A131D4F00A074B4 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD479B2A131D4F00A074B4 /* Message.swift */; };
 		EDFD479E2A131D5800A074B4 /* Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD479D2A131D5800A074B4 /* Dialog.swift */; };
 		EDFD47A12A131F2600A074B4 /* DialogsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD47A02A131F2600A074B4 /* DialogsController.swift */; };
@@ -79,7 +79,7 @@
 		EDDCBB7D2A13390800F8C0CD /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		EDDCBB7F2A133A4E00F8C0CD /* Invite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invite.swift; sourceTree = "<group>"; };
 		EDDCBB812A133C4000F8C0CD /* Base64.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base64.swift; sourceTree = "<group>"; };
-		EDFD47962A1305C600A074B4 /* AES.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AES.swift; sourceTree = "<group>"; };
+		EDFD47962A1305C600A074B4 /* AES256.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AES256.swift; sourceTree = "<group>"; };
 		EDFD479B2A131D4F00A074B4 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		EDFD479D2A131D5800A074B4 /* Dialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dialog.swift; sourceTree = "<group>"; };
 		EDFD47A02A131F2600A074B4 /* DialogsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogsController.swift; sourceTree = "<group>"; };
@@ -212,7 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				ED9273422A12786B00F520C6 /* StoryBoardManager.swift */,
-				EDFD47962A1305C600A074B4 /* AES.swift */,
+				EDFD47962A1305C600A074B4 /* AES256.swift */,
 				EDDCBB812A133C4000F8C0CD /* Base64.swift */,
 			);
 			path = Utils;
@@ -385,7 +385,7 @@
 				EDDCBB7C2A1338CF00F8C0CD /* InviteController.swift in Sources */,
 				EDFD47A92A132DA600A074B4 /* MessageCollectionViewCell.swift in Sources */,
 				EDFD47AE2A13329C00A074B4 /* ImageMessage.swift in Sources */,
-				EDFD47972A1305C600A074B4 /* AES.swift in Sources */,
+				EDFD47972A1305C600A074B4 /* AES256.swift in Sources */,
 				ED9273392A12730A00F520C6 /* FirstSettingsViewController.swift in Sources */,
 				EDDCBB822A133C4000F8C0CD /* Base64.swift in Sources */,
 				ED9272FB2A0FE7C400F520C6 /* AppDelegate.swift in Sources */,

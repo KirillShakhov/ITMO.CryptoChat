@@ -7,27 +7,48 @@
 import Foundation
 import CommonCrypto
 
-public extension String {
-    func aesEncrypt(key: String, iv: String) -> String? {
+public class AES256{
+    private var key: String
+    private var iv: String
+    
+    init(key: String, iv: String){
+        self.key = key
+        self.iv = iv
+    }
+    
+    func aesEncrypt(_ text: String) -> String? {
+        var textEncrypt = text
+        if textEncrypt.count < 16 {
+            textEncrypt.append(String(repeating: " ", count: 16 - textEncrypt.count))
+        }
         guard
-            let data = self.data(using: .utf8),
-            let key = key.data(using: .utf8),
-            let iv = iv.data(using: .utf8),
+            let data = textEncrypt.data(using: .utf8),
+            let key = Data(base64Encoded: key, options: .ignoreUnknownCharacters),
+            let iv = Data(base64Encoded: iv, options: .ignoreUnknownCharacters),
             let encrypt = data.encryptAES256(key: key, iv: iv)
             else { return nil }
         let base64Data = encrypt.base64EncodedData()
         return String(data: base64Data, encoding: .utf8)
     }
 
-    func aesDecrypt(key: String, iv: String) -> String? {
+    func aesDecrypt(_ crypt: String) -> String? {
         guard
-            let data = Data(base64Encoded: self),
-            let key = key.data(using: .utf8),
-            let iv = iv.data(using: .utf8),
+            let data = Data(base64Encoded: crypt),
+            let key = Data(base64Encoded: key, options: .ignoreUnknownCharacters),
+            let iv = Data(base64Encoded: iv, options: .ignoreUnknownCharacters),
             let decrypt = data.decryptAES256(key: key, iv: iv)
             else { return nil }
-        return String(data: decrypt, encoding: .utf8)
+        return String(data: decrypt, encoding: .utf8)?.trimmingCharacters(in: .whitespacesAndNewlines)
     }
+    
+    internal static func generateSymmetricEncryptionKey() -> String? {
+        var keyData = Data(count: 32)
+        let result = keyData.withUnsafeMutableBytes {
+          SecRandomCopyBytes(kSecRandomDefault, 32, $0.baseAddress!)
+        }
+        guard result == errSecSuccess else { return nil }
+        return keyData.base64EncodedString()
+      }
 }
 
 public extension Data {
