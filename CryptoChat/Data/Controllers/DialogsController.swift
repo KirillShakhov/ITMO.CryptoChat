@@ -22,19 +22,16 @@ public class DialogsController{
             Message(type: MessageType.Text, state: MessageState.Delivered, data: "Я жду", date: Date.now)
         ]))
         let defaults = UserDefaults.standard
-        if let userData = defaults.string(
-            forKey: "user"
+        
+        if let avatarData = defaults.string(
+            forKey: "avatar"
         ) {
-            if let avatarData = defaults.string(
-                forKey: "avatar"
-            ) {
-                list.append(Dialog(username: "Алиса", image: nil, messages: [
-                    Message(type: MessageType.Text, state: MessageState.Delivered, data: "Жду тебя", date: Date.now),
-                    Message(type: MessageType.Image, state: MessageState.Delivered, data: avatarData, date: Date.now),
-                ]))
-            }
+            list.append(Dialog(username: "Алиса", image: nil, messages: [
+                Message(type: MessageType.Text, state: MessageState.Delivered, data: "Жду тебя", date: Date.now),
+                Message(type: MessageType.Image, state: MessageState.Delivered, data: avatarData, date: Date.now),
+            ]))
         }
-
+    
         return list
     }
 }

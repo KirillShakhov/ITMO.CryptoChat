@@ -33,6 +33,10 @@
 		ED9273432A12786B00F520C6 /* StoryBoardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9273422A12786B00F520C6 /* StoryBoardManager.swift */; };
 		ED9273462A12898D00F520C6 /* Password.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED9273452A12898D00F520C6 /* Password.storyboard */; };
 		ED9273482A128E7800F520C6 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9273472A128E7800F520C6 /* PasswordViewController.swift */; };
+		EDDCBB7C2A1338CF00F8C0CD /* InviteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDCBB7B2A1338CF00F8C0CD /* InviteController.swift */; };
+		EDDCBB7E2A13390800F8C0CD /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDCBB7D2A13390800F8C0CD /* UserController.swift */; };
+		EDDCBB802A133A4E00F8C0CD /* Invite.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDCBB7F2A133A4E00F8C0CD /* Invite.swift */; };
+		EDDCBB822A133C4000F8C0CD /* Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDCBB812A133C4000F8C0CD /* Base64.swift */; };
 		EDFD47972A1305C600A074B4 /* AES.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD47962A1305C600A074B4 /* AES.swift */; };
 		EDFD479C2A131D4F00A074B4 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD479B2A131D4F00A074B4 /* Message.swift */; };
 		EDFD479E2A131D5800A074B4 /* Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD479D2A131D5800A074B4 /* Dialog.swift */; };
@@ -71,6 +75,10 @@
 		ED9273422A12786B00F520C6 /* StoryBoardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBoardManager.swift; sourceTree = "<group>"; };
 		ED9273452A12898D00F520C6 /* Password.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Password.storyboard; sourceTree = "<group>"; };
 		ED9273472A128E7800F520C6 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
+		EDDCBB7B2A1338CF00F8C0CD /* InviteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteController.swift; sourceTree = "<group>"; };
+		EDDCBB7D2A13390800F8C0CD /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		EDDCBB7F2A133A4E00F8C0CD /* Invite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invite.swift; sourceTree = "<group>"; };
+		EDDCBB812A133C4000F8C0CD /* Base64.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base64.swift; sourceTree = "<group>"; };
 		EDFD47962A1305C600A074B4 /* AES.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AES.swift; sourceTree = "<group>"; };
 		EDFD479B2A131D4F00A074B4 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		EDFD479D2A131D5800A074B4 /* Dialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dialog.swift; sourceTree = "<group>"; };
@@ -205,6 +213,7 @@
 			children = (
 				ED9273422A12786B00F520C6 /* StoryBoardManager.swift */,
 				EDFD47962A1305C600A074B4 /* AES.swift */,
+				EDDCBB812A133C4000F8C0CD /* Base64.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -248,6 +257,7 @@
 			children = (
 				EDFD479B2A131D4F00A074B4 /* Message.swift */,
 				EDFD479D2A131D5800A074B4 /* Dialog.swift */,
+				EDDCBB7F2A133A4E00F8C0CD /* Invite.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -256,6 +266,8 @@
 			isa = PBXGroup;
 			children = (
 				EDFD47A02A131F2600A074B4 /* DialogsController.swift */,
+				EDDCBB7B2A1338CF00F8C0CD /* InviteController.swift */,
+				EDDCBB7D2A13390800F8C0CD /* UserController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -370,10 +382,12 @@
 				ED92731F2A1014DD00F520C6 /* CreatorQrViewController.swift in Sources */,
 				ED9273432A12786B00F520C6 /* StoryBoardManager.swift in Sources */,
 				ED9273252A101CB800F520C6 /* InviteAcceptViewController.swift in Sources */,
+				EDDCBB7C2A1338CF00F8C0CD /* InviteController.swift in Sources */,
 				EDFD47A92A132DA600A074B4 /* MessageCollectionViewCell.swift in Sources */,
 				EDFD47AE2A13329C00A074B4 /* ImageMessage.swift in Sources */,
 				EDFD47972A1305C600A074B4 /* AES.swift in Sources */,
 				ED9273392A12730A00F520C6 /* FirstSettingsViewController.swift in Sources */,
+				EDDCBB822A133C4000F8C0CD /* Base64.swift in Sources */,
 				ED9272FB2A0FE7C400F520C6 /* AppDelegate.swift in Sources */,
 				EDFD479E2A131D5800A074B4 /* Dialog.swift in Sources */,
 				ED9273482A128E7800F520C6 /* PasswordViewController.swift in Sources */,
@@ -381,8 +395,10 @@
 				EDFD47A12A131F2600A074B4 /* DialogsController.swift in Sources */,
 				ED92732C2A114B1800F520C6 /* ChatViewCell.swift in Sources */,
 				ED9273402A12769100F520C6 /* LoadingAuthViewController.swift in Sources */,
+				EDDCBB802A133A4E00F8C0CD /* Invite.swift in Sources */,
 				ED92733E2A12744900F520C6 /* AuthController.swift in Sources */,
 				EDFD479C2A131D4F00A074B4 /* Message.swift in Sources */,
+				EDDCBB7E2A13390800F8C0CD /* UserController.swift in Sources */,
 				ED9272FD2A0FE7C400F520C6 /* SceneDelegate.swift in Sources */,
 				ED9273162A0FFCF000F520C6 /* ScannerViewController.swift in Sources */,
 			);

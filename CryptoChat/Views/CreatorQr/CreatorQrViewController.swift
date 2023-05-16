@@ -26,7 +26,8 @@ class CreatorQrViewController: UIViewController {
     @IBAction func generateCode(_ sender: Any) {
         
         let randomString = randomString(length: 20)
-        let image = generateQRCode(from: "Code: "+randomString)
+//        let image = generateQRCode(from: "Code: "+randomString)
+        let image = generateQRCode(from: InviteController.createInvite())
         qrImage.image = image
         scanMe.isHidden = false
 
