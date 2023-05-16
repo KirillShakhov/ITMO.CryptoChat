@@ -39,6 +39,8 @@
 		EDFD47A12A131F2600A074B4 /* DialogsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD47A02A131F2600A074B4 /* DialogsController.swift */; };
 		EDFD47A92A132DA600A074B4 /* MessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD47A72A132DA600A074B4 /* MessageCollectionViewCell.swift */; };
 		EDFD47AA2A132DA600A074B4 /* MessageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDFD47A82A132DA600A074B4 /* MessageCollectionViewCell.xib */; };
+		EDFD47AE2A13329C00A074B4 /* ImageMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD47AC2A13329C00A074B4 /* ImageMessage.swift */; };
+		EDFD47AF2A13329C00A074B4 /* ImageMessage.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDFD47AD2A13329C00A074B4 /* ImageMessage.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +77,8 @@
 		EDFD47A02A131F2600A074B4 /* DialogsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogsController.swift; sourceTree = "<group>"; };
 		EDFD47A72A132DA600A074B4 /* MessageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCollectionViewCell.swift; sourceTree = "<group>"; };
 		EDFD47A82A132DA600A074B4 /* MessageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCollectionViewCell.xib; sourceTree = "<group>"; };
+		EDFD47AC2A13329C00A074B4 /* ImageMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMessage.swift; sourceTree = "<group>"; };
+		EDFD47AD2A13329C00A074B4 /* ImageMessage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageMessage.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +173,7 @@
 		ED9273302A115C9A00F520C6 /* Dialog */ = {
 			isa = PBXGroup;
 			children = (
+				EDFD47AB2A13327600A074B4 /* ImageMessage */,
 				EDFD47A22A132D5300A074B4 /* Message */,
 				ED9273312A115CAC00F520C6 /* Dialog.storyboard */,
 				ED9273332A115EC200F520C6 /* DialogViewController.swift */,
@@ -264,6 +269,15 @@
 			path = Message;
 			sourceTree = "<group>";
 		};
+		EDFD47AB2A13327600A074B4 /* ImageMessage */ = {
+			isa = PBXGroup;
+			children = (
+				EDFD47AC2A13329C00A074B4 /* ImageMessage.swift */,
+				EDFD47AD2A13329C00A074B4 /* ImageMessage.xib */,
+			);
+			path = ImageMessage;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -333,6 +347,7 @@
 				ED9273372A1272FC00F520C6 /* FirstSettings.storyboard in Resources */,
 				ED9273072A0FE7C600F520C6 /* LaunchScreen.storyboard in Resources */,
 				ED9273232A101CAA00F520C6 /* InviteAccept.storyboard in Resources */,
+				EDFD47AF2A13329C00A074B4 /* ImageMessage.xib in Resources */,
 				ED9273462A12898D00F520C6 /* Password.storyboard in Resources */,
 				ED92730F2A0FFA0100F520C6 /* CreateQR.storyboard in Resources */,
 				ED92732D2A114B1800F520C6 /* ChatViewCell.xib in Resources */,
@@ -356,6 +371,7 @@
 				ED9273432A12786B00F520C6 /* StoryBoardManager.swift in Sources */,
 				ED9273252A101CB800F520C6 /* InviteAcceptViewController.swift in Sources */,
 				EDFD47A92A132DA600A074B4 /* MessageCollectionViewCell.swift in Sources */,
+				EDFD47AE2A13329C00A074B4 /* ImageMessage.swift in Sources */,
 				EDFD47972A1305C600A074B4 /* AES.swift in Sources */,
 				ED9273392A12730A00F520C6 /* FirstSettingsViewController.swift in Sources */,
 				ED9272FB2A0FE7C400F520C6 /* AppDelegate.swift in Sources */,

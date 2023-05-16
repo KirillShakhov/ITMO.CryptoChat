@@ -19,6 +19,7 @@ class DialogViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.messagesList.register(UINib(nibName: "MessageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MessageCollectionViewCell")
+        self.messagesList.register(UINib(nibName: "ImageMessage", bundle: nil), forCellWithReuseIdentifier: "ImageMessage")
 
         self.messagesList.dataSource = self
         self.messagesList.delegate = self
@@ -41,32 +42,31 @@ class DialogViewController: UIViewController {
 
 extension DialogViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if let message = dialog?.messages[indexPath.item] {
+            if message.type == MessageType.Image{
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageMessage", for: indexPath) as! ImageMessage
+                if let message = dialog?.messages[indexPath.item] {
+                    cell.message = message
+                    cell.update()
+                }
+                return cell
+
+            }
+            else if message.type == MessageType.Text{
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MessageCollectionViewCell", for: indexPath) as! MessageCollectionViewCell
+                if let message = dialog?.messages[indexPath.item] {
+                    cell.message = message
+                    cell.update()
+                }
+                return cell
+            }
+        }
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MessageCollectionViewCell", for: indexPath) as! MessageCollectionViewCell
-//        let dialog = dialogs[indexPath.item]
-//        cell.dialog = dialog
-//        cell.update()
-//        cell.kcal.text = String(format: "%.1f", recipe.kcal)
-//        if(cell.imageURL != recipe.image){
-//            cell.image.image = nil
-//            cell.imageURL = recipe.image
-//            cell.activityIndicator.isHidden = false
-//            DispatchQueue.global().async {
-//                if let data = try? Data(contentsOf: URL(string: recipe.image)!) {
-//                    if let image = UIImage(data: data) {
-//                        DispatchQueue.main.async {
-//                            cell.image.image = image
-//                            cell.activityIndicator.isHidden = true
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//        cell.layer.shadowColor = UIColor.gray.cgColor
-//        cell.layer.shadowOffset = CGSize(width: 0, height: 2.0)
-//        cell.layer.shadowRadius = 5.0
-//        cell.layer.shadowOpacity = 1.0
-//        cell.layer.masksToBounds = false
-//        cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.contentView.layer.cornerRadius).cgPath
+        if let message = dialog?.messages[indexPath.item] {
+            cell.message = message
+            cell.update()
+        }
         return cell
     }
 }
@@ -76,21 +76,20 @@ extension DialogViewController: UICollectionViewDataSource{
         return dialog?.messages.count ?? 0
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let dialog = dialogs[indexPath.item]
-//        let storyboard = UIStoryboard(name: "MessageCollectionViewCell", bundle: nil)
-//        guard let vc = storyboard.instantiateViewController(identifier: "MessageCollectionViewCell") as? MessageCollectionViewCell else { return }
-//        vc.modalPresentationStyle = .popover
-//        self.navigationController?.pushViewController(vc, animated: true)
-//        present(vc, animated:true)
+        // click
     }
 }
 
 extension DialogViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
-//        if collectionView == self.chatList {
-        return CGSize(width: self.messagesList.visibleSize.width, height: 70.0)
-//        }
-//        return CGSize(width: 100.0, height: 100.0)
+        if let message = dialog?.messages[indexPath.item] {
+            if message.type == MessageType.Image{
+                return CGSize(width: self.messagesList.visibleSize.width, height: 250.0)
+
+            }
+            return CGSize(width: self.messagesList.visibleSize.width, height: 70.0+CGFloat((message.data.count*5)))
+        }
+        return CGSize(width: 100.0, height: 100.0)
     }
 }
