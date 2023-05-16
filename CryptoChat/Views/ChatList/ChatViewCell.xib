@@ -107,6 +107,12 @@
                 <constraint firstAttribute="bottom" secondItem="ZqT-ml-D9d" secondAttribute="bottom" id="qwx-IQ-e3y"/>
             </constraints>
             <size key="customSize" width="385" height="119"/>
+            <connections>
+                <outlet property="avatarImage" destination="yre-Ps-Tns" id="pKY-Tk-t3v"/>
+                <outlet property="dateLabel" destination="dff-ka-BHf" id="3uV-E6-LzD"/>
+                <outlet property="lastLabel" destination="Fng-id-gPZ" id="D8o-ge-qh0"/>
+                <outlet property="usernameLabel" destination="kMw-R4-IZi" id="sLU-jL-MzV"/>
+            </connections>
             <point key="canvasLocation" x="304.58015267175574" y="43.661971830985919"/>
         </collectionViewCell>
     </objects>

@@ -16,6 +16,8 @@ class HomeViewController: UIViewController {
     private let refreshControl = UIRefreshControl()
     var username: String = ""
     var avatar: UIImage?
+    
+    var dialogs: [Dialog] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +44,9 @@ class HomeViewController: UIViewController {
 //        }else{
 //            recipes = RecipeModel.getRecipes(find: findField.text!)
 //        }
+        dialogs = DialogsController.getData()
         self.refreshControl.endRefreshing()
-//        recipeList.reloadData()
+        chatList.reloadData()
         print("Updated")
     }
 
@@ -65,8 +68,9 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChatViewCell", for: indexPath) as! ChatViewCell
-//        let recipe = recipes[indexPath.item]
-//        cell.title.text = recipe.name
+        let dialog = dialogs[indexPath.item]
+        cell.dialog = dialog
+        cell.update()
 //        cell.kcal.text = String(format: "%.1f", recipe.kcal)
 //        if(cell.imageURL != recipe.image){
 //            cell.image.image = nil
@@ -95,12 +99,14 @@ extension HomeViewController: UICollectionViewDelegate{
 
 extension HomeViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return dialogs.count
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let dialog = dialogs[indexPath.item]
         let storyboard = UIStoryboard(name: "Dialog", bundle: nil)
         guard let vc = storyboard.instantiateViewController(identifier: "Dialog") as? DialogViewController else { return }
-        vc.modalPresentationStyle = .popover
+        vc.dialog = dialog
+        vc.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(vc, animated: true)
         present(vc, animated:true)
     }
