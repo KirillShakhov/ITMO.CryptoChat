@@ -9,12 +9,14 @@ import UIKit
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var CreateQrButton: UIButton!
-    
     @IBOutlet weak var ScanButton: UIButton!
-    
-    private let refreshControl = UIRefreshControl()
     @IBOutlet weak var chatList: UICollectionView!
-    
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var avatarImage: UIImageView!
+    private let refreshControl = UIRefreshControl()
+    var username: String = ""
+    var avatar: UIImage?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.chatList.register(UINib(nibName: "ChatViewCell", bundle: nil), forCellWithReuseIdentifier: "ChatViewCell")
@@ -29,7 +31,9 @@ class HomeViewController: UIViewController {
         refreshControl.tintColor = UIColor.systemPink.withAlphaComponent(0.4)
         refreshControl.attributedTitle = NSAttributedString(string: "Update chats ...")
 
-        // Do any additional setup after loading the view.
+        //
+        usernameLabel.text = username
+        avatarImage.image = avatar
     }
     
     @objc private func updateChats(_ sender: Any) {

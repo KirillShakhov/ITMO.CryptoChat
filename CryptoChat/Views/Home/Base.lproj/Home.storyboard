@@ -36,7 +36,7 @@
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar_example" translatesAutoresizingMaskIntoConstraints="NO" id="2AD-lM-xjP">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar_example" translatesAutoresizingMaskIntoConstraints="NO" id="2AD-lM-xjP">
                                         <rect key="frame" x="326" y="8" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="5XQ-LZ-rEX"/>
@@ -155,7 +155,9 @@
                     <connections>
                         <outlet property="CreateQrButton" destination="ooi-fR-PJB" id="7QN-OB-SMS"/>
                         <outlet property="ScanButton" destination="ziy-wU-0ud" id="XaT-s4-rqA"/>
+                        <outlet property="avatarImage" destination="2AD-lM-xjP" id="1Cf-Hp-7ht"/>
                         <outlet property="chatList" destination="zgy-gO-3jL" id="Cja-j2-fVA"/>
+                        <outlet property="usernameLabel" destination="8ic-dU-9Aw" id="G9l-pE-D7V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

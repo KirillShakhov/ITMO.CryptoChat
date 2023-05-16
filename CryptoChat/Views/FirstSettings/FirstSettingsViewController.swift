@@ -38,10 +38,40 @@ class FirstSettingsViewController: UIViewController {
     @IBAction func create(_ sender: Any) {
 //        uuid = UUID().uuidString
 //        uuidLabel.text = "uuid: "+uuid
-        let storyboard = UIStoryboard(name: "Home", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "Home") as! HomeViewController
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true, completion: nil)
+        
+        
+//        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "Home") as! HomeViewController
+//        vc.modalPresentationStyle = .fullScreen
+//        present(vc, animated: true, completion: nil)
+        
+//        var test1 = "Привет    "
+//        var key = "12ra5678901234567890123456789012"
+//        var iv = "abcdefghijklmnop123"
+//        var res1 = test1.aesEncrypt(key: key, iv: iv)
+//        print(res1 ?? "nil")
+//
+//        print(res1?.aesDecrypt(key: key, iv: iv) ?? "nil")
+        
+        
+        if (nameField.text == "") {
+            let alert = UIAlertController(title: "Имя пользователя", message: "Не может быть пустым", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Закрыть", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        let defaults = UserDefaults.standard
+        defaults.set(
+            nameField.text,
+            forKey: "user"
+        )
+        if let strBase64 = avatarImage.image?.pngData()?.base64EncodedString(options: .lineLength64Characters) {
+            print(strBase64)
+            defaults.set(
+                strBase64,
+                forKey: "avatar"
+            )
+        }
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {

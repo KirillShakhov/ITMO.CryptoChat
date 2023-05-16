@@ -30,10 +30,32 @@ class LoadingAuthViewController: UIViewController {
 //            }
 //        }
 //        else{
-        sleep(1)
+        sleep(0)
 //        goToView(name: "Main", withIdentifier: "Main")
 //        StoryBoardManager.goToView(self, name: "FirstSettings", withIdentifier: "FirstSettings")
-        StoryBoardManager.goToView(self, name: "Password", withIdentifier: "Password")
-//        }
+//        StoryBoardManager.goToView(self, name: "Password", withIdentifier: "Password")
+        
+        let defaults = UserDefaults.standard
+        if let userData = defaults.string(
+            forKey: "user"
+        ) {
+            var avatar: UIImage? = nil
+            if let avatarData = defaults.string(
+                forKey: "avatar"
+            ) {
+                let dataDecoded : Data = Data(base64Encoded: avatarData, options: .ignoreUnknownCharacters)!
+                avatar = UIImage(data: dataDecoded)
+            }
+            let storyboard = UIStoryboard(name: "Home", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "Home") as! HomeViewController
+            vc.username = userData
+            vc.avatar = avatar
+            vc.modalPresentationStyle = .fullScreen
+            dismiss(animated: false)
+            present(vc, animated: true, completion: nil)
+        }
+        else{
+            StoryBoardManager.goToView(self, name: "FirstSettings", withIdentifier: "FirstSettings")
+        }
     }
 }
