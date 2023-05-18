@@ -26,7 +26,7 @@ public struct Message{
     var data: String
     var date: Date
     
-    init(me: Bool, type: MessageType, state: MessageState, data: String, date: Date) {
+    init(me: Bool, type: MessageType, state: MessageState, data: String, date: Date = Date()) {
         self.me = me
         self.type = type
         self.state = state

@@ -10,7 +10,7 @@ import UIKit
 
 
 
-public class DialogsManager{
+public class DialogsManager {
     static var dialogs: [Dialog] = []
     
     public static func add(dialog: Dialog) {
@@ -27,7 +27,6 @@ public class DialogsManager{
     }
     
     public static func getData() -> Array<Dialog> {
-        update()
         var list = [Dialog]()
         for dialog in dialogs {
             if dialog.recipient != nil {
@@ -37,7 +36,7 @@ public class DialogsManager{
         return list
     }
     
-    public static func update(){
-        
+    public static func update(host: String){
+        print("dialog updates")
     }
 }

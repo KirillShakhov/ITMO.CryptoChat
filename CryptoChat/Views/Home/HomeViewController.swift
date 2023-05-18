@@ -39,11 +39,7 @@ class HomeViewController: UIViewController {
     }
     
     @objc private func updateChats(_ sender: Any) {
-//        if(findField.text == nil || findField.text == ""){
-//            recipes = RecipeModel.getRecipes()
-//        }else{
-//            recipes = RecipeModel.getRecipes(find: findField.text!)
-//        }
+        NotifyManager.update()
         dialogs = DialogsManager.getData()
         self.refreshControl.endRefreshing()
         chatList.reloadData()

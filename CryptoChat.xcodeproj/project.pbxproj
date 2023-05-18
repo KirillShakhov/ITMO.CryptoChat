@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		ED7F1AD12A15C86900D438BA /* NotifyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7F1AD02A15C86900D438BA /* NotifyManager.swift */; };
+		ED7F1AD32A15D89600D438BA /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7F1AD22A15D89600D438BA /* MessageService.swift */; };
 		ED8C84A52A140C5D0031D546 /* HMACUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C84A42A140C5D0031D546 /* HMACUtil.swift */; };
 		ED8C84A72A1423330031D546 /* CompressUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C84A62A1423330031D546 /* CompressUtil.swift */; };
 		ED8C84A92A1423B60031D546 /* JsonUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C84A82A1423B60031D546 /* JsonUtil.swift */; };
@@ -55,6 +56,7 @@
 
 /* Begin PBXFileReference section */
 		ED7F1AD02A15C86900D438BA /* NotifyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifyManager.swift; sourceTree = "<group>"; };
+		ED7F1AD22A15D89600D438BA /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
 		ED8C84A42A140C5D0031D546 /* HMACUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMACUtil.swift; sourceTree = "<group>"; };
 		ED8C84A62A1423330031D546 /* CompressUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompressUtil.swift; sourceTree = "<group>"; };
 		ED8C84A82A1423B60031D546 /* JsonUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonUtil.swift; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 				EDDCBB7D2A13390800F8C0CD /* UserManager.swift */,
 				ED8C84AC2A15A8320031D546 /* ServerManager.swift */,
 				ED7F1AD02A15C86900D438BA /* NotifyManager.swift */,
+				ED7F1AD22A15D89600D438BA /* MessageService.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 				EDDCBB802A133A4E00F8C0CD /* Invite.swift in Sources */,
 				ED92733E2A12744900F520C6 /* AuthController.swift in Sources */,
 				EDFD479C2A131D4F00A074B4 /* Message.swift in Sources */,
+				ED7F1AD32A15D89600D438BA /* MessageService.swift in Sources */,
 				EDDCBB7E2A13390800F8C0CD /* UserManager.swift in Sources */,
 				ED9272FD2A0FE7C400F520C6 /* SceneDelegate.swift in Sources */,
 				ED9273162A0FFCF000F520C6 /* ScannerViewController.swift in Sources */,
@@ -500,6 +504,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -554,6 +559,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -574,11 +580,11 @@
 				DEVELOPMENT_TEAM = 2B4C5W3J38;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CryptoChat/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Scan QR Code";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Auth;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -602,11 +608,11 @@
 				DEVELOPMENT_TEAM = 2B4C5W3J38;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CryptoChat/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Scan QR Code";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Auth;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

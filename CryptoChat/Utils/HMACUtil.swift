@@ -15,7 +15,7 @@ public class HMACUtil{
 
         let hkdfResultKey = HKDF<SHA256>.deriveKey(inputKeyMaterial: SymmetricKey(data: secretPassword), outputByteCount: 256)
 
-        print("The generated key size (in bytes): ",hkdfResultKey.bitCount/8)
+        // print("The generated key size (in bytes): ",hkdfResultKey.bitCount/8)
 
         let trustfulMessage = "The message that would be verified by the authentication code".data(using: .utf8)!
 

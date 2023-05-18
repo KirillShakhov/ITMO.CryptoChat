@@ -1,5 +1,5 @@
 //
-//  NotifyManager.swift
+//  MessageService.swift
 //  CryptoChat
 //
 //  Created by Кирилл Шахов on 18.05.2023.
@@ -7,26 +7,17 @@
 
 import Foundation
 
-public class NotifyManager{
-    private static var hashes: [String: String] = [:]
+public class MessageService{
     
-    public static func add(host: String){
-        if hashes[host] != nil {
-            return
-        }
-        updateByHost(host: host)
-    }
     
-    public static func update(){
-        for (host, _) in hashes {
-            updateByHost(host: host)
-        }
-    }
-    
-    public static func updateByHost(host: String){
-        let json: [String: Any] = ["recipient": UserManager.getUuid()]
+    public static func send(host: String, pass: String, recipient: String, data: String, handler: @escaping (_ status: Bool) -> Void = {status in }){
+        let json: [String: Any] = [
+            "recipient": recipient,
+            "data": data,
+            "pass": pass,
+        ]
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
-        let url = URL(string: host + "/api/v1/notify")!
+        let url = URL(string: host + "/api/v1/messages")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.httpBody = jsonData
@@ -35,14 +26,18 @@ public class NotifyManager{
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 print(error?.localizedDescription ?? "No data")
+                handler(false)
                 return
             }
-            if let hash = String(data: data, encoding: .utf8){
-                print("hash: " + hash)
-                if hashes[host] != hash {
-                    DialogsManager.update(host: host)
-                }
-                hashes[host] = hash
+            if let data = String(data: data, encoding: .utf8),
+               data == "true"
+            {
+                print("send data: " + data)
+                handler(true)
+            }
+            else{
+                print("send data: false")
+                handler(false)
             }
         }
         task.resume()

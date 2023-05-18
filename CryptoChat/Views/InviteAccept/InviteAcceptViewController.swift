@@ -59,25 +59,13 @@ class InviteAcceptViewController: UIViewController {
     
     
     @IBAction func accept(_ sender: Any) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/dd/yyyy, h:mm a"
-        if let result = JsonUtil.fromJsonArray(data: code),
-            result.count >= 8,
-           let expiredDate = dateFormatter.date(from: result[2]),
-           Date() < expiredDate
-        {
-            let dialog = Dialog(username: result[0], recipient: result[1], aesKey: result[4], hmacKey: result[5], server: result[6], serverKey: result[7])
-            if dialog.recipient == nil ||
-                DialogsManager.findByRecipient(recipient: dialog.recipient!) != nil {
-                let alert = UIAlertController(title: "Ошибка", message: "Диалог с этим пользователем уже существует", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Закрыть", style: UIAlertAction.Style.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-                return
-            }
-            DialogsManager.add(dialog: dialog)
-            NotifyManager.updateByHost(host: dialog.server)
-            self.dismiss(animated: true, completion: nil)
+        if let error = InviteManager.acceptInvite(code: code){
+            let alert = UIAlertController(title: "Ошибка", message: error, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Закрыть", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
         }
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func decline(_ sender: Any) {

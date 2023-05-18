@@ -7,16 +7,16 @@
 
 import Foundation
 
-public enum ServiceMessageType{
+public enum ServiceMessageType : Codable {
     case AcceptInvite
     case Delivered
     case DeliveryError
 }
 
-public class ServiceMessage{
+public class ServiceMessage : Codable {
     var type: ServiceMessageType
     var data: String
-    
+
     init(type: ServiceMessageType, data: String) {
         self.type = type
         self.data = data

@@ -34,4 +34,35 @@ public class InviteManager {
         }
         return nil
     }
+    public static func acceptInvite(code: String) -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy, h:mm a"
+        if let result = JsonUtil.fromJsonArray(data: code),
+            result.count >= 8,
+           let expiredDate = dateFormatter.date(from: result[2]),
+           Date() < expiredDate
+        {
+            let dialog = Dialog(username: result[0], recipient: result[1], aesKey: result[4], hmacKey: result[5], server: result[6], serverKey: result[7])
+            if dialog.recipient == nil ||
+                DialogsManager.findByRecipient(recipient: dialog.recipient!) != nil {
+                return "Диалог с этим пользователем уже существует"
+            }
+            DialogsManager.add(dialog: dialog)
+            NotifyManager.updateByHost(host: dialog.server)
+            var avatarData = "nil"
+            if let avatar = UserManager.getAvatar(),
+               let jpegAvatar = avatar.jpegData(compressionQuality: 0.1)
+            {
+                avatarData = jpegAvatar.base64EncodedString()
+            }
+            if let json = JsonUtil.toJson(data: [UserManager.getUuid(),avatarData]),
+               let data = JsonUtil.toJson(data: ServiceMessage(type: .AcceptInvite, data: json))
+            {
+                let message = Message(me: true, type: MessageType.Service, state: .Send, data: data)
+                dialog.send(message: message)
+            }
+            return nil
+        }
+        return "Неверный формат qr кода или срок действия истек"
+    }
 }
