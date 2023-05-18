@@ -73,11 +73,10 @@ public class InviteManager {
             {
                 avatarData = jpegAvatar.base64EncodedString()
             }
-            if let json = JsonUtil.toJson(data: [UserManager.getUsername(), UserManager.getUuid(),avatarData]),
-               let data = JsonUtil.toJson(data: ServiceMessage(type: .UpdateDialog, data: json))
+            if let json = JsonUtil.toJson(data: [UserManager.getUsername(), UserManager.getUuid(),avatarData])
             {
-                let message = Message(me: true, type: MessageType.Service, state: .Send, data: data)
-                dialog.send(message: message)
+                let serviceMessage = ServiceMessage(type: .UpdateDialog, data: json)
+                dialog.send(message: serviceMessage)
             }
             return nil
         }

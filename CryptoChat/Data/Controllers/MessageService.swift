@@ -97,6 +97,5 @@ public class MessageService{
         var uuid: String
         var recipient: String
         var data: String
-        var createdDate: String
     }
 }

@@ -43,6 +43,13 @@ class DialogViewController: UIViewController {
         dismiss(animated: true)
     }
     @IBAction func send(_ sender: Any) {
+        if let text = textField.text{
+            textField.text = ""
+            let message = Message(me: true, type: .Text, state: .Send, data: text)
+            let serviceMessage = ServiceMessage(type: .Text, data: text)
+            dialog?.messages.append(message)
+            dialog?.send(message: serviceMessage)
+        }
     }
 }
 

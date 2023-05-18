@@ -32,10 +32,11 @@ public class Dialog{
         self.serverKey = serverKey
     }
     
-    public func send(message: Message){
+    public func send(message: ServiceMessage){
         if let recipient = recipient,
+           let data = JsonUtil.toJson(data: message),
            let iv = AES256.generate256bitKey(),
-           let encryptedData = AES256(key: self.aesKey, iv: iv).aesEncrypt(message.data),
+           let encryptedData = AES256(key: self.aesKey, iv: iv).aesEncrypt(data),
             let hash = HMACUtil.hmac(data: iv+encryptedData, pass: hmacKey)
         {
             MessageService.send(host: server, pass: serverKey, recipient: recipient, data: hash+iv+encryptedData)
@@ -47,8 +48,10 @@ public class Dialog{
     }
     
     public func update(completion: (() -> Void)? = nil){
+        print("update1")
         MessageService.findMessages(host: server, pass: serverKey, completion: {messages in
             for m in messages {
+                print("update2")
                 if m.data.count < 64 {
                     continue
                 }
@@ -60,7 +63,9 @@ public class Dialog{
                 let messageData = String(m.data.suffix(m.data.count-108))
                 
                 let hash = HMACUtil.hmac(data: messageIv+messageData, pass: self.hmacKey)
-                if hash != messageHash { continue }
+                if hash != messageHash {
+                    print("auth failed")
+                    continue }
                 
                 print("auth complete")
                 let aes = AES256(key: self.aesKey, iv: messageIv)
@@ -80,6 +85,16 @@ public class Dialog{
                             self.dateExpired = nil
                         }
                     }
+                    else if serviceMessage.type == .Text{
+                        let message = Message(me: false, type: .Text, state: .Delivered, data: serviceMessage.data)
+                        self.messages.append(message)
+                    }
+                    else if serviceMessage.type == .Image{
+                        let message = Message(me: false, type: .Image, state: .Delivered, data: serviceMessage.data)
+                        self.messages.append(message)
+                    }
+                    print("m delete ", m.uuid)
+                    MessageService.delete(host: self.server, pass: self.serverKey, uuid: m.uuid)
                 }
             }
             completion?()

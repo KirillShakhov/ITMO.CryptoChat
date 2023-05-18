@@ -9,6 +9,8 @@ import Foundation
 
 public enum ServiceMessageType : Codable {
     case UpdateDialog
+    case Text
+    case Image
     case Delivered
     case DeliveryError
 }
