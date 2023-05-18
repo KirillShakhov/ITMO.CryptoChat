@@ -114,7 +114,7 @@
                                 <rect key="frame" x="10" y="768" width="373" height="40"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="byQ-cN-p8j">
-                                        <rect key="frame" x="0.0" y="0.0" width="328" height="40"/>
+                                        <rect key="frame" x="40" y="0.0" width="288" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="send"/>
                                     </textField>
@@ -131,17 +131,33 @@
                                             <action selector="send:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ohm-HP-L7u"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ndh-Z2-ExM">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="1Qi-d0-3ba"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="paperclip" catalog="system" title="">
+                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="sendAttachment:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="NS8-EW-m8X"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="Ndh-Z2-ExM" firstAttribute="leading" secondItem="PKo-B1-6pA" secondAttribute="leading" id="Dep-zP-Nhu"/>
                                     <constraint firstAttribute="height" constant="40" id="FwL-x4-3We"/>
                                     <constraint firstAttribute="bottom" secondItem="PQ7-82-QuM" secondAttribute="bottom" id="Hoq-Qk-w4T"/>
-                                    <constraint firstItem="byQ-cN-p8j" firstAttribute="leading" secondItem="PKo-B1-6pA" secondAttribute="leading" id="I2X-FU-ryv"/>
+                                    <constraint firstItem="Ndh-Z2-ExM" firstAttribute="top" secondItem="PKo-B1-6pA" secondAttribute="top" id="SQH-D6-6RX"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ndh-Z2-ExM" secondAttribute="bottom" id="fY9-fb-C9K"/>
                                     <constraint firstAttribute="trailing" secondItem="PQ7-82-QuM" secondAttribute="trailing" id="hca-38-rsk"/>
                                     <constraint firstAttribute="bottom" secondItem="byQ-cN-p8j" secondAttribute="bottom" id="iNj-VE-a6B"/>
                                     <constraint firstItem="PQ7-82-QuM" firstAttribute="top" secondItem="PKo-B1-6pA" secondAttribute="top" id="l80-Pd-m40"/>
                                     <constraint firstItem="byQ-cN-p8j" firstAttribute="top" secondItem="PKo-B1-6pA" secondAttribute="top" id="oQV-Y9-l1P"/>
                                     <constraint firstItem="PQ7-82-QuM" firstAttribute="leading" secondItem="byQ-cN-p8j" secondAttribute="trailing" constant="5" id="oa4-iZ-CZe"/>
+                                    <constraint firstItem="byQ-cN-p8j" firstAttribute="leading" secondItem="Ndh-Z2-ExM" secondAttribute="trailing" id="tJj-Kt-YIe"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -175,6 +191,7 @@
     <resources>
         <image name="avatar_example" width="512" height="512"/>
         <image name="chevron.backward" catalog="system" width="97" height="128"/>
+        <image name="paperclip" catalog="system" width="121" height="128"/>
         <image name="paperplane.fill" catalog="system" width="128" height="119"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

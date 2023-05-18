@@ -69,7 +69,9 @@ class DialogViewController: UIViewController {
         dismiss(animated: true)
     }
     @IBAction func send(_ sender: Any) {
-        if let text = textField.text{
+        if let text = textField.text,
+           text != ""
+        {
             textField.text = ""
             let message = Message(me: true, type: .Text, state: .Send, data: text)
             let serviceMessage = ServiceMessage(type: .Text, data: text)
@@ -80,6 +82,16 @@ class DialogViewController: UIViewController {
                 (result) in
                 self.scrollToLast()
             })
+        }
+    }
+    
+    var imagePicker = UIImagePickerController()
+    @IBAction func sendAttachment(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
+            imagePicker.delegate = self
+            imagePicker.sourceType = .savedPhotosAlbum
+            imagePicker.allowsEditing = false
+            present(imagePicker, animated: true, completion: nil)
         }
     }
     
@@ -100,6 +112,8 @@ class DialogViewController: UIViewController {
         self.view.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height)
     }
 }
+
+
 
 extension DialogViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -171,5 +185,24 @@ extension DialogViewController:UITextFieldDelegate{
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+}
+
+extension DialogViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
+           let base64 = pickedImage.jpegData(compressionQuality: 0.8)?.base64EncodedString()
+        {
+            let message = Message(me: true, type: .Image, state: .Send, data: base64)
+            let serviceMessage = ServiceMessage(type: .Image, data: base64)
+            dialog?.messages.append(message)
+            dialog?.send(message: serviceMessage)
+            self.messagesList.reloadData()
+            self.messagesList.performBatchUpdates(nil, completion: {
+                (result) in
+                self.scrollToLast()
+            })
+        }
+        dismiss(animated: true, completion: nil)
     }
 }
