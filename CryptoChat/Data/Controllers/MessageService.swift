@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 public class MessageService{
     
@@ -71,7 +72,7 @@ public class MessageService{
         task.resume()
     }
     
-    public static func findMessages(host: String, pass: String, completion: (([Message]) -> Void)? = nil){
+    public static func findMessages(host: String, pass: String, completion: (([MessageResponse]) -> Void)? = nil){
         let encodedUuid = UserManager.getUuid().addingPercentEncoding(withAllowedCharacters: .alphanumerics)
         let encodedPass = pass.addingPercentEncoding(withAllowedCharacters: .alphanumerics)
         let url = URL(string: host + "/api/v1/messages"+"?recipient=\(encodedUuid!)&pass=\(encodedPass!)")!
@@ -85,25 +86,14 @@ public class MessageService{
                 completion?([])
                 return
             }
-            let list: [Message] = []
-            
-            print("data: "+(String(data: data, encoding: .utf8) ?? "0"))
-            
             let messages: [MessageResponse]? = try? JSONDecoder().decode([MessageResponse].self, from: data)
-            print("messages: ", messages?.count)
-            if let messages = messages {
-                for message in messages {
-                    print("delete "+message.uuid)
-                    delete(host: host, pass: pass, uuid: message.uuid)
-//                    var obj = Message(me: false, type: <#T##MessageType#>, state: <#T##MessageState#>, data: <#T##String#>)
-                }
-            }
-            completion?(list)
+            print("messages", messages ?? [])
+            completion?(messages ?? [])
         }
         task.resume()
     }
     
-    private struct MessageResponse : Decodable {
+    public struct MessageResponse : Decodable {
         var uuid: String
         var recipient: String
         var data: String

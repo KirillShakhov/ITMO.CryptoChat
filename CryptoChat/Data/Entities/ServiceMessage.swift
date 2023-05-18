@@ -8,7 +8,7 @@
 import Foundation
 
 public enum ServiceMessageType : Codable {
-    case AcceptInvite
+    case UpdateDialog
     case Delivered
     case DeliveryError
 }

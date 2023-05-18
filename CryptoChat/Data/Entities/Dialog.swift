@@ -43,4 +43,34 @@ public class Dialog{
     public func add(message: Message){
         messages.append(message)
     }
+    
+    public func update(completion: (() -> Void)? = nil){
+        MessageService.findMessages(host: server, pass: serverKey, completion: {messages in
+            for m in messages{
+                print("mestest", m)
+                if let data = m.data.data(using: .utf8),
+                   let serviceMessage = try? JSONDecoder().decode(ServiceMessage.self, from: data){
+                    
+                    print("serviceMessage", serviceMessage)
+                    
+                    if serviceMessage.type == .UpdateDialog{
+                        
+                        print("serviceMessage UpdateDialog")
+
+                        if let serviceData = serviceMessage.data.data(using: .utf8),
+                            let array = try? JSONDecoder().decode([String].self, from: serviceData)
+                        {
+                            print("array", array)
+                            self.username = array[0]
+                            self.recipient = array[1]
+                            let dataDecoded : Data = Data(base64Encoded: array[2], options: .ignoreUnknownCharacters)!
+                            self.image = UIImage(data: dataDecoded)
+                            self.dateExpired = nil
+                        }
+                    }
+                }
+            }
+            completion?()
+        })
+    }
 }

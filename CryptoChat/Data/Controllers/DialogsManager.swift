@@ -41,9 +41,7 @@ public class DialogsManager {
         for dialog in dialogs {
             if dialog.server == host{
                 dispatchGroup.enter()
-                print("dialog.server ", dialog.server)
-                print("dialog.serverKey ", dialog.serverKey)
-                    MessageService.findMessages(host: dialog.server, pass: dialog.serverKey, completion: {_ in
+                dialog.update(completion: {
                     dispatchGroup.leave()
                 })
             }
