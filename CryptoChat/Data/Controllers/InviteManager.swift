@@ -79,7 +79,7 @@ public class InviteManager {
             }
             if let json = JsonUtil.toJson(data: [UserManager.getUsername(), UserManager.getUuid(),avatarData])
             {
-                let serviceMessage = ServiceMessage(type: .UpdateDialog, data: json)
+                let serviceMessage = ServiceMessage(type: .AcceptInvite, data: json)
                 dialog.send(message: serviceMessage)
             }
             return nil

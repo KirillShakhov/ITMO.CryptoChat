@@ -68,15 +68,30 @@ public class Dialog{
                 
                 if let data = decryptedData?.data(using: .utf8),
                    let serviceMessage = try? JSONDecoder().decode(ServiceMessage.self, from: data){
-                    if serviceMessage.type == .UpdateDialog{
+                    if serviceMessage.type == .UpdateDialog || serviceMessage.type == .AcceptInvite{
                         if let serviceData = serviceMessage.data.data(using: .utf8),
                             let array = try? JSONDecoder().decode([String].self, from: serviceData)
                         {
                             self.username = array[0]
                             self.recipient = array[1]
-                            let dataDecoded : Data = Data(base64Encoded: array[2], options: .ignoreUnknownCharacters)!
-                            self.image = UIImage(data: dataDecoded)
+                            if array[2] != "nil"{
+                                let dataDecoded : Data = Data(base64Encoded: array[2], options: .ignoreUnknownCharacters)!
+                                self.image = UIImage(data: dataDecoded)
+                            }
                             self.dateExpired = nil
+                            if serviceMessage.type == .AcceptInvite{
+                                var avatarData = "nil"
+                                if let avatar = UserManager.getAvatar(),
+                                   let jpegAvatar = avatar.jpegData(compressionQuality: 0.1)
+                                {
+                                    avatarData = jpegAvatar.base64EncodedString()
+                                }
+                                if let json = JsonUtil.toJson(data: [UserManager.getUsername(), UserManager.getUuid(),avatarData])
+                                {
+                                    let serviceMessage = ServiceMessage(type: .UpdateDialog, data: json)
+                                    self.send(message: serviceMessage)
+                                }
+                            }
                         }
                     }
                     else if serviceMessage.type == .Text{
