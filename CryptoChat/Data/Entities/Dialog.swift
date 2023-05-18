@@ -33,11 +33,20 @@ public class Dialog{
     }
     
     public func send(message: Message){
-        print("send1")
-        if let recipient = recipient{
-            print("send2")
-            MessageService.send(host: server, pass: serverKey, recipient: recipient, data: message.data)
+        if let recipient = recipient,
+            let hash = HMACUtil.hmac(data: message.data, pass: hmacKey)
+        {
+            print("hash", hash)
+            print("testdata1",message.data)
+
+            MessageService.send(host: server, pass: serverKey, recipient: recipient, data: hash+message.data)
         }
+//           let iv = AES256.generate256bitKey(){
+//            let aes = AES256(key: self.aesKey, iv: iv)
+//            if let encryptedData = aes.aesEncrypt(message.data){
+        
+//            }
+        
     }
     
     public func add(message: Message){
@@ -47,16 +56,27 @@ public class Dialog{
     public func update(completion: (() -> Void)? = nil){
         MessageService.findMessages(host: server, pass: serverKey, completion: {messages in
             for m in messages{
-                print("mestest", m)
+                if m.data.count < 64 {
+                    continue
+                }
+                let messageHash = String(m.data.prefix(64))
+                let messageData = String(m.data.suffix(m.data.count-64))
+                print("testdata2", messageData)
+                let hash = HMACUtil.hmac(data: messageData, pass: self.hmacKey)
+                if hash != messageHash
+                {
+                    print("not auth")
+                    continue
+                }
+                print("auth complete")
+
+//                let secureData = m.data.suffix(m.data.count - 44)
+//                let aes = AES256(key: self.aesKey, iv: String(iv))
+//                let decryptedData = aes.aesDecrypt(secureData)
+//                print("decryptedData", decryptedData)
                 if let data = m.data.data(using: .utf8),
                    let serviceMessage = try? JSONDecoder().decode(ServiceMessage.self, from: data){
-                    
-                    print("serviceMessage", serviceMessage)
-                    
                     if serviceMessage.type == .UpdateDialog{
-                        
-                        print("serviceMessage UpdateDialog")
-
                         if let serviceData = serviceMessage.data.data(using: .utf8),
                             let array = try? JSONDecoder().decode([String].self, from: serviceData)
                         {

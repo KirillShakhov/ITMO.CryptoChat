@@ -34,7 +34,6 @@ class LoadingAuthViewController: UIViewController {
 //        goToView(name: "Main", withIdentifier: "Main")
 //        StoryBoardManager.goToView(self, name: "FirstSettings", withIdentifier: "FirstSettings")
 //        StoryBoardManager.goToView(self, name: "Password", withIdentifier: "Password")
-        HMACUtil.hmac()
         let defaults = UserDefaults.standard
         if let userData = defaults.string(
             forKey: "user"
