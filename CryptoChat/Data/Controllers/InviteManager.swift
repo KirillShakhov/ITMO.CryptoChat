@@ -30,6 +30,7 @@ public class InviteManager {
                 dialog.server,
                 dialog.serverKey,
             ]
+            print("invite", JsonUtil.toJson(data: data))
             return JsonUtil.toJson(data: data)
         }
         return nil

@@ -36,7 +36,20 @@ public class DialogsManager {
         return list
     }
     
-    public static func update(host: String){
-        print("dialog updates")
+    public static func update(host: String, completion: (() -> Void)? = nil){
+        let dispatchGroup = DispatchGroup()
+        for dialog in dialogs {
+            if dialog.server == host{
+                dispatchGroup.enter()
+                print("dialog.server ", dialog.server)
+                print("dialog.serverKey ", dialog.serverKey)
+                    MessageService.findMessages(host: dialog.server, pass: dialog.serverKey, completion: {_ in
+                    dispatchGroup.leave()
+                })
+            }
+        }
+        dispatchGroup.notify(queue: DispatchQueue.main) {
+            completion?()
+        }
     }
 }
