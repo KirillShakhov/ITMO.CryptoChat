@@ -34,19 +34,12 @@ public class Dialog{
     
     public func send(message: Message){
         if let recipient = recipient,
-            let hash = HMACUtil.hmac(data: message.data, pass: hmacKey)
+           let iv = AES256.generate256bitKey(),
+           let encryptedData = AES256(key: self.aesKey, iv: iv).aesEncrypt(message.data),
+            let hash = HMACUtil.hmac(data: iv+encryptedData, pass: hmacKey)
         {
-            print("hash", hash)
-            print("testdata1",message.data)
-
-            MessageService.send(host: server, pass: serverKey, recipient: recipient, data: hash+message.data)
+            MessageService.send(host: server, pass: serverKey, recipient: recipient, data: hash+iv+encryptedData)
         }
-//           let iv = AES256.generate256bitKey(){
-//            let aes = AES256(key: self.aesKey, iv: iv)
-//            if let encryptedData = aes.aesEncrypt(message.data){
-        
-//            }
-        
     }
     
     public func add(message: Message){
@@ -55,26 +48,25 @@ public class Dialog{
     
     public func update(completion: (() -> Void)? = nil){
         MessageService.findMessages(host: server, pass: serverKey, completion: {messages in
-            for m in messages{
+            for m in messages {
                 if m.data.count < 64 {
                     continue
                 }
-                let messageHash = String(m.data.prefix(64))
-                let messageData = String(m.data.suffix(m.data.count-64))
-                print("testdata2", messageData)
-                let hash = HMACUtil.hmac(data: messageData, pass: self.hmacKey)
-                if hash != messageHash
-                {
-                    print("not auth")
-                    continue
-                }
+                let metadata = String(m.data.prefix(108))
+                
+                let messageHash = String(metadata.prefix(64))
+                let messageIv = String(metadata.suffix(44))
+                
+                let messageData = String(m.data.suffix(m.data.count-108))
+                
+                let hash = HMACUtil.hmac(data: messageIv+messageData, pass: self.hmacKey)
+                if hash != messageHash { continue }
+                
                 print("auth complete")
-
-//                let secureData = m.data.suffix(m.data.count - 44)
-//                let aes = AES256(key: self.aesKey, iv: String(iv))
-//                let decryptedData = aes.aesDecrypt(secureData)
-//                print("decryptedData", decryptedData)
-                if let data = m.data.data(using: .utf8),
+                let aes = AES256(key: self.aesKey, iv: messageIv)
+                let decryptedData = aes.aesDecrypt(messageData)
+                
+                if let data = decryptedData?.data(using: .utf8),
                    let serviceMessage = try? JSONDecoder().decode(ServiceMessage.self, from: data){
                     if serviceMessage.type == .UpdateDialog{
                         if let serviceData = serviceMessage.data.data(using: .utf8),
