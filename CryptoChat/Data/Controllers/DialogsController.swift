@@ -11,37 +11,33 @@ import UIKit
 
 
 public class DialogsController{
-    public static func getData() -> Array<Dialog> {
-        var list = [Dialog]()
-        
-        list.append(Dialog(username: "Даня", image: nil, messages: [
-            Message(me: false, type: MessageType.Text, state: MessageState.Delivered, data: "String123123123", date: Date.now)
-        ]))
-        list.append(Dialog(username: "Вася", image: UIImage(named: "avatar_example"), messages: [
-            Message(me: false, type: MessageType.Text, state: MessageState.Delivered, data: "Привет, где ты?", date: Date.now),
-            Message(me: false, type: MessageType.Text, state: MessageState.Delivered, data: "Я жду", date: Date.now),
-            Message(me: true, type: MessageType.Text, state: MessageState.Delivered, data: "Еду", date: Date.now),
-            Message(me: false, type: MessageType.Text, state: MessageState.Delivered, data: "Привет, где ты?", date: Date.now),
-            Message(me: false, type: MessageType.Text, state: MessageState.Delivered, data: "Я жду", date: Date.now),
-            Message(me: true, type: MessageType.Text, state: MessageState.Delivered, data: "Еду", date: Date.now),
-            Message(me: false, type: MessageType.Text, state: MessageState.Delivered, data: "Привет, где ты?", date: Date.now),
-            Message(me: false, type: MessageType.Text, state: MessageState.Delivered, data: "Я жду", date: Date.now),
-            Message(me: true, type: MessageType.Text, state: MessageState.Delivered, data: "Еду", date: Date.now),
-            Message(me: false, type: MessageType.Text, state: MessageState.Delivered, data: "Привет, где ты?", date: Date.now),
-            Message(me: false, type: MessageType.Text, state: MessageState.Delivered, data: "Я жду", date: Date.now),
-            Message(me: true, type: MessageType.Text, state: MessageState.Delivered, data: "Еду", date: Date.now),
-            
-        ]))
-        let defaults = UserDefaults.standard
-        
-        if let avatarData = defaults.string(forKey: "avatar") {
-            list.append(Dialog(username: "Алиса", image: nil, messages: [
-                Message(me: false, type: MessageType.Text, state: MessageState.Delivered, data: "Жду тебя", date: Date.now),
-                Message(me: true, type: MessageType.Image, state: MessageState.Delivered, data: avatarData, date: Date.now),
-                Message(me: false, type: MessageType.Image, state: MessageState.Delivered, data: avatarData, date: Date.now),
-            ]))
-        }
+    static var dialogs: [Dialog] = []
     
+    public static func add(dialog: Dialog) {
+        dialogs.append(dialog)
+    }
+    
+    public static func findByRecipient(recipient: String) -> Dialog? {
+        for dialog in dialogs {
+            if recipient == dialog.recipient {
+                return dialog
+            }
+        }
+        return nil
+    }
+    
+    public static func getData() -> Array<Dialog> {
+        update()
+        var list = [Dialog]()
+        for dialog in dialogs {
+            if dialog.recipient != nil {
+                list.append(dialog)
+            }
+        }
         return list
+    }
+    
+    public static func update(){
+        
     }
 }

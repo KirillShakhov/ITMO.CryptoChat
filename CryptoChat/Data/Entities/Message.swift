@@ -8,6 +8,7 @@
 import Foundation
 
 public enum MessageType{
+    case Service
     case Text
     case Image
 }

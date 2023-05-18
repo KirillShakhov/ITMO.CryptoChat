@@ -10,6 +10,8 @@
 		ED8C84A52A140C5D0031D546 /* HMACUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C84A42A140C5D0031D546 /* HMACUtil.swift */; };
 		ED8C84A72A1423330031D546 /* CompressUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C84A62A1423330031D546 /* CompressUtil.swift */; };
 		ED8C84A92A1423B60031D546 /* JsonUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C84A82A1423B60031D546 /* JsonUtil.swift */; };
+		ED8C84AB2A15A6C90031D546 /* ServiceMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C84AA2A15A6C90031D546 /* ServiceMessage.swift */; };
+		ED8C84AD2A15A8320031D546 /* ServerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C84AC2A15A8320031D546 /* ServerController.swift */; };
 		ED9272FB2A0FE7C400F520C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9272FA2A0FE7C400F520C6 /* AppDelegate.swift */; };
 		ED9272FD2A0FE7C400F520C6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9272FC2A0FE7C400F520C6 /* SceneDelegate.swift */; };
 		ED9273022A0FE7C400F520C6 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED9273002A0FE7C400F520C6 /* Home.storyboard */; };
@@ -54,6 +56,8 @@
 		ED8C84A42A140C5D0031D546 /* HMACUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMACUtil.swift; sourceTree = "<group>"; };
 		ED8C84A62A1423330031D546 /* CompressUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompressUtil.swift; sourceTree = "<group>"; };
 		ED8C84A82A1423B60031D546 /* JsonUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonUtil.swift; sourceTree = "<group>"; };
+		ED8C84AA2A15A6C90031D546 /* ServiceMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceMessage.swift; sourceTree = "<group>"; };
+		ED8C84AC2A15A8320031D546 /* ServerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerController.swift; sourceTree = "<group>"; };
 		ED9272F72A0FE7C400F520C6 /* CryptoChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED9272FA2A0FE7C400F520C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED9272FC2A0FE7C400F520C6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -267,6 +271,7 @@
 				EDFD479B2A131D4F00A074B4 /* Message.swift */,
 				EDFD479D2A131D5800A074B4 /* Dialog.swift */,
 				EDDCBB7F2A133A4E00F8C0CD /* Invite.swift */,
+				ED8C84AA2A15A6C90031D546 /* ServiceMessage.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -277,6 +282,7 @@
 				EDFD47A02A131F2600A074B4 /* DialogsController.swift */,
 				EDDCBB7B2A1338CF00F8C0CD /* InviteController.swift */,
 				EDDCBB7D2A13390800F8C0CD /* UserController.swift */,
+				ED8C84AC2A15A8320031D546 /* ServerController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -395,6 +401,7 @@
 				EDFD47A92A132DA600A074B4 /* MessageCollectionViewCell.swift in Sources */,
 				EDFD47AE2A13329C00A074B4 /* ImageMessage.swift in Sources */,
 				EDFD47972A1305C600A074B4 /* AES256.swift in Sources */,
+				ED8C84AD2A15A8320031D546 /* ServerController.swift in Sources */,
 				ED9273392A12730A00F520C6 /* FirstSettingsViewController.swift in Sources */,
 				EDDCBB822A133C4000F8C0CD /* Base64.swift in Sources */,
 				ED9272FB2A0FE7C400F520C6 /* AppDelegate.swift in Sources */,
@@ -405,6 +412,7 @@
 				EDFD47A12A131F2600A074B4 /* DialogsController.swift in Sources */,
 				ED8C84A72A1423330031D546 /* CompressUtil.swift in Sources */,
 				ED92732C2A114B1800F520C6 /* ChatViewCell.swift in Sources */,
+				ED8C84AB2A15A6C90031D546 /* ServiceMessage.swift in Sources */,
 				ED9273402A12769100F520C6 /* LoadingAuthViewController.swift in Sources */,
 				EDDCBB802A133A4E00F8C0CD /* Invite.swift in Sources */,
 				ED92733E2A12744900F520C6 /* AuthController.swift in Sources */,

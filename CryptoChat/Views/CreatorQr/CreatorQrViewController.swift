@@ -24,7 +24,13 @@ class CreatorQrViewController: UIViewController {
     }
     
     @IBAction func generateCode(_ sender: Any) {
-        if let invite = InviteController.createInvite(){
+        
+        var hours = 1
+        if dateExpiredSelect.selectedSegmentIndex == 1 {
+            hours = 24
+        }
+        
+        if let invite = InviteController.createInvite(hours: hours){
             let image = generateQRCode(from: invite)
             qrImage.image = image
             scanMe.isHidden = false
@@ -51,7 +57,7 @@ class CreatorQrViewController: UIViewController {
 //            }
 //        }
         
-        let doc = QRCode.Document(utf8String: string, errorCorrection: .high)
+        let doc = QRCode.Document(utf8String: string, errorCorrection: .low)
 //        doc.design.shape.offPixels = QRCode.PixelShape.Horizontal(insetFraction: 0.4, cornerRadiusFraction: 1)
 //
 //        if (dateExpiredSelect.selectedSegmentIndex == 0){

@@ -18,4 +18,16 @@ public class JsonUtil{
             return nil
         }
     }
+    
+    public static func fromJsonArray(data: String) -> [String]? {
+        do {
+            let jsonData = data.data(using: .utf8)!
+            let tableData = try JSONDecoder().decode([String].self, from: jsonData)
+            return tableData
+        }
+        catch {
+            print (error)
+            return nil
+        }
+    }
 }

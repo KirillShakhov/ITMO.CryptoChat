@@ -11,28 +11,27 @@ import Foundation
 public class InviteController{
     
     
-    public static func createInvite() -> String? {
-        let inviteUuid = UUID().uuidString
-        
+    public static func createInvite(hours: Int) -> String? {
         var dayComponent = DateComponents()
-        dayComponent.day = 1
+        dayComponent.day = hours
         let theCalendar = Calendar.current
-        let dateExpired = theCalendar.date(byAdding: dayComponent, to: Date())
-        
-        if let dateExpired = dateExpired?.formatted(),
+        if let dateExpired = theCalendar.date(byAdding: dayComponent, to: Date()),
            let aesKey = AES256.generate256bitKey(),
-           let hmacKey = AES256.generate256bitKey()
+           let hmacKey = AES256.generate256bitKey(),
+           let serverKey = AES256.generate256bitKey()
         {
-            let invite = Invite(uuid: inviteUuid, userUuid: UserController.getUuid(), dateExpired: dateExpired, aesKey: aesKey, hmacKey: hmacKey)
-                            
+            let dialog = Dialog(dateExpired: dateExpired, aesKey: aesKey, hmacKey: hmacKey, server: ServerController.GetHost(), serverKey: serverKey)
+            DialogsController.add(dialog: dialog)
             let data = [
-                invite.dateExpired,
-                invite.uuid,
-                invite.userUuid,
-                invite.aesKey,
-                invite.hmacKey
+                UserController.getUsername(),
+                UserController.getUuid(),
+                dialog.dateExpired?.formatted(),
+                "aes",
+                dialog.aesKey,
+                dialog.hmacKey,
+                dialog.server,
+                dialog.serverKey,
             ]
-                    
             return JsonUtil.toJson(data: data)
         }
         return nil
