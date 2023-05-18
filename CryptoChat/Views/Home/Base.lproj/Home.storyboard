@@ -36,7 +36,7 @@
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar_example" translatesAutoresizingMaskIntoConstraints="NO" id="2AD-lM-xjP">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar_example" translatesAutoresizingMaskIntoConstraints="NO" id="2AD-lM-xjP">
                                         <rect key="frame" x="326" y="8" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="5XQ-LZ-rEX"/>

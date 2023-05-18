@@ -20,7 +20,13 @@ public class UserManager{
     }
     
     public static func getAvatar() -> UIImage? {
-        return UIImage(named: "avatar_example")!
+        let defaults = UserDefaults.standard
+        if let avatarData = defaults.string(forKey: "avatar")
+        {
+            let dataDecoded : Data = Data(base64Encoded: avatarData, options: .ignoreUnknownCharacters)!
+            return UIImage(data: dataDecoded)
+        }
+        return UIImage(named: "avatar_mock")!
     }
     
     public static func getUuid() -> String {
@@ -30,7 +36,7 @@ public class UserManager{
         ) {
             return uuidData
         }
-        var uuid = UUID().uuidString
+        let uuid = UUID().uuidString
         defaults.set(
             uuid,
             forKey: "uuid"

@@ -21,10 +21,14 @@ public class InviteManager {
             let dialog = Dialog(dateExpired: dateExpired, aesKey: aesKey, hmacKey: hmacKey, server: ServerManager.GetHost(), serverKey: serverKey)
             dialog.dateExpired = dateExpired
             DialogsManager.add(dialog: dialog)
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM/dd/yyyy, h:mm a"
+            let dateExpiredFormatted = dateFormatter.string(from: dateExpired)
             let data = [
                 UserManager.getUsername(),
                 UserManager.getUuid(),
-                dialog.dateExpired?.formatted(),
+                dateExpiredFormatted,
                 "aes",
                 dialog.aesKey,
                 dialog.hmacKey,

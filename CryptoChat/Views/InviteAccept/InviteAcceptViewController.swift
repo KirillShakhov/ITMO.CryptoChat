@@ -27,6 +27,8 @@ class InviteAcceptViewController: UIViewController {
         serverLabel.text = ""
         cryptoLabel.text = ""
         
+        print("code", code)
+
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy, h:mm a"
         if let result = JsonUtil.fromJsonArray(data: code),

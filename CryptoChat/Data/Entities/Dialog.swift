@@ -48,10 +48,8 @@ public class Dialog{
     }
     
     public func update(completion: (() -> Void)? = nil){
-        print("update1")
         MessageService.findMessages(host: server, pass: serverKey, completion: {messages in
             for m in messages {
-                print("update2")
                 if m.data.count < 64 {
                     continue
                 }
@@ -63,11 +61,8 @@ public class Dialog{
                 let messageData = String(m.data.suffix(m.data.count-108))
                 
                 let hash = HMACUtil.hmac(data: messageIv+messageData, pass: self.hmacKey)
-                if hash != messageHash {
-                    print("auth failed")
-                    continue }
+                if hash != messageHash { continue }
                 
-                print("auth complete")
                 let aes = AES256(key: self.aesKey, iv: messageIv)
                 let decryptedData = aes.aesDecrypt(messageData)
                 
@@ -77,7 +72,6 @@ public class Dialog{
                         if let serviceData = serviceMessage.data.data(using: .utf8),
                             let array = try? JSONDecoder().decode([String].self, from: serviceData)
                         {
-                            print("array", array)
                             self.username = array[0]
                             self.recipient = array[1]
                             let dataDecoded : Data = Data(base64Encoded: array[2], options: .ignoreUnknownCharacters)!

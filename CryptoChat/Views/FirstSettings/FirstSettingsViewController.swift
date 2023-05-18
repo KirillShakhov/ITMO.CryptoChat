@@ -65,8 +65,7 @@ class FirstSettingsViewController: UIViewController {
             nameField.text,
             forKey: "user"
         )
-        if let strBase64 = avatarImage.image?.pngData()?.base64EncodedString(options: .lineLength64Characters) {
-            print(strBase64)
+        if let strBase64 = avatarImage.image?.jpegData(compressionQuality: 0.8)?.base64EncodedString(options: .lineLength64Characters) {
             defaults.set(
                 strBase64,
                 forKey: "avatar"
