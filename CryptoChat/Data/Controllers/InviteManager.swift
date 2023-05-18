@@ -19,6 +19,7 @@ public class InviteManager {
            let serverKey = AES256.generate256bitKey()
         {
             let dialog = Dialog(dateExpired: dateExpired, aesKey: aesKey, hmacKey: hmacKey, server: ServerManager.GetHost(), serverKey: serverKey)
+            dialog.dateExpired = dateExpired
             DialogsManager.add(dialog: dialog)
             let data = [
                 UserManager.getUsername(),
@@ -43,11 +44,28 @@ public class InviteManager {
            Date() < expiredDate
         {
             let dialog = Dialog(username: result[0], recipient: result[1], aesKey: result[4], hmacKey: result[5], server: result[6], serverKey: result[7])
-            if dialog.recipient == nil ||
-                DialogsManager.findByRecipient(recipient: dialog.recipient!) != nil {
-                return "Диалог с этим пользователем уже существует"
+            if dialog.recipient != nil,
+                let finded = DialogsManager.findByRecipient(recipient: dialog.recipient!)
+            {
+                if finded.dateExpired == nil {
+                    return "Диалог с этим пользователем уже существует"
+                }
+                finded.aesKey = dialog.aesKey
+                finded.hmacKey = dialog.hmacKey
+                finded.server = dialog.server
+                finded.serverKey = dialog.serverKey
+                finded.username = dialog.username
+                finded.recipient = dialog.recipient
+                var dayComponent = DateComponents()
+                dayComponent.day = 24
+                let theCalendar = Calendar.current
+                if let dateExpired = theCalendar.date(byAdding: dayComponent, to: Date()){
+                    finded.dateExpired = dateExpired
+                }
             }
-            DialogsManager.add(dialog: dialog)
+            else{
+                DialogsManager.add(dialog: dialog)
+            }
             NotifyManager.updateByHost(host: dialog.server)
             var avatarData = "nil"
             if let avatar = UserManager.getAvatar(),
