@@ -15,9 +15,13 @@ class DialogViewController: UIViewController {
     @IBOutlet weak var messagesList: UICollectionView!
     @IBOutlet weak var textField: UITextField!
     var dialog: Dialog?
-    
+    var timer: Timer?
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
+
         self.messagesList.register(UINib(nibName: "MessageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MessageCollectionViewCell")
         self.messagesList.register(UINib(nibName: "ImageMessage", bundle: nil), forCellWithReuseIdentifier: "ImageMessage")
 
@@ -30,6 +34,24 @@ class DialogViewController: UIViewController {
         }
         else{
             avatarImage.image = UIImage(named: "avatar_mock")
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+            self.dialog?.update(completion: {
+                DispatchQueue.main.async{
+                    self.messagesList.reloadData()
+                }
+            })
+        })
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if timer != nil {
+            timer?.invalidate()
+            timer = nil
         }
     }
 
@@ -49,6 +71,11 @@ class DialogViewController: UIViewController {
             let serviceMessage = ServiceMessage(type: .Text, data: text)
             dialog?.messages.append(message)
             dialog?.send(message: serviceMessage)
+            self.messagesList.reloadData()
+            self.messagesList.performBatchUpdates(nil, completion: {
+                (result) in
+                self.scrollToLast()
+            })
         }
     }
 }
@@ -104,5 +131,24 @@ extension DialogViewController: UICollectionViewDelegateFlowLayout{
             return CGSize(width: self.messagesList.visibleSize.width, height: 70.0+CGFloat((message.data.count*5)))
         }
         return CGSize(width: 100.0, height: 100.0)
+    }
+}
+
+extension DialogViewController:UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
+        switch textField
+        {
+        case self.textField:
+            dismissKeyboard()
+            break
+        default:
+            return false
+        }
+        return true
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }

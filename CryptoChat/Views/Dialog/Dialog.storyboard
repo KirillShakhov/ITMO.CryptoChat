@@ -102,7 +102,7 @@
                                     <constraint firstAttribute="height" constant="40" id="Kq8-fp-V4r"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="send"/>
                             </textField>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="b5w-mU-yJL">
                                 <rect key="frame" x="10" y="145" width="373" height="617"/>

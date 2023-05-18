@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var CreateQrButton: UIButton!
@@ -18,6 +19,7 @@ class HomeViewController: UIViewController {
     var avatar: UIImage?
     
     var dialogs: [Dialog] = []
+    var timer: Timer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +38,34 @@ class HomeViewController: UIViewController {
         //
         usernameLabel.text = username
         avatarImage.image = avatar
+        
+//        UNUserNotificationCenter.current().requestAuthorization(options: [.badge,.sound]) {(accepted, error) in
+//            if !accepted {
+//                print("Notification access denied")
+//            }
+//        }
+//
+//        let center = UNUserNotificationCenter.current()
+//        center.delegate = self
+//
+//        let show = UNNotificationAction(identifier: "show", title: "Tell me more…", options: .foreground)
+//        let category = UNNotificationCategory(identifier: "alarm", actions: [show], intentIdentifiers: [])
+//
+//        center.setNotificationCategories([category])
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+            self.updateChats(self)
+        })
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if timer != nil {
+            timer?.invalidate()
+            timer = nil
+        }
     }
     
     @objc private func updateChats(_ sender: Any) {
@@ -44,7 +74,6 @@ class HomeViewController: UIViewController {
             self.dialogs = DialogsManager.getData()
             self.chatList.reloadData()
         })
-        print("Updated")
     }
 
     @IBAction func CreateQr(_ sender: Any) {
@@ -124,3 +153,17 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
     }
 }
 
+
+extension HomeViewController: UNUserNotificationCenterDelegate {
+
+    public func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Swift.Void) {
+        print("userNotificationCenter willPresent")
+        completionHandler( [.badge, .sound])
+    }
+
+    public func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void) {
+        print("Do what ever you want")
+
+    }
+
+}
