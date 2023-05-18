@@ -17,20 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PQ7-82-QuM">
-                                <rect key="frame" x="338" y="772" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="4G2-Jb-42t"/>
-                                    <constraint firstAttribute="width" constant="40" id="KUL-Os-DY2"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" image="paperplane.fill" catalog="system" title="">
-                                    <color key="baseBackgroundColor" red="0.88416475059999999" green="0.65117198229999995" blue="0.97925764319999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="send:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ohm-HP-L7u"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hbl-Cd-7w5">
                                 <rect key="frame" x="10" y="69" width="373" height="66"/>
                                 <subviews>
@@ -96,16 +82,8 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="byQ-cN-p8j">
-                                <rect key="frame" x="16" y="772" width="313" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Kq8-fp-V4r"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="send"/>
-                            </textField>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="b5w-mU-yJL">
-                                <rect key="frame" x="10" y="145" width="373" height="617"/>
+                                <rect key="frame" x="10" y="145" width="373" height="623"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="M9h-bl-UPv">
                                     <size key="itemSize" width="373" height="70"/>
@@ -132,21 +110,53 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PKo-B1-6pA">
+                                <rect key="frame" x="10" y="768" width="373" height="40"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="byQ-cN-p8j">
+                                        <rect key="frame" x="0.0" y="0.0" width="328" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="send"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PQ7-82-QuM">
+                                        <rect key="frame" x="333" y="0.0" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="XAd-VU-83X"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" image="paperplane.fill" catalog="system" title="">
+                                            <color key="baseBackgroundColor" red="0.88416475059999999" green="0.65117198229999995" blue="0.97925764319999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="send:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ohm-HP-L7u"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="FwL-x4-3We"/>
+                                    <constraint firstAttribute="bottom" secondItem="PQ7-82-QuM" secondAttribute="bottom" id="Hoq-Qk-w4T"/>
+                                    <constraint firstItem="byQ-cN-p8j" firstAttribute="leading" secondItem="PKo-B1-6pA" secondAttribute="leading" id="I2X-FU-ryv"/>
+                                    <constraint firstAttribute="trailing" secondItem="PQ7-82-QuM" secondAttribute="trailing" id="hca-38-rsk"/>
+                                    <constraint firstAttribute="bottom" secondItem="byQ-cN-p8j" secondAttribute="bottom" id="iNj-VE-a6B"/>
+                                    <constraint firstItem="PQ7-82-QuM" firstAttribute="top" secondItem="PKo-B1-6pA" secondAttribute="top" id="l80-Pd-m40"/>
+                                    <constraint firstItem="byQ-cN-p8j" firstAttribute="top" secondItem="PKo-B1-6pA" secondAttribute="top" id="oQV-Y9-l1P"/>
+                                    <constraint firstItem="PQ7-82-QuM" firstAttribute="leading" secondItem="byQ-cN-p8j" secondAttribute="trailing" constant="5" id="oa4-iZ-CZe"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="hbl-Cd-7w5" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="0em-LC-Pjh"/>
                             <constraint firstItem="hbl-Cd-7w5" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="0wD-jw-XIE"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="byQ-cN-p8j" secondAttribute="bottom" constant="6" id="1bk-4T-VOk"/>
-                            <constraint firstItem="byQ-cN-p8j" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="O4b-sQ-B0X"/>
-                            <constraint firstItem="PQ7-82-QuM" firstAttribute="top" secondItem="b5w-mU-yJL" secondAttribute="bottom" constant="10" id="U0o-hu-aJ2"/>
-                            <constraint firstAttribute="bottom" secondItem="PQ7-82-QuM" secondAttribute="bottom" constant="40" id="WLP-F2-Ugy"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="PKo-B1-6pA" secondAttribute="trailing" constant="10" id="PcZ-i1-11x"/>
                             <constraint firstItem="b5w-mU-yJL" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="Xte-5Z-Qje"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="PQ7-82-QuM" secondAttribute="trailing" constant="15" id="gMn-dy-Xe4"/>
+                            <constraint firstItem="PKo-B1-6pA" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="aKl-j5-ZDk"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="b5w-mU-yJL" secondAttribute="trailing" constant="10" id="gMs-A4-4al"/>
                             <constraint firstItem="b5w-mU-yJL" firstAttribute="top" secondItem="hbl-Cd-7w5" secondAttribute="bottom" constant="10" id="ig3-lX-Oud"/>
-                            <constraint firstItem="PQ7-82-QuM" firstAttribute="leading" secondItem="byQ-cN-p8j" secondAttribute="trailing" constant="9" id="rwe-N9-89o"/>
+                            <constraint firstItem="PKo-B1-6pA" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" constant="-10" id="qLU-3R-mLs"/>
+                            <constraint firstItem="PKo-B1-6pA" firstAttribute="top" secondItem="b5w-mU-yJL" secondAttribute="bottom" id="qLe-rB-PcN"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="hbl-Cd-7w5" secondAttribute="trailing" constant="10" id="vXr-08-YCy"/>
                         </constraints>
                     </view>

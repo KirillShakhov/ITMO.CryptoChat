@@ -22,6 +22,10 @@ class DialogViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         self.view.addGestureRecognizer(tap)
 
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+
         self.messagesList.register(UINib(nibName: "MessageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MessageCollectionViewCell")
         self.messagesList.register(UINib(nibName: "ImageMessage", bundle: nil), forCellWithReuseIdentifier: "ImageMessage")
 
@@ -77,6 +81,23 @@ class DialogViewController: UIViewController {
                 self.scrollToLast()
             })
         }
+    }
+    
+    var pointOrigin: CGPoint?
+    @objc func keyboardWillShow(notification: NSNotification) {
+            if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+                let keyboardRectangle = keyboardFrame.cgRectValue
+                let keyboardHeight = keyboardRectangle.height
+                self.view.frame.origin.y = -keyboardHeight
+                let screenSize: CGRect = UIScreen.main.bounds
+                self.view.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height - keyboardHeight)
+            }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        self.view.frame.origin.y = 0
+        let screenSize: CGRect = UIScreen.main.bounds
+        self.view.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height)
     }
 }
 
