@@ -44,7 +44,7 @@ class HomeViewController: UIViewController {
 //        }else{
 //            recipes = RecipeModel.getRecipes(find: findField.text!)
 //        }
-        dialogs = DialogsController.getData()
+        dialogs = DialogsManager.getData()
         self.refreshControl.endRefreshing()
         chatList.reloadData()
         print("Updated")

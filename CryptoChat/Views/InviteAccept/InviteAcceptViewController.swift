@@ -68,13 +68,14 @@ class InviteAcceptViewController: UIViewController {
         {
             let dialog = Dialog(username: result[0], recipient: result[1], aesKey: result[4], hmacKey: result[5], server: result[6], serverKey: result[7])
             if dialog.recipient == nil ||
-                DialogsController.findByRecipient(recipient: dialog.recipient!) != nil {
+                DialogsManager.findByRecipient(recipient: dialog.recipient!) != nil {
                 let alert = UIAlertController(title: "Ошибка", message: "Диалог с этим пользователем уже существует", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "Закрыть", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 return
             }
-            DialogsController.add(dialog: dialog)
+            DialogsManager.add(dialog: dialog)
+            NotifyManager.updateByHost(host: dialog.server)
             self.dismiss(animated: true, completion: nil)
         }
     }

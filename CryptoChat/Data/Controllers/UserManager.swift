@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-public class UserController{
+public class UserManager{
     public static func getUsername() -> String {
         return "kirill"
     }

@@ -8,7 +8,7 @@
 import Foundation
 
 
-public class ServerController{
+public class ServerManager{
     public static func GetHost() -> String {
         return "http://192.168.0.103:8080"
     }

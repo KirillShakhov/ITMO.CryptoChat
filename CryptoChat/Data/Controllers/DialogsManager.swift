@@ -10,7 +10,7 @@ import UIKit
 
 
 
-public class DialogsController{
+public class DialogsManager{
     static var dialogs: [Dialog] = []
     
     public static func add(dialog: Dialog) {

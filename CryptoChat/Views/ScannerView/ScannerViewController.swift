@@ -43,8 +43,9 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         previewLayer.frame = view.layer.bounds
         previewLayer.videoGravity = .resizeAspectFill
         view.layer.insertSublayer(previewLayer, at: 0)
-
-        captureSession.startRunning()
+        DispatchQueue.global().async {
+            self.captureSession.startRunning()
+        }
     }
 
     func failed() {
@@ -58,7 +59,9 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         super.viewWillAppear(animated)
 
         if (captureSession?.isRunning == false) {
-            captureSession.startRunning()
+            DispatchQueue.global().async {
+                self.captureSession.startRunning()
+            }
         }
     }
 

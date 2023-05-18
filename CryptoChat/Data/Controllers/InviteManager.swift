@@ -8,9 +8,7 @@
 import Foundation
 
 
-public class InviteController{
-    
-    
+public class InviteManager {
     public static func createInvite(hours: Int) -> String? {
         var dayComponent = DateComponents()
         dayComponent.day = hours
@@ -20,11 +18,11 @@ public class InviteController{
            let hmacKey = AES256.generate256bitKey(),
            let serverKey = AES256.generate256bitKey()
         {
-            let dialog = Dialog(dateExpired: dateExpired, aesKey: aesKey, hmacKey: hmacKey, server: ServerController.GetHost(), serverKey: serverKey)
-            DialogsController.add(dialog: dialog)
+            let dialog = Dialog(dateExpired: dateExpired, aesKey: aesKey, hmacKey: hmacKey, server: ServerManager.GetHost(), serverKey: serverKey)
+            DialogsManager.add(dialog: dialog)
             let data = [
-                UserController.getUsername(),
-                UserController.getUuid(),
+                UserManager.getUsername(),
+                UserManager.getUuid(),
                 dialog.dateExpired?.formatted(),
                 "aes",
                 dialog.aesKey,

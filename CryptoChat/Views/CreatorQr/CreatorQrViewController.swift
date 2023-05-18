@@ -30,7 +30,7 @@ class CreatorQrViewController: UIViewController {
             hours = 24
         }
         
-        if let invite = InviteController.createInvite(hours: hours){
+        if let invite = InviteManager.createInvite(hours: hours){
             let image = generateQRCode(from: invite)
             qrImage.image = image
             scanMe.isHidden = false
