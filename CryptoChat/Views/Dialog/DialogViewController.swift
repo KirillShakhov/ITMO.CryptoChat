@@ -83,6 +83,8 @@ class DialogViewController: UIViewController {
     
     func delete(){
         if let dialog = dialog{
+            let serviceMessage = ServiceMessage(type: .DialogDelete, data: "")
+            dialog.send(message: serviceMessage)
             DialogsManager.shared.delete(dialog: dialog)
         }
         dismiss(animated: true)

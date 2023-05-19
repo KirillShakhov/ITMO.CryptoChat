@@ -81,6 +81,9 @@ extension Dialog{
                                 }
                             }
                         }
+                        else if serviceMessage.type == .DialogDelete{
+                            DialogsManager.shared.delete(dialog: self)
+                        }
                         else if serviceMessage.type == .Text{
                             DialogsManager.shared.addMessage(dialog: self, me: false, type: .Text, state: .Delivered, data: serviceMessage.data)
                         }

@@ -14,10 +14,9 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var chatList: UICollectionView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var avatarImage: UIImageView!
-    private let refreshControl = UIRefreshControl()
-    var username: String = ""
-    var avatar: UIImage?
     
+    private let refreshControl = UIRefreshControl()
+        
     var dialogs: [Dialog] = []
     var timer: Timer?
 
@@ -33,11 +32,18 @@ class HomeViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(updateChats(_:)), for: .valueChanged)
         
         refreshControl.tintColor = UIColor.systemPink.withAlphaComponent(0.4)
-        refreshControl.attributedTitle = NSAttributedString(string: "Update chats ...")
-
+        refreshControl.attributedTitle = NSAttributedString(string: "Обновление чатов ...")
+        
+        refreshControl.beginRefreshing()
+        
         //
-        usernameLabel.text = username
-        avatarImage.image = avatar
+        usernameLabel.text = UserManager.getUsername()
+        if let avatar = UserManager.getAvatar(){
+            avatarImage.image = avatar
+        }
+        else {
+            avatarImage.image = UIImage(systemName: "avatar_mock")
+        }
         
 //        UNUserNotificationCenter.current().requestAuthorization(options: [.badge,.sound]) {(accepted, error) in
 //            if !accepted {
@@ -88,6 +94,14 @@ class HomeViewController: UIViewController {
         let storyboard = UIStoryboard(name: "ScannerView", bundle: nil)
         guard let vc = storyboard.instantiateViewController(identifier: "ScannerView") as? ScannerViewController else { return }
         vc.modalPresentationStyle = .popover
+        present(vc, animated:true)
+    }
+    
+    
+    @IBAction func openSettings(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Settings", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(identifier: "Settings") as? SettingsViewController else { return }
+        vc.modalPresentationStyle = .fullScreen
         present(vc, animated:true)
     }
 }

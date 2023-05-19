@@ -10,6 +10,7 @@ import Foundation
 public enum ServiceMessageType : Codable {
     case AcceptInvite
     case UpdateDialog
+    case DialogDelete
     case Text
     case Image
     case Delivered

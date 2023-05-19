@@ -128,4 +128,24 @@ public class DialogsManager {
         }
         completion?()
     }
+    
+    func deleteAllData() {
+        guard let context = self.context else { return }
+        do {
+            if let dialogs = try? context.fetch(Dialog.fetchRequest()){
+                for dialog in dialogs {
+                    context.delete(dialog)
+                }
+            }
+            if let messages = try? context.fetch(Message.fetchRequest()){
+                for message in messages {
+                    context.delete(message)
+                }
+            }
+            try context.save()
+
+        } catch let error {
+            print("Detele all data error :", error)
+        }
+    }
 }
