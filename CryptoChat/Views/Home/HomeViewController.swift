@@ -71,7 +71,7 @@ class HomeViewController: UIViewController {
     @objc private func updateChats(_ sender: Any) {
         NotifyManager.update(completion: {
             self.refreshControl.endRefreshing()
-            self.dialogs = DialogsManager.getData()
+            self.dialogs = DialogsManager.shared.getData()
             self.chatList.reloadData()
         })
     }

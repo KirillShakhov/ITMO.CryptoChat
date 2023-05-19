@@ -23,9 +23,11 @@ class ChatViewCell: UICollectionViewCell {
     
     func update(){
         usernameLabel.text = dialog?.username
-        if let last = dialog?.messages.last {
-            dateLabel.text = last.date.formatted()
-            if last.type == MessageType.Text{
+        if let last = dialog?.messages?.allObjects.last,
+           let last = last as? Message
+        {
+            dateLabel.text = last.date?.formatted()
+            if last.type == MessageType.Text {
                 lastLabel.text = last.data
             }
             else{
@@ -37,7 +39,7 @@ class ChatViewCell: UICollectionViewCell {
             lastLabel.text = ""
         }
         if let image = dialog?.image {
-            avatarImage.image = image
+            avatarImage.image = UIImage(data: image)
         }
         else{
             avatarImage.image = UIImage(named: "avatar_mock")

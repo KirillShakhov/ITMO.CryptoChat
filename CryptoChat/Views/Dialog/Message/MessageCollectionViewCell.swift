@@ -23,7 +23,7 @@ class MessageCollectionViewCell: UICollectionViewCell {
     
     func update(){
         if let message = message {
-            dateLabel.text = message.date.formatted()
+            dateLabel.text = message.date?.formatted()
             if message.type == MessageType.Text{
                 textLabel.text = message.data
             }

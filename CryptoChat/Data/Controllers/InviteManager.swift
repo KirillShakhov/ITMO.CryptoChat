@@ -18,24 +18,23 @@ public class InviteManager {
            let hmacKey = AES256.generate256bitKey(),
            let serverKey = AES256.generate256bitKey()
         {
-            let dialog = Dialog(dateExpired: dateExpired, aesKey: aesKey, hmacKey: hmacKey, server: ServerManager.GetHost(), serverKey: serverKey)
-            dialog.dateExpired = dateExpired
-            DialogsManager.add(dialog: dialog)
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MM/dd/yyyy, h:mm a"
-            let dateExpiredFormatted = dateFormatter.string(from: dateExpired)
-            let data = [
-                UserManager.getUsername(),
-                UserManager.getUuid(),
-                dateExpiredFormatted,
-                "aes",
-                dialog.aesKey,
-                dialog.hmacKey,
-                dialog.server,
-                dialog.serverKey,
-            ]
-            return JsonUtil.toJson(data: data)
+            if let dialog = DialogsManager.shared.add(aesKey: aesKey, hmacKey: hmacKey, server: ServerManager.GetHost(), serverKey: serverKey, dateExpired: dateExpired){
+                
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "MM/dd/yyyy, h:mm a"
+                let dateExpiredFormatted = dateFormatter.string(from: dateExpired)
+                let data = [
+                    UserManager.getUsername(),
+                    UserManager.getUuid(),
+                    dateExpiredFormatted,
+                    "aes",
+                    dialog.aesKey,
+                    dialog.hmacKey,
+                    dialog.server,
+                    dialog.serverKey,
+                ]
+                return JsonUtil.toJson(data: data)
+            }
         }
         return nil
     }
@@ -47,30 +46,33 @@ public class InviteManager {
            let expiredDate = dateFormatter.date(from: result[2]),
            Date() < expiredDate
         {
-            let dialog = Dialog(username: result[0], recipient: result[1], aesKey: result[4], hmacKey: result[5], server: result[6], serverKey: result[7])
-            if dialog.recipient != nil,
-                let finded = DialogsManager.findByRecipient(recipient: dialog.recipient!)
+            var dialog: Dialog? = nil
+            if let finded = DialogsManager.shared.findByRecipient(recipient: result[1])
             {
                 if finded.dateExpired == nil {
                     return "Диалог с этим пользователем уже существует"
                 }
-                finded.aesKey = dialog.aesKey
-                finded.hmacKey = dialog.hmacKey
-                finded.server = dialog.server
-                finded.serverKey = dialog.serverKey
-                finded.username = dialog.username
-                finded.recipient = dialog.recipient
+                finded.aesKey = result[4]
+                finded.hmacKey = result[5]
+                finded.server = result[6]
+                finded.serverKey = result[7]
+                finded.username = result[0]
+                finded.recipient = result[1]
                 var dayComponent = DateComponents()
                 dayComponent.day = 24
                 let theCalendar = Calendar.current
                 if let dateExpired = theCalendar.date(byAdding: dayComponent, to: Date()){
                     finded.dateExpired = dateExpired
                 }
+                dialog = finded
+                DialogsManager.shared.save()
             }
             else{
-                DialogsManager.add(dialog: dialog)
+                dialog = DialogsManager.shared.add(username: result[0], recipient: result[1], aesKey: result[4], hmacKey: result[5], server: result[6], serverKey: result[7])
             }
-            NotifyManager.updateByHost(host: dialog.server)
+            if let server = dialog?.server{
+                NotifyManager.updateByHost(host: server)
+            }
             var avatarData = "nil"
             if let avatar = UserManager.getAvatar(),
                let jpegAvatar = avatar.jpegData(compressionQuality: 0.1)
@@ -80,8 +82,9 @@ public class InviteManager {
             if let json = JsonUtil.toJson(data: [UserManager.getUsername(), UserManager.getUuid(),avatarData])
             {
                 let serviceMessage = ServiceMessage(type: .AcceptInvite, data: json)
-                dialog.send(message: serviceMessage)
+                dialog?.send(message: serviceMessage)
             }
+            DialogsManager.shared.save()
             return nil
         }
         return "Неверный формат qr кода или срок действия истек"

@@ -24,7 +24,7 @@ class ImageMessage: UICollectionViewCell {
             let dataDecoded : Data = Data(base64Encoded: data, options: .ignoreUnknownCharacters)!
             image.image = UIImage(data: dataDecoded)
         }
-        dateLabel.text = message?.date.formatted()
+        dateLabel.text = message?.date?.formatted()
         
         if message?.me ?? false {
             viewMessage.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 40).isActive = true

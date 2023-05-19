@@ -34,7 +34,7 @@ class DialogViewController: UIViewController {
 
         usernameLabel.text = dialog?.username
         if let image = dialog?.image {
-            avatarImage.image = image
+            avatarImage.image = UIImage(data: image)
         }
         else{
             avatarImage.image = UIImage(named: "avatar_mock")
@@ -73,15 +73,16 @@ class DialogViewController: UIViewController {
            text != ""
         {
             textField.text = ""
-            let message = Message(me: true, type: .Text, state: .Send, data: text)
-            let serviceMessage = ServiceMessage(type: .Text, data: text)
-            dialog?.messages.append(message)
-            dialog?.send(message: serviceMessage)
-            self.messagesList.reloadData()
-            self.messagesList.performBatchUpdates(nil, completion: {
-                (result) in
-                self.scrollToLast()
-            })
+            if let dialog = dialog {
+                DialogsManager.shared.addMessage(dialog: dialog, me: true, type: .Text, state: .Send, data: text)
+                let serviceMessage = ServiceMessage(type: .Text, data: text)
+                dialog.send(message: serviceMessage)
+                self.messagesList.reloadData()
+                self.messagesList.performBatchUpdates(nil, completion: {
+                    (result) in
+                    self.scrollToLast()
+                })
+            }
         }
     }
     
@@ -117,10 +118,10 @@ class DialogViewController: UIViewController {
 
 extension DialogViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let message = dialog?.messages[indexPath.item] {
+        if let message = dialog?.messages?.allObjects[indexPath.item] as? Message {
             if message.type == MessageType.Image{
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageMessage", for: indexPath) as! ImageMessage
-                if let message = dialog?.messages[indexPath.item] {
+                if let message = dialog?.messages?.allObjects[indexPath.item] as? Message {
                     cell.message = message
                     cell.update()
                 }
@@ -129,7 +130,7 @@ extension DialogViewController: UICollectionViewDelegate{
             }
             else if message.type == MessageType.Text{
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MessageCollectionViewCell", for: indexPath) as! MessageCollectionViewCell
-                if let message = dialog?.messages[indexPath.item] {
+                if let message = dialog?.messages?.allObjects[indexPath.item] as? Message {
                     cell.message = message
                     cell.update()
                 }
@@ -138,7 +139,7 @@ extension DialogViewController: UICollectionViewDelegate{
         }
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MessageCollectionViewCell", for: indexPath) as! MessageCollectionViewCell
-        if let message = dialog?.messages[indexPath.item] {
+        if let message = dialog?.messages?.allObjects[indexPath.item] as? Message {
             cell.message = message
             cell.update()
         }
@@ -148,7 +149,7 @@ extension DialogViewController: UICollectionViewDelegate{
 
 extension DialogViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dialog?.messages.count ?? 0
+        return dialog?.messages?.count ?? 0
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // click
@@ -158,12 +159,11 @@ extension DialogViewController: UICollectionViewDataSource{
 extension DialogViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
-        if let message = dialog?.messages[indexPath.item] {
+        if let message = dialog?.messages?.allObjects[indexPath.item] as? Message {
             if message.type == MessageType.Image{
                 return CGSize(width: self.messagesList.visibleSize.width, height: 250.0)
-
             }
-            return CGSize(width: self.messagesList.visibleSize.width, height: 70.0+CGFloat((message.data.count*5)))
+            return CGSize(width: self.messagesList.visibleSize.width, height: 70.0+CGFloat(((message.data?.count ?? 0)*5)))
         }
         return CGSize(width: 100.0, height: 100.0)
     }
@@ -193,15 +193,16 @@ extension DialogViewController: UIImagePickerControllerDelegate, UINavigationCon
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
            let base64 = pickedImage.jpegData(compressionQuality: 0.8)?.base64EncodedString()
         {
-            let message = Message(me: true, type: .Image, state: .Send, data: base64)
-            let serviceMessage = ServiceMessage(type: .Image, data: base64)
-            dialog?.messages.append(message)
-            dialog?.send(message: serviceMessage)
-            self.messagesList.reloadData()
-            self.messagesList.performBatchUpdates(nil, completion: {
-                (result) in
-                self.scrollToLast()
-            })
+            if let dialog = dialog{
+                DialogsManager.shared.addMessage(dialog: dialog, me: true, type: .Image, state: .Send, data: base64)
+                let serviceMessage = ServiceMessage(type: .Image, data: base64)
+                dialog.send(message: serviceMessage)
+                self.messagesList.reloadData()
+                self.messagesList.performBatchUpdates(nil, completion: {
+                    (result) in
+                    self.scrollToLast()
+                })
+            }
         }
         dismiss(animated: true, completion: nil)
     }

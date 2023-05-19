@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED01C97D2A1791AA002E8881 /* DialogsModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ED01C97B2A1791AA002E8881 /* DialogsModel.xcdatamodeld */; };
+		ED01C9982A179766002E8881 /* DialogMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED01C9972A179766002E8881 /* DialogMethods.swift */; };
+		ED01C9A22A1798C9002E8881 /* MessageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED01C9A12A1798C9002E8881 /* MessageState.swift */; };
+		ED01C9A42A1798E1002E8881 /* MessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED01C9A32A1798E1002E8881 /* MessageType.swift */; };
+		ED01C9B22A1799FD002E8881 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED01C9AE2A1799FD002E8881 /* Message.swift */; };
+		ED01C9B42A1799FD002E8881 /* Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED01C9B02A1799FD002E8881 /* Dialog.swift */; };
 		ED7F1AD12A15C86900D438BA /* NotifyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7F1AD02A15C86900D438BA /* NotifyManager.swift */; };
 		ED7F1AD32A15D89600D438BA /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7F1AD22A15D89600D438BA /* MessageService.swift */; };
 		ED8C84A52A140C5D0031D546 /* HMACUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C84A42A140C5D0031D546 /* HMACUtil.swift */; };
@@ -42,11 +48,8 @@
 		ED9273482A128E7800F520C6 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9273472A128E7800F520C6 /* PasswordViewController.swift */; };
 		EDDCBB7C2A1338CF00F8C0CD /* InviteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDCBB7B2A1338CF00F8C0CD /* InviteManager.swift */; };
 		EDDCBB7E2A13390800F8C0CD /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDCBB7D2A13390800F8C0CD /* UserManager.swift */; };
-		EDDCBB802A133A4E00F8C0CD /* Invite.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDCBB7F2A133A4E00F8C0CD /* Invite.swift */; };
 		EDDCBB822A133C4000F8C0CD /* Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDCBB812A133C4000F8C0CD /* Base64.swift */; };
 		EDFD47972A1305C600A074B4 /* AES256.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD47962A1305C600A074B4 /* AES256.swift */; };
-		EDFD479C2A131D4F00A074B4 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD479B2A131D4F00A074B4 /* Message.swift */; };
-		EDFD479E2A131D5800A074B4 /* Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD479D2A131D5800A074B4 /* Dialog.swift */; };
 		EDFD47A12A131F2600A074B4 /* DialogsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD47A02A131F2600A074B4 /* DialogsManager.swift */; };
 		EDFD47A92A132DA600A074B4 /* MessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD47A72A132DA600A074B4 /* MessageCollectionViewCell.swift */; };
 		EDFD47AA2A132DA600A074B4 /* MessageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDFD47A82A132DA600A074B4 /* MessageCollectionViewCell.xib */; };
@@ -55,6 +58,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED01C97C2A1791AA002E8881 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		ED01C9972A179766002E8881 /* DialogMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogMethods.swift; sourceTree = "<group>"; };
+		ED01C9A12A1798C9002E8881 /* MessageState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageState.swift; sourceTree = "<group>"; };
+		ED01C9A32A1798E1002E8881 /* MessageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageType.swift; sourceTree = "<group>"; };
+		ED01C9AE2A1799FD002E8881 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		ED01C9B02A1799FD002E8881 /* Dialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dialog.swift; sourceTree = "<group>"; };
 		ED7F1AD02A15C86900D438BA /* NotifyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifyManager.swift; sourceTree = "<group>"; };
 		ED7F1AD22A15D89600D438BA /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
 		ED8C84A42A140C5D0031D546 /* HMACUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMACUtil.swift; sourceTree = "<group>"; };
@@ -91,11 +100,8 @@
 		ED9273472A128E7800F520C6 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		EDDCBB7B2A1338CF00F8C0CD /* InviteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteManager.swift; sourceTree = "<group>"; };
 		EDDCBB7D2A13390800F8C0CD /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
-		EDDCBB7F2A133A4E00F8C0CD /* Invite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invite.swift; sourceTree = "<group>"; };
 		EDDCBB812A133C4000F8C0CD /* Base64.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base64.swift; sourceTree = "<group>"; };
 		EDFD47962A1305C600A074B4 /* AES256.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AES256.swift; sourceTree = "<group>"; };
-		EDFD479B2A131D4F00A074B4 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		EDFD479D2A131D5800A074B4 /* Dialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dialog.swift; sourceTree = "<group>"; };
 		EDFD47A02A131F2600A074B4 /* DialogsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogsManager.swift; sourceTree = "<group>"; };
 		EDFD47A72A132DA600A074B4 /* MessageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCollectionViewCell.swift; sourceTree = "<group>"; };
 		EDFD47A82A132DA600A074B4 /* MessageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -115,6 +121,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED01C9862A17950A002E8881 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				ED01C97B2A1791AA002E8881 /* DialogsModel.xcdatamodeld */,
+				ED01C9AE2A1799FD002E8881 /* Message.swift */,
+				ED01C9B02A1799FD002E8881 /* Dialog.swift */,
+				ED01C9972A179766002E8881 /* DialogMethods.swift */,
+				ED01C9A12A1798C9002E8881 /* MessageState.swift */,
+				ED01C9A32A1798E1002E8881 /* MessageType.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		ED9272EE2A0FE7C400F520C6 = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +282,7 @@
 		EDFD47992A131D3E00A074B4 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				ED01C9862A17950A002E8881 /* CoreData */,
 				EDFD479A2A131D4300A074B4 /* Entities */,
 				EDFD479F2A131F1500A074B4 /* Controllers */,
 			);
@@ -272,9 +292,6 @@
 		EDFD479A2A131D4300A074B4 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				EDFD479B2A131D4F00A074B4 /* Message.swift */,
-				EDFD479D2A131D5800A074B4 /* Dialog.swift */,
-				EDDCBB7F2A133A4E00F8C0CD /* Invite.swift */,
 				ED8C84AA2A15A6C90031D546 /* ServiceMessage.swift */,
 			);
 			path = Entities;
@@ -399,6 +416,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED01C9982A179766002E8881 /* DialogMethods.swift in Sources */,
 				ED9273112A0FFAB400F520C6 /* HomeViewController.swift in Sources */,
 				ED92731F2A1014DD00F520C6 /* CreatorQrViewController.swift in Sources */,
 				ED9273432A12786B00F520C6 /* StoryBoardManager.swift in Sources */,
@@ -409,24 +427,26 @@
 				EDFD47972A1305C600A074B4 /* AES256.swift in Sources */,
 				ED8C84AD2A15A8320031D546 /* ServerManager.swift in Sources */,
 				ED9273392A12730A00F520C6 /* FirstSettingsViewController.swift in Sources */,
+				ED01C9B22A1799FD002E8881 /* Message.swift in Sources */,
 				ED7F1AD12A15C86900D438BA /* NotifyManager.swift in Sources */,
 				EDDCBB822A133C4000F8C0CD /* Base64.swift in Sources */,
 				ED9272FB2A0FE7C400F520C6 /* AppDelegate.swift in Sources */,
-				EDFD479E2A131D5800A074B4 /* Dialog.swift in Sources */,
 				ED9273482A128E7800F520C6 /* PasswordViewController.swift in Sources */,
+				ED01C9B42A1799FD002E8881 /* Dialog.swift in Sources */,
+				ED01C9A22A1798C9002E8881 /* MessageState.swift in Sources */,
 				ED9273342A115EC200F520C6 /* DialogViewController.swift in Sources */,
 				ED8C84A52A140C5D0031D546 /* HMACUtil.swift in Sources */,
 				EDFD47A12A131F2600A074B4 /* DialogsManager.swift in Sources */,
 				ED8C84A72A1423330031D546 /* CompressUtil.swift in Sources */,
 				ED92732C2A114B1800F520C6 /* ChatViewCell.swift in Sources */,
+				ED01C97D2A1791AA002E8881 /* DialogsModel.xcdatamodeld in Sources */,
 				ED8C84AB2A15A6C90031D546 /* ServiceMessage.swift in Sources */,
 				ED9273402A12769100F520C6 /* LoadingAuthViewController.swift in Sources */,
-				EDDCBB802A133A4E00F8C0CD /* Invite.swift in Sources */,
 				ED92733E2A12744900F520C6 /* AuthController.swift in Sources */,
-				EDFD479C2A131D4F00A074B4 /* Message.swift in Sources */,
 				ED7F1AD32A15D89600D438BA /* MessageService.swift in Sources */,
 				EDDCBB7E2A13390800F8C0CD /* UserManager.swift in Sources */,
 				ED9272FD2A0FE7C400F520C6 /* SceneDelegate.swift in Sources */,
+				ED01C9A42A1798E1002E8881 /* MessageType.swift in Sources */,
 				ED9273162A0FFCF000F520C6 /* ScannerViewController.swift in Sources */,
 				ED8C84A92A1423B60031D546 /* JsonUtil.swift in Sources */,
 			);
@@ -669,6 +689,19 @@
 			productName = QRCode;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		ED01C97B2A1791AA002E8881 /* DialogsModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				ED01C97C2A1791AA002E8881 /* Model.xcdatamodel */,
+			);
+			currentVersion = ED01C97C2A1791AA002E8881 /* Model.xcdatamodel */;
+			path = DialogsModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = ED9272EF2A0FE7C400F520C6 /* Project object */;
 }
