@@ -26,7 +26,6 @@
 		ED9273022A0FE7C400F520C6 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED9273002A0FE7C400F520C6 /* Home.storyboard */; };
 		ED9273042A0FE7C600F520C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED9273032A0FE7C600F520C6 /* Assets.xcassets */; };
 		ED9273072A0FE7C600F520C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED9273052A0FE7C600F520C6 /* LaunchScreen.storyboard */; };
-		ED92730F2A0FFA0100F520C6 /* CreateQR.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED92730E2A0FFA0100F520C6 /* CreateQR.storyboard */; };
 		ED9273112A0FFAB400F520C6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9273102A0FFAB400F520C6 /* HomeViewController.swift */; };
 		ED9273162A0FFCF000F520C6 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9273142A0FFCF000F520C6 /* ScannerViewController.swift */; };
 		ED9273192A10004600F520C6 /* ScannerView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED9273182A10004600F520C6 /* ScannerView.storyboard */; };
@@ -78,7 +77,6 @@
 		ED9273032A0FE7C600F520C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED9273062A0FE7C600F520C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED9273082A0FE7C600F520C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ED92730E2A0FFA0100F520C6 /* CreateQR.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateQR.storyboard; sourceTree = "<group>"; };
 		ED9273102A0FFAB400F520C6 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		ED9273142A0FFCF000F520C6 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		ED9273182A10004600F520C6 /* ScannerView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScannerView.storyboard; sourceTree = "<group>"; };
@@ -168,7 +166,6 @@
 				ED9273032A0FE7C600F520C6 /* Assets.xcassets */,
 				ED9273052A0FE7C600F520C6 /* LaunchScreen.storyboard */,
 				ED9273082A0FE7C600F520C6 /* Info.plist */,
-				ED92730E2A0FFA0100F520C6 /* CreateQR.storyboard */,
 			);
 			path = CryptoChat;
 			sourceTree = "<group>";
@@ -404,7 +401,6 @@
 				ED9273232A101CAA00F520C6 /* InviteAccept.storyboard in Resources */,
 				EDFD47AF2A13329C00A074B4 /* ImageMessage.xib in Resources */,
 				ED9273462A12898D00F520C6 /* Password.storyboard in Resources */,
-				ED92730F2A0FFA0100F520C6 /* CreateQR.storyboard in Resources */,
 				ED92732D2A114B1800F520C6 /* ChatViewCell.xib in Resources */,
 				ED01C9BF2A17C68F002E8881 /* Settings.storyboard in Resources */,
 				ED9273042A0FE7C600F520C6 /* Assets.xcassets in Resources */,

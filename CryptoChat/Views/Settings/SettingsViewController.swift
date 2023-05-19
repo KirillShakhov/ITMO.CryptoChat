@@ -18,17 +18,37 @@ class SettingsViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
 
-        let tapOnAvatar = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-        self.imageView.addGestureRecognizer(tapOnAvatar)
+        if let image = UserManager.getAvatar() {
+            self.imageView.image = image
+        }
+        else{
+            self.imageView.image = UIImage(named: "avatar_mock")
+        }
         
         self.serverField.text = UserManager.GetHost()
+        self.nameField.text = UserManager.getUsername()
     }
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
+
     
-    @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
+    
+    @IBAction func deleteAllData(_ sender: Any) {
+        let serviceMessage = ServiceMessage(type: .DialogDelete, data: "")
+        for dialog in DialogsManager.shared.getData() {
+            if dialog.recipient != nil{
+                dialog.send(message: serviceMessage)
+            }
+        }
+        DialogsManager.shared.deleteAllData()
+        UserManager.deleteAllData()
+        self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
+
+    }
+    
+    @IBAction func changeImage(_ sender: Any) {
         if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
             imagePicker.delegate = self
             imagePicker.sourceType = .savedPhotosAlbum
@@ -36,22 +56,6 @@ class SettingsViewController: UIViewController {
             present(imagePicker, animated: true, completion: nil)
         }
     }
-
-    
-    
-    @IBAction func deleteAllData(_ sender: Any) {
-        DialogsManager.shared.deleteAllData()
-        UserManager.deleteAllData()
-        let serviceMessage = ServiceMessage(type: .DialogDelete, data: "")
-        for dialog in DialogsManager.shared.getData() {
-            if dialog.recipient != nil{
-                dialog.send(message: serviceMessage)
-            }
-        }
-        self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
-
-    }
-    
     
     @IBAction func close(_ sender: Any) {
         dismiss(animated: true)
@@ -74,29 +78,32 @@ class SettingsViewController: UIViewController {
            username != ""
         {
             UserManager.setUsername(name: username)
-            var avatarData = "nil"
-            if let avatar = UserManager.getAvatar(),
-               let jpegAvatar = avatar.jpegData(compressionQuality: 0.1)
-            {
-                avatarData = jpegAvatar.base64EncodedString()
-            }
-            if let json = JsonUtil.toJson(data: [UserManager.getUsername(), UserManager.getUuid(),avatarData])
-            {
-                let serviceMessage = ServiceMessage(type: .UpdateDialog, data: json)
-                for dialog in DialogsManager.shared.getData() {
-                    if dialog.recipient != nil{
-                        dialog.send(message: serviceMessage)
-                    }
-                }
-            }
-        
-            dismiss(animated: true)
         }
         else{
             let alert = UIAlertController(title: "Имя пользователя", message: "Не может быть пустым", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Закрыть", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
+            return
         }
+        if let image = self.imageView.image {
+            UserManager.setAvatar(image: image)
+        }
+        var avatarData = "nil"
+        if let avatar = UserManager.getAvatar(),
+           let jpegAvatar = avatar.jpegData(compressionQuality: 0.2)
+        {
+            avatarData = jpegAvatar.base64EncodedString()
+        }
+        if let json = JsonUtil.toJson(data: [UserManager.getUsername(), UserManager.getUuid(),avatarData])
+        {
+            let serviceMessage = ServiceMessage(type: .UpdateDialog, data: json)
+            for dialog in DialogsManager.shared.getData() {
+                if dialog.recipient != nil{
+                    dialog.send(message: serviceMessage)
+                }
+            }
+        }
+        self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
     }
     
 }
