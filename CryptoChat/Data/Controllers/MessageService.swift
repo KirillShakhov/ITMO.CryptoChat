@@ -33,7 +33,6 @@ public class MessageService{
             if let data = String(data: data, encoding: .utf8),
                data == "true"
             {
-                print("send data: " + data)
                 completion?(true)
                 return
             }
@@ -63,7 +62,6 @@ public class MessageService{
             if let data = String(data: data, encoding: .utf8),
                data == "true"
             {
-                print("send data: " + data)
                 completion?(true)
                 return
             }
@@ -87,7 +85,6 @@ public class MessageService{
                 return
             }
             let messages: [MessageResponse]? = try? JSONDecoder().decode([MessageResponse].self, from: data)
-            print("messages", messages ?? [])
             completion?(messages ?? [])
         }
         task.resume()

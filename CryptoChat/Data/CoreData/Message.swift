@@ -21,6 +21,7 @@ extension Message {
         return NSFetchRequest<Message>(entityName: "Message")
     }
 
+    @NSManaged public var uuid: String
     @NSManaged public var me: Bool
     @NSManaged public var type: MessageType
     @NSManaged public var state: MessageState

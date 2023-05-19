@@ -47,12 +47,13 @@
 		EDDCBB7C2A1338CF00F8C0CD /* InviteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDCBB7B2A1338CF00F8C0CD /* InviteManager.swift */; };
 		EDDCBB7E2A13390800F8C0CD /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDCBB7D2A13390800F8C0CD /* UserManager.swift */; };
 		EDDCBB822A133C4000F8C0CD /* Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDCBB812A133C4000F8C0CD /* Base64.swift */; };
+		EDDD06432A18340100F4AE3A /* RightImageMessage.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDDD06422A18340100F4AE3A /* RightImageMessage.xib */; };
 		EDFD47972A1305C600A074B4 /* AES256.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD47962A1305C600A074B4 /* AES256.swift */; };
 		EDFD47A12A131F2600A074B4 /* DialogsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD47A02A131F2600A074B4 /* DialogsManager.swift */; };
 		EDFD47A92A132DA600A074B4 /* MessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD47A72A132DA600A074B4 /* MessageCollectionViewCell.swift */; };
 		EDFD47AA2A132DA600A074B4 /* MessageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDFD47A82A132DA600A074B4 /* MessageCollectionViewCell.xib */; };
 		EDFD47AE2A13329C00A074B4 /* ImageMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD47AC2A13329C00A074B4 /* ImageMessage.swift */; };
-		EDFD47AF2A13329C00A074B4 /* ImageMessage.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDFD47AD2A13329C00A074B4 /* ImageMessage.xib */; };
+		EDFD47AF2A13329C00A074B4 /* LeftImageMessage.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDFD47AD2A13329C00A074B4 /* LeftImageMessage.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,12 +98,13 @@
 		EDDCBB7B2A1338CF00F8C0CD /* InviteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteManager.swift; sourceTree = "<group>"; };
 		EDDCBB7D2A13390800F8C0CD /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		EDDCBB812A133C4000F8C0CD /* Base64.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base64.swift; sourceTree = "<group>"; };
+		EDDD06422A18340100F4AE3A /* RightImageMessage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightImageMessage.xib; sourceTree = "<group>"; };
 		EDFD47962A1305C600A074B4 /* AES256.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AES256.swift; sourceTree = "<group>"; };
 		EDFD47A02A131F2600A074B4 /* DialogsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogsManager.swift; sourceTree = "<group>"; };
 		EDFD47A72A132DA600A074B4 /* MessageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCollectionViewCell.swift; sourceTree = "<group>"; };
 		EDFD47A82A132DA600A074B4 /* MessageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCollectionViewCell.xib; sourceTree = "<group>"; };
 		EDFD47AC2A13329C00A074B4 /* ImageMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMessage.swift; sourceTree = "<group>"; };
-		EDFD47AD2A13329C00A074B4 /* ImageMessage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageMessage.xib; sourceTree = "<group>"; };
+		EDFD47AD2A13329C00A074B4 /* LeftImageMessage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeftImageMessage.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,8 +326,9 @@
 		EDFD47AB2A13327600A074B4 /* ImageMessage */ = {
 			isa = PBXGroup;
 			children = (
+				EDDD06422A18340100F4AE3A /* RightImageMessage.xib */,
 				EDFD47AC2A13329C00A074B4 /* ImageMessage.swift */,
-				EDFD47AD2A13329C00A074B4 /* ImageMessage.xib */,
+				EDFD47AD2A13329C00A074B4 /* LeftImageMessage.xib */,
 			);
 			path = ImageMessage;
 			sourceTree = "<group>";
@@ -398,8 +401,9 @@
 				ED9273322A115CAC00F520C6 /* Dialog.storyboard in Resources */,
 				ED9273372A1272FC00F520C6 /* FirstSettings.storyboard in Resources */,
 				ED9273072A0FE7C600F520C6 /* LaunchScreen.storyboard in Resources */,
+				EDDD06432A18340100F4AE3A /* RightImageMessage.xib in Resources */,
 				ED9273232A101CAA00F520C6 /* InviteAccept.storyboard in Resources */,
-				EDFD47AF2A13329C00A074B4 /* ImageMessage.xib in Resources */,
+				EDFD47AF2A13329C00A074B4 /* LeftImageMessage.xib in Resources */,
 				ED9273462A12898D00F520C6 /* Password.storyboard in Resources */,
 				ED92732D2A114B1800F520C6 /* ChatViewCell.xib in Resources */,
 				ED01C9BF2A17C68F002E8881 /* Settings.storyboard in Resources */,

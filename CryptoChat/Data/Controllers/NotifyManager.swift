@@ -45,7 +45,6 @@ public class NotifyManager{
                 return
             }
             if let hash = String(data: data, encoding: .utf8){
-                print("hash: " + hash)
                 if hashes[host] != hash {
                     DialogsManager.shared.update(host: host, completion: {
                         print("dialog updates")

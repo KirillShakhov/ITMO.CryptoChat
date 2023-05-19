@@ -9,7 +9,7 @@
         <attribute name="server" optional="YES" attributeType="String"/>
         <attribute name="serverKey" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
-        <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Message"/>
+        <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Message" inverseName="dialog" inverseEntity="Message"/>
     </entity>
     <entity name="Message" representedClassName=".Message" syncable="YES">
         <attribute name="data" optional="YES" attributeType="String"/>
@@ -17,5 +17,7 @@
         <attribute name="me" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="state" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="String"/>
+        <relationship name="dialog" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dialog" inverseName="messages" inverseEntity="Dialog"/>
     </entity>
 </model>

@@ -29,13 +29,14 @@ extension Dialog{
         addToMessages(message)
     }
 
-    public func update(completion: (() -> Void)? = nil){
+    public func update(completion: ((Bool) -> Void)? = nil){
         if let server = self.server,
            let serverKey = self.serverKey,
            let hmacKey = self.hmacKey,
            let aesKey = self.aesKey
         {
             MessageService.findMessages(host: server, pass: serverKey, completion: {messages in
+                var work = 0
                 for m in messages {
                     if m.data.count < 64 {
                         continue
@@ -51,9 +52,10 @@ extension Dialog{
                     if hash != messageHash { continue }
                     
                     let aes = AES256(key: aesKey, iv: messageIv)
-                    let decryptedData = aes.aesDecrypt(messageData)
-                    
-                    if let data = decryptedData?.data(using: .utf8),
+                    guard let decryptedData = aes.aesDecrypt(messageData) else { continue }
+                    work += 1
+                    MessageService.delete(host: server, pass: serverKey, uuid: m.uuid)
+                    if let data = decryptedData.data(using: .utf8),
                        let serviceMessage = try? JSONDecoder().decode(ServiceMessage.self, from: data){
                         if serviceMessage.type == .UpdateDialog || serviceMessage.type == .AcceptInvite{
                             if let serviceData = serviceMessage.data.data(using: .utf8),
@@ -85,15 +87,14 @@ extension Dialog{
                             DialogsManager.shared.delete(dialog: self)
                         }
                         else if serviceMessage.type == .Text{
-                            DialogsManager.shared.addMessage(dialog: self, me: false, type: .Text, state: .Delivered, data: serviceMessage.data)
+                            DialogsManager.shared.addMessage(dialog: self, uuid: m.uuid, me: false, type: .Text, state: .Delivered, data: serviceMessage.data)
                         }
                         else if serviceMessage.type == .Image{
-                            DialogsManager.shared.addMessage(dialog: self, me: false, type: .Image, state: .Delivered, data: serviceMessage.data)
+                            DialogsManager.shared.addMessage(dialog: self, uuid: m.uuid, me: false, type: .Image, state: .Delivered, data: serviceMessage.data)
                         }
-                        MessageService.delete(host: server, pass: serverKey, uuid: m.uuid)
                     }
                 }
-                completion?()
+                completion?(work > 0)
             })
         }
     }

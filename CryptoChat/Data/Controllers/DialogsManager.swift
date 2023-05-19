@@ -52,13 +52,28 @@ public class DialogsManager {
         }
     }
     
-    public func addMessage(dialog: Dialog, me: Bool, type: MessageType, state: MessageState, data: String) {
+    public func addMessage(dialog: Dialog, uuid: String?, me: Bool, type: MessageType, state: MessageState, data: String) {
         guard let context = self.context else { return }
+        
+        if let messages = dialog.messages?.allObjects as? [Message],
+           let uuid = uuid
+            {
+            print("uuid", uuid)
+            for m in messages {
+                if m.uuid == uuid {
+                    print("find")
+                    return
+                }
+            }
+            print("uuid2", uuid)
+        }
+
         let message = Message(context: context)
         message.me = me
         message.type = type
         message.state = state
         message.data = data
+        message.date = Date()
         dialog.addToMessages(message)
         DispatchQueue.main.async {
             do {
@@ -83,18 +98,6 @@ public class DialogsManager {
         }
     }
     
-    public func findByRecipient(recipient: String) -> Dialog? {
-        guard let context = self.context else { return nil }
-        if let dialogs = try? context.fetch(Dialog.fetchRequest()){
-            for dialog in dialogs {
-                if recipient == dialog.recipient {
-                    return dialog
-                }
-            }
-        }
-        return nil
-    }
-    
     public func getData() -> Array<Dialog> {
         guard let context = self.context else { return [] }
         if let dialogs = try? context.fetch(Dialog.fetchRequest()){
@@ -109,6 +112,18 @@ public class DialogsManager {
         return []
     }
     
+    public func findByRecipient(recipient: String) -> Dialog? {
+        guard let context = self.context else { return nil }
+        if let dialogs = try? context.fetch(Dialog.fetchRequest()){
+            for dialog in dialogs {
+                if recipient == dialog.recipient {
+                    return dialog
+                }
+            }
+        }
+        return nil
+    }
+    
     public func update(host: String, completion: (() -> Void)? = nil){
         guard let context = self.context else { return }
         if let dialogs = try? context.fetch(Dialog.fetchRequest()){
@@ -116,7 +131,7 @@ public class DialogsManager {
             for dialog in dialogs {
                 if dialog.server == host{
                     dispatchGroup.enter()
-                    dialog.update(completion: {
+                    dialog.update(completion: {_ in
                         dispatchGroup.leave()
                     })
                 }

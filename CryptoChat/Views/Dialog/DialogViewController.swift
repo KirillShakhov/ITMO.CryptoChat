@@ -28,10 +28,12 @@ class DialogViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 
         self.messagesList.register(UINib(nibName: "MessageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MessageCollectionViewCell")
-        self.messagesList.register(UINib(nibName: "ImageMessage", bundle: nil), forCellWithReuseIdentifier: "ImageMessage")
+        self.messagesList.register(UINib(nibName: "RightImageMessage", bundle: nil), forCellWithReuseIdentifier: "RightImageMessage")
+        self.messagesList.register(UINib(nibName: "LeftImageMessage", bundle: nil), forCellWithReuseIdentifier: "LeftImageMessage")
 
         self.messagesList.dataSource = self
         self.messagesList.delegate = self
+        
 
         usernameLabel.text = dialog?.username
         if let image = dialog?.image {
@@ -41,10 +43,6 @@ class DialogViewController: UIViewController {
             avatarImage.image = UIImage(named: "avatar_mock")
         }
 
-
-        contextButton.addAction(UIAction(title: "", handler: {_ in
-            print("defaultAction")
-        }), for: .touchUpInside)
         contextButton.menu = addMenuItems()
     }
     
@@ -59,9 +57,11 @@ class DialogViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
-            self.dialog?.update(completion: {
-                DispatchQueue.main.async{
-                    self.messagesList.reloadData()
+            self.dialog?.update(completion: { updated in
+                if updated {
+                    DispatchQueue.main.async {
+                        self.messagesList.reloadData()
+                    }
                 }
             })
         })
@@ -101,7 +101,7 @@ class DialogViewController: UIViewController {
         {
             textField.text = ""
             if let dialog = dialog {
-                DialogsManager.shared.addMessage(dialog: dialog, me: true, type: .Text, state: .Send, data: text)
+                DialogsManager.shared.addMessage(dialog: dialog, uuid: nil, me: true, type: .Text, state: .Send, data: text)
                 let serviceMessage = ServiceMessage(type: .Text, data: text)
                 dialog.send(message: serviceMessage)
                 self.messagesList.reloadData()
@@ -147,10 +147,18 @@ extension DialogViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let message = dialog?.messages?.allObjects[indexPath.item] as? Message {
             if message.type == MessageType.Image{
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageMessage", for: indexPath) as! ImageMessage
+                let cell: ImageMessage
+                if message.me {
+                    cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RightImageMessage", for: indexPath) as! ImageMessage
+                }
+                else{
+                    cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LeftImageMessage", for: indexPath) as! ImageMessage
+                }
                 if let message = dialog?.messages?.allObjects[indexPath.item] as? Message {
                     cell.message = message
-                    cell.update()
+                    DispatchQueue.main.async {
+                        cell.update()
+                    }
                 }
                 return cell
 
@@ -190,7 +198,7 @@ extension DialogViewController: UICollectionViewDelegateFlowLayout{
             if message.type == MessageType.Image{
                 return CGSize(width: self.messagesList.visibleSize.width, height: 250.0)
             }
-            return CGSize(width: self.messagesList.visibleSize.width, height: 70.0+CGFloat(((message.data?.count ?? 0)*5)))
+            return CGSize(width: self.messagesList.visibleSize.width, height: 70.0+CGFloat((((message.data?.count ?? 0)/40)*5)))
         }
         return CGSize(width: 100.0, height: 100.0)
     }
@@ -221,7 +229,7 @@ extension DialogViewController: UIImagePickerControllerDelegate, UINavigationCon
            let base64 = pickedImage.jpegData(compressionQuality: 0.8)?.base64EncodedString()
         {
             if let dialog = dialog{
-                DialogsManager.shared.addMessage(dialog: dialog, me: true, type: .Image, state: .Send, data: base64)
+                DialogsManager.shared.addMessage(dialog: dialog, uuid: nil, me: true, type: .Image, state: .Send, data: base64)
                 let serviceMessage = ServiceMessage(type: .Image, data: base64)
                 dialog.send(message: serviceMessage)
                 self.messagesList.reloadData()
