@@ -21,12 +21,8 @@ class ImageMessage: UICollectionViewCell {
     func update(){
         if let data = self.message?.data{
             let dataDecoded : Data = Data(base64Encoded: data, options: .ignoreUnknownCharacters)!
-            DispatchQueue.main.async {
                 self.image.image = UIImage(data: dataDecoded)
-            }
         }
-        DispatchQueue.main.async {
-            self.dateLabel.text = self.message?.date?.formatted()
-        }
+        self.dateLabel.text = self.message?.date?.formatted()
     }
 }

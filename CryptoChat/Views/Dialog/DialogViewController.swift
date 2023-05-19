@@ -27,7 +27,8 @@ class DialogViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 
-        self.messagesList.register(UINib(nibName: "MessageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MessageCollectionViewCell")
+        self.messagesList.register(UINib(nibName: "RightMessageCell", bundle: nil), forCellWithReuseIdentifier: "RightMessageCell")
+        self.messagesList.register(UINib(nibName: "LeftMessageCell", bundle: nil), forCellWithReuseIdentifier: "LeftMessageCell")
         self.messagesList.register(UINib(nibName: "RightImageMessage", bundle: nil), forCellWithReuseIdentifier: "RightImageMessage")
         self.messagesList.register(UINib(nibName: "LeftImageMessage", bundle: nil), forCellWithReuseIdentifier: "LeftImageMessage")
 
@@ -55,14 +56,18 @@ class DialogViewController: UIViewController {
         return menuItems
     }
     
+    private var isUpdated: Bool = false
     override func viewWillAppear(_ animated: Bool) {
         self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+            if self.isUpdated { return }
+            self.isUpdated = true
             self.dialog?.update(completion: { updated in
                 if updated {
                     DispatchQueue.main.async {
                         self.messagesList.reloadData()
                     }
                 }
+                self.isUpdated = false
             })
         })
     }
@@ -164,7 +169,13 @@ extension DialogViewController: UICollectionViewDelegate{
 
             }
             else if message.type == MessageType.Text{
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MessageCollectionViewCell", for: indexPath) as! MessageCollectionViewCell
+                let cell: MessageCollectionViewCell
+                if message.me {
+                    cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RightMessageCell", for: indexPath) as! MessageCollectionViewCell
+                }
+                else{
+                    cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LeftMessageCell", for: indexPath) as! MessageCollectionViewCell
+                }
                 if let message = dialog?.messages?.allObjects[indexPath.item] as? Message {
                     cell.message = message
                     cell.update()
