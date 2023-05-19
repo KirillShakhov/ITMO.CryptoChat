@@ -14,6 +14,7 @@ class FirstSettingsViewController: UIViewController {
     @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var uuidLabel: UILabel!
     @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var serverField: UITextField!
     var imagePicker = UIImagePickerController()
 
     private var uuid: String = UUID().uuidString
@@ -36,7 +37,19 @@ class FirstSettingsViewController: UIViewController {
     }
 
     @IBAction func create(_ sender: Any) {
-        if (nameField.text == "") {
+        if serverField.text == "" {
+            let alert = UIAlertController(title: "Адрес сервера", message: "Не может быть пустым", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Закрыть", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        if !UserManager.setHost(host: serverField.text ?? ""){
+            let alert = UIAlertController(title: "Адрес сервера", message: "Введенный вами адрес сервера недействителен или недоступен", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Закрыть", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        if nameField.text == "" {
             let alert = UIAlertController(title: "Имя пользователя", message: "Не может быть пустым", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Закрыть", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)

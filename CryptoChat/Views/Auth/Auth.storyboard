@@ -4,150 +4,9 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Auth Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController storyboardIdentifier="Auth" id="BYZ-38-t0r" customClass="AuthController" customModule="ItEasy" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="start" translatesAutoresizingMaskIntoConstraints="NO" id="NvD-Iu-UpG">
-                                <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gv7-7H-XS5" customClass="ActualGradientButton" customModule="CryptoChat" customModuleProvider="target">
-                                <rect key="frame" x="45" y="787" width="338" height="60"/>
-                                <color key="backgroundColor" systemColor="systemGreenColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="jmF-WC-geR"/>
-                                </constraints>
-                                <color key="tintColor" systemColor="systemGreenColor"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Button">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Sign Up">
-                                            <attributes>
-                                                <font key="NSFont" size="20" name="Helvetica"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="firstColor">
-                                        <color key="value" red="0.60392159219999997" green="0.76470589639999997" blue="0.61568629740000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="secondColor">
-                                        <color key="value" red="0.46274507050000002" green="0.59607845540000004" blue="0.4941176176" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="register:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xLL-D1-XLw"/>
-                                </connections>
-                            </button>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Jr-8T-tUA">
-                                <rect key="frame" x="45" y="707" width="338" height="60"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="37A-A9-1vl">
-                                    <rect key="frame" x="0.0" y="0.0" width="338" height="60"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Ws-x7-hfF">
-                                            <rect key="frame" x="0.0" y="0.0" width="338" height="60"/>
-                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                            <state key="normal">
-                                                <attributedString key="attributedTitle">
-                                                    <fragment content="Sign In">
-                                                        <attributes>
-                                                            <font key="NSFont" size="20" name="Helvetica"/>
-                                                        </attributes>
-                                                    </fragment>
-                                                </attributedString>
-                                            </state>
-                                            <connections>
-                                                <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tJC-F0-Uiq"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="1Ws-x7-hfF" secondAttribute="trailing" id="1wh-yi-k53"/>
-                                        <constraint firstAttribute="bottom" secondItem="1Ws-x7-hfF" secondAttribute="bottom" id="Mi8-0G-c1B"/>
-                                        <constraint firstItem="1Ws-x7-hfF" firstAttribute="top" secondItem="37A-A9-1vl" secondAttribute="top" id="Rr5-ME-W08"/>
-                                        <constraint firstItem="1Ws-x7-hfF" firstAttribute="leading" secondItem="37A-A9-1vl" secondAttribute="leading" id="a2M-27-kg1"/>
-                                    </constraints>
-                                </view>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="46z-F4-BQu"/>
-                                </constraints>
-                                <blurEffect style="systemUltraThinMaterialDark"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </visualEffectView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hWX-tJ-pSx">
-                                <rect key="frame" x="50" y="227" width="328" height="120"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="wFA-da-b99">
-                                    <rect key="frame" x="0.0" y="0.0" width="328" height="120"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ItEasy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Htt-AV-ZhY">
-                                            <rect key="frame" x="0.0" y="0.0" width="328" height="120"/>
-                                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="82"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="Htt-AV-ZhY" firstAttribute="top" secondItem="wFA-da-b99" secondAttribute="top" id="HSh-rL-M8c"/>
-                                        <constraint firstItem="Htt-AV-ZhY" firstAttribute="leading" secondItem="wFA-da-b99" secondAttribute="leading" id="LMc-uM-rfH"/>
-                                        <constraint firstAttribute="trailing" secondItem="Htt-AV-ZhY" secondAttribute="trailing" id="c2N-H7-eAT"/>
-                                        <constraint firstAttribute="bottom" secondItem="Htt-AV-ZhY" secondAttribute="bottom" id="fdF-Fx-KYt"/>
-                                    </constraints>
-                                </view>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="GPf-V5-CEB"/>
-                                </constraints>
-                                <blurEffect style="systemUltraThinMaterialDark"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </visualEffectView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Gv7-7H-XS5" secondAttribute="bottom" constant="45" id="3Eg-13-1se"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5Jr-8T-tUA" secondAttribute="trailing" constant="45" id="FGN-PW-xxu"/>
-                            <constraint firstItem="Gv7-7H-XS5" firstAttribute="top" secondItem="5Jr-8T-tUA" secondAttribute="bottom" constant="20" id="K3H-b4-mt3"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hWX-tJ-pSx" secondAttribute="trailing" constant="50" id="MYL-zy-PBU"/>
-                            <constraint firstItem="hWX-tJ-pSx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="Mda-59-g5G"/>
-                            <constraint firstItem="Gv7-7H-XS5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="45" id="T2R-39-yta"/>
-                            <constraint firstItem="5Jr-8T-tUA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="45" id="WnA-M3-X1m"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Gv7-7H-XS5" secondAttribute="trailing" constant="45" id="bZF-Cc-nyB"/>
-                            <constraint firstItem="hWX-tJ-pSx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="180" id="v4o-vQ-404"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="logoBlur" destination="hWX-tJ-pSx" id="whv-GL-b5A"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1839.1304347826087" y="93.75"/>
-        </scene>
         <!--Loading Auth View Controller-->
         <scene sceneID="y5f-23-MZz">
             <objects>
@@ -210,13 +69,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="auth" width="1920" height="1280"/>
-        <image name="start" width="1920" height="1280"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <image name="auth" width="1920" height="1281"/>
     </resources>
 </document>

@@ -93,12 +93,43 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="Удалить данные">
-                                    <color key="baseForegroundColor" systemColor="systemPinkColor"/>
+                                    <color key="baseForegroundColor" systemColor="systemRedColor"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="deleteAllData:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ZyS-L4-e55"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LhF-HH-uCF">
+                                <rect key="frame" x="25" y="368" width="364" height="80"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сервер" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjm-Sl-OWe">
+                                        <rect key="frame" x="0.0" y="0.0" width="364" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="http://localhost:8080" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Phv-4y-bNU">
+                                        <rect key="frame" x="0.0" y="40" width="364" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="rPU-96-E0b"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Phv-4y-bNU" secondAttribute="trailing" id="8CL-6v-JvO"/>
+                                    <constraint firstAttribute="height" constant="80" id="HQ1-Dv-BLh"/>
+                                    <constraint firstAttribute="bottom" secondItem="Phv-4y-bNU" secondAttribute="bottom" id="LCg-pE-KiU"/>
+                                    <constraint firstAttribute="trailing" secondItem="tjm-Sl-OWe" secondAttribute="trailing" id="Z09-he-asX"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="bjf-VF-ju2"/>
+                                    <constraint firstItem="tjm-Sl-OWe" firstAttribute="top" secondItem="LhF-HH-uCF" secondAttribute="top" id="d1r-bl-pz5"/>
+                                    <constraint firstItem="Phv-4y-bNU" firstAttribute="top" secondItem="tjm-Sl-OWe" secondAttribute="bottom" id="eAK-db-sf9"/>
+                                    <constraint firstItem="Phv-4y-bNU" firstAttribute="leading" secondItem="LhF-HH-uCF" secondAttribute="leading" id="lkE-Va-6qU"/>
+                                    <constraint firstItem="tjm-Sl-OWe" firstAttribute="leading" secondItem="LhF-HH-uCF" secondAttribute="leading" id="mva-sc-ALg"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -109,9 +140,12 @@
                             <constraint firstItem="crC-uk-ojX" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="LhK-RU-S9v"/>
                             <constraint firstItem="E5s-2D-Drd" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" constant="50" id="P8R-Qn-1pw"/>
                             <constraint firstItem="crC-uk-ojX" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="RZk-DW-Buc"/>
+                            <constraint firstItem="E5s-2D-Drd" firstAttribute="top" secondItem="LhF-HH-uCF" secondAttribute="bottom" constant="10" id="TCt-a7-t2e"/>
                             <constraint firstItem="aqa-Oj-Gqb" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="TGd-Ft-3Wi"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="aqa-Oj-Gqb" secondAttribute="bottom" constant="10" id="aCi-N3-orI"/>
                             <constraint firstItem="E5s-2D-Drd" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="enc-ek-hza"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="LhF-HH-uCF" secondAttribute="trailing" constant="25" id="hP3-KU-VRt"/>
+                            <constraint firstItem="LhF-HH-uCF" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="kW4-5I-8A0"/>
                             <constraint firstItem="E5s-2D-Drd" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" constant="-25" id="noL-PD-O1I"/>
                             <constraint firstItem="9D0-n8-eNf" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="pvV-Xl-dZf"/>
                             <constraint firstItem="bsh-JU-7Sv" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="vTF-K6-jsE"/>
@@ -121,6 +155,7 @@
                     <connections>
                         <outlet property="imageView" destination="9D0-n8-eNf" id="aCP-8F-sdJ"/>
                         <outlet property="nameField" destination="qOz-vO-8vu" id="5zB-oo-BAv"/>
+                        <outlet property="serverField" destination="Phv-4y-bNU" id="eTR-pT-hcN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -134,8 +169,8 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

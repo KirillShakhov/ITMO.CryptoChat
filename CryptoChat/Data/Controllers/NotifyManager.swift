@@ -8,7 +8,7 @@
 import Foundation
 
 public class NotifyManager{
-    private static var hashes: [String: String] = [ServerManager.GetHost():""]
+    private static var hashes: [String: String] = [UserManager.GetHost():""]
     
     public static func add(host: String){
         if hashes[host] != nil {

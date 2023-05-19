@@ -18,7 +18,7 @@ public class InviteManager {
            let hmacKey = AES256.generate256bitKey(),
            let serverKey = AES256.generate256bitKey()
         {
-            if let dialog = DialogsManager.shared.add(aesKey: aesKey, hmacKey: hmacKey, server: ServerManager.GetHost(), serverKey: serverKey, dateExpired: dateExpired){
+            if let dialog = DialogsManager.shared.add(aesKey: aesKey, hmacKey: hmacKey, server: UserManager.GetHost(), serverKey: serverKey, dateExpired: dateExpired){
                 
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "MM/dd/yyyy, h:mm a"

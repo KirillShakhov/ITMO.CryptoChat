@@ -10,8 +10,9 @@ import UIKit
 class SettingsViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var serverField: UITextField!
+    
     var imagePicker = UIImagePickerController()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
@@ -19,7 +20,8 @@ class SettingsViewController: UIViewController {
 
         let tapOnAvatar = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         self.imageView.addGestureRecognizer(tapOnAvatar)
-
+        
+        self.serverField.text = UserManager.GetHost()
     }
     
     @objc func dismissKeyboard() {
@@ -27,8 +29,6 @@ class SettingsViewController: UIViewController {
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
-        print("click")
-        // handling code
         if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
             imagePicker.delegate = self
             imagePicker.sourceType = .savedPhotosAlbum
@@ -37,6 +37,7 @@ class SettingsViewController: UIViewController {
         }
     }
 
+    
     
     @IBAction func deleteAllData(_ sender: Any) {
         DialogsManager.shared.deleteAllData()
@@ -48,7 +49,7 @@ class SettingsViewController: UIViewController {
             }
         }
         self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
-    
+
     }
     
     
@@ -57,7 +58,18 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func save(_ sender: Any) {
-        
+        if serverField.text == "" {
+            let alert = UIAlertController(title: "Адрес сервера", message: "Не может быть пустым", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Закрыть", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        if !UserManager.setHost(host: serverField.text ?? ""){
+            let alert = UIAlertController(title: "Адрес сервера", message: "Введенный вами адрес сервера недействителен или недоступен", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Закрыть", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
         if let username = nameField.text,
            username != ""
         {

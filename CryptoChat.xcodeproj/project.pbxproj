@@ -21,7 +21,6 @@
 		ED8C84A72A1423330031D546 /* CompressUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C84A62A1423330031D546 /* CompressUtil.swift */; };
 		ED8C84A92A1423B60031D546 /* JsonUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C84A82A1423B60031D546 /* JsonUtil.swift */; };
 		ED8C84AB2A15A6C90031D546 /* ServiceMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C84AA2A15A6C90031D546 /* ServiceMessage.swift */; };
-		ED8C84AD2A15A8320031D546 /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C84AC2A15A8320031D546 /* ServerManager.swift */; };
 		ED9272FB2A0FE7C400F520C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9272FA2A0FE7C400F520C6 /* AppDelegate.swift */; };
 		ED9272FD2A0FE7C400F520C6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9272FC2A0FE7C400F520C6 /* SceneDelegate.swift */; };
 		ED9273022A0FE7C400F520C6 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED9273002A0FE7C400F520C6 /* Home.storyboard */; };
@@ -43,7 +42,6 @@
 		ED9273372A1272FC00F520C6 /* FirstSettings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED9273362A1272FC00F520C6 /* FirstSettings.storyboard */; };
 		ED9273392A12730A00F520C6 /* FirstSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9273382A12730A00F520C6 /* FirstSettingsViewController.swift */; };
 		ED92733D2A12744900F520C6 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED92733B2A12744900F520C6 /* Auth.storyboard */; };
-		ED92733E2A12744900F520C6 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED92733C2A12744900F520C6 /* AuthController.swift */; };
 		ED9273402A12769100F520C6 /* LoadingAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED92733F2A12769100F520C6 /* LoadingAuthViewController.swift */; };
 		ED9273462A12898D00F520C6 /* Password.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED9273452A12898D00F520C6 /* Password.storyboard */; };
 		ED9273482A128E7800F520C6 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9273472A128E7800F520C6 /* PasswordViewController.swift */; };
@@ -73,7 +71,6 @@
 		ED8C84A62A1423330031D546 /* CompressUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompressUtil.swift; sourceTree = "<group>"; };
 		ED8C84A82A1423B60031D546 /* JsonUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonUtil.swift; sourceTree = "<group>"; };
 		ED8C84AA2A15A6C90031D546 /* ServiceMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceMessage.swift; sourceTree = "<group>"; };
-		ED8C84AC2A15A8320031D546 /* ServerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerManager.swift; sourceTree = "<group>"; };
 		ED9272F72A0FE7C400F520C6 /* CryptoChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED9272FA2A0FE7C400F520C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED9272FC2A0FE7C400F520C6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,7 +93,6 @@
 		ED9273362A1272FC00F520C6 /* FirstSettings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FirstSettings.storyboard; sourceTree = "<group>"; };
 		ED9273382A12730A00F520C6 /* FirstSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSettingsViewController.swift; sourceTree = "<group>"; };
 		ED92733B2A12744900F520C6 /* Auth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
-		ED92733C2A12744900F520C6 /* AuthController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
 		ED92733F2A12769100F520C6 /* LoadingAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAuthViewController.swift; sourceTree = "<group>"; };
 		ED9273452A12898D00F520C6 /* Password.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Password.storyboard; sourceTree = "<group>"; };
 		ED9273472A128E7800F520C6 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
@@ -246,7 +242,6 @@
 			isa = PBXGroup;
 			children = (
 				ED92733B2A12744900F520C6 /* Auth.storyboard */,
-				ED92733C2A12744900F520C6 /* AuthController.swift */,
 				ED92733F2A12769100F520C6 /* LoadingAuthViewController.swift */,
 			);
 			path = Auth;
@@ -314,7 +309,6 @@
 				EDFD47A02A131F2600A074B4 /* DialogsManager.swift */,
 				EDDCBB7B2A1338CF00F8C0CD /* InviteManager.swift */,
 				EDDCBB7D2A13390800F8C0CD /* UserManager.swift */,
-				ED8C84AC2A15A8320031D546 /* ServerManager.swift */,
 				ED7F1AD02A15C86900D438BA /* NotifyManager.swift */,
 				ED7F1AD22A15D89600D438BA /* MessageService.swift */,
 			);
@@ -436,7 +430,6 @@
 				EDFD47A92A132DA600A074B4 /* MessageCollectionViewCell.swift in Sources */,
 				EDFD47AE2A13329C00A074B4 /* ImageMessage.swift in Sources */,
 				EDFD47972A1305C600A074B4 /* AES256.swift in Sources */,
-				ED8C84AD2A15A8320031D546 /* ServerManager.swift in Sources */,
 				ED9273392A12730A00F520C6 /* FirstSettingsViewController.swift in Sources */,
 				ED01C9B22A1799FD002E8881 /* Message.swift in Sources */,
 				ED7F1AD12A15C86900D438BA /* NotifyManager.swift in Sources */,
@@ -453,7 +446,6 @@
 				ED01C97D2A1791AA002E8881 /* DialogsModel.xcdatamodeld in Sources */,
 				ED8C84AB2A15A6C90031D546 /* ServiceMessage.swift in Sources */,
 				ED9273402A12769100F520C6 /* LoadingAuthViewController.swift in Sources */,
-				ED92733E2A12744900F520C6 /* AuthController.swift in Sources */,
 				ED7F1AD32A15D89600D438BA /* MessageService.swift in Sources */,
 				EDDCBB7E2A13390800F8C0CD /* UserManager.swift in Sources */,
 				ED01C9C12A17C6A3002E8881 /* SettingsViewController.swift in Sources */,
