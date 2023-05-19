@@ -20,6 +20,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hbl-Cd-7w5">
                                 <rect key="frame" x="10" y="69" width="373" height="66"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="249-SZ-tu4">
+                                        <rect key="frame" x="58" y="0.0" width="315" height="66"/>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aKB-W3-qma">
                                         <rect key="frame" x="8" y="8" width="50" height="50"/>
                                         <constraints>
@@ -65,7 +68,11 @@
                                     <constraint firstAttribute="bottom" secondItem="aKB-W3-qma" secondAttribute="bottom" constant="8" id="1dt-lq-a3E"/>
                                     <constraint firstAttribute="bottom" secondItem="iua-oJ-Epi" secondAttribute="bottom" id="6RS-Mh-l6j"/>
                                     <constraint firstAttribute="bottom" secondItem="9HH-pE-l3h" secondAttribute="bottom" constant="8" id="8jC-Uw-0Sg"/>
+                                    <constraint firstItem="249-SZ-tu4" firstAttribute="leading" secondItem="aKB-W3-qma" secondAttribute="trailing" id="Dby-Ro-8JQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="249-SZ-tu4" secondAttribute="trailing" id="IJe-x3-s5A"/>
                                     <constraint firstItem="iua-oJ-Epi" firstAttribute="leading" secondItem="aKB-W3-qma" secondAttribute="trailing" id="PZJ-IC-iIT"/>
+                                    <constraint firstAttribute="bottom" secondItem="249-SZ-tu4" secondAttribute="bottom" id="Pgn-ys-QC1"/>
+                                    <constraint firstItem="249-SZ-tu4" firstAttribute="top" secondItem="hbl-Cd-7w5" secondAttribute="top" id="RHe-5y-fQE"/>
                                     <constraint firstAttribute="trailing" secondItem="9HH-pE-l3h" secondAttribute="trailing" constant="8" id="SLr-Xa-8at"/>
                                     <constraint firstItem="iua-oJ-Epi" firstAttribute="top" secondItem="hbl-Cd-7w5" secondAttribute="top" id="gYk-J0-P2C"/>
                                     <constraint firstItem="aKB-W3-qma" firstAttribute="leading" secondItem="hbl-Cd-7w5" secondAttribute="leading" constant="8" id="hNn-pn-I67"/>
@@ -178,6 +185,7 @@
                     </view>
                     <connections>
                         <outlet property="avatarImage" destination="9HH-pE-l3h" id="Uha-D5-P5H"/>
+                        <outlet property="contextButton" destination="249-SZ-tu4" id="oag-XW-yw6"/>
                         <outlet property="messagesList" destination="b5w-mU-yJL" id="20t-p8-fMQ"/>
                         <outlet property="textField" destination="byQ-cN-p8j" id="cxg-WJ-zEc"/>
                         <outlet property="usernameLabel" destination="iua-oJ-Epi" id="bbA-kb-UU2"/>

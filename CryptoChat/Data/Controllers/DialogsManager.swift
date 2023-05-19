@@ -52,8 +52,8 @@ public class DialogsManager {
         }
     }
     
-    public func addMessage(dialog: Dialog, me: Bool, type: MessageType, state: MessageState, data: String) -> Message? {
-        guard let context = self.context else { return nil }
+    public func addMessage(dialog: Dialog, me: Bool, type: MessageType, state: MessageState, data: String) {
+        guard let context = self.context else { return }
         let message = Message(context: context)
         message.me = me
         message.type = type
@@ -68,7 +68,6 @@ public class DialogsManager {
                 // Handle Error
             }
         }
-        return message
     }
     
     public func delete(dialog: Dialog){

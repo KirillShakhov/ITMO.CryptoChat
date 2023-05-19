@@ -11,9 +11,10 @@ class DialogViewController: UIViewController {
 
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var avatarImage: UIImageView!
-    
     @IBOutlet weak var messagesList: UICollectionView!
     @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var contextButton: UIButton!
+    
     var dialog: Dialog?
     var timer: Timer?
 
@@ -39,6 +40,21 @@ class DialogViewController: UIViewController {
         else{
             avatarImage.image = UIImage(named: "avatar_mock")
         }
+
+
+        contextButton.addAction(UIAction(title: "", handler: {_ in
+            print("defaultAction")
+        }), for: .touchUpInside)
+        contextButton.menu = addMenuItems()
+    }
+    
+    func addMenuItems() -> UIMenu {
+        let menuItems = UIMenu(title: "", options: .displayInline, children: [
+            UIAction(title: "Удалить", image: UIImage(systemName: "trash"), handler: {_ in
+                self.delete()
+            })
+        ])
+        return menuItems
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,9 +81,18 @@ class DialogViewController: UIViewController {
         self.messagesList.scrollToItem(at: indexPath, at: .bottom, animated: false)
     }
     
+    func delete(){
+        if let dialog = dialog{
+            DialogsManager.shared.delete(dialog: dialog)
+        }
+        dismiss(animated: true)
+    }
+    
     @IBAction func back(_ sender: Any) {
         dismiss(animated: true)
     }
+    
+    
     @IBAction func send(_ sender: Any) {
         if let text = textField.text,
            text != ""
