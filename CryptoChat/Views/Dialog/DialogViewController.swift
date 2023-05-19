@@ -87,7 +87,11 @@ class DialogViewController: UIViewController {
     }
     
     func delete(){
-        if let dialog = dialog{
+        if timer != nil {
+            timer?.invalidate()
+            timer = nil
+        }
+        if let dialog = self.dialog{
             let serviceMessage = ServiceMessage(type: .DialogDelete, data: "")
             dialog.send(message: serviceMessage)
             DialogsManager.shared.delete(dialog: dialog)
@@ -150,7 +154,9 @@ class DialogViewController: UIViewController {
 
 extension DialogViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let message = dialog?.messages?.allObjects[indexPath.item] as? Message {
+        if let count = dialog?.messages?.allObjects.count,
+           count > indexPath.item,
+            let message = dialog?.messages?.allObjects[indexPath.item] as? Message {
             if message.type == MessageType.Image{
                 let cell: ImageMessage
                 if message.me {

@@ -17,10 +17,10 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BUn-e5-Dly">
-                        <rect key="frame" x="0.0" y="0.0" width="404" height="74"/>
+                        <rect key="frame" x="60" y="0.0" width="404" height="74"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0UP-X9-VRU">
-                                <rect key="frame" x="244" y="44" width="150" height="20"/>
+                                <rect key="frame" x="10" y="44" width="150" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="GOZ-aD-11Z"/>
                                     <constraint firstAttribute="height" constant="20" id="w6Q-eZ-brd"/>
@@ -29,7 +29,7 @@
                                     <fragment content="14.10.2023 10:26">
                                         <attributes>
                                             <font key="NSFont" size="13" name="Helvetica"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
@@ -45,7 +45,7 @@
                                         <attributes>
                                             <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="16" name="Helvetica"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
@@ -54,7 +54,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.90588235859999999" green="0.90588235859999999" blue="0.92549020049999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="0UP-X9-VRU" secondAttribute="trailing" constant="10" id="4I1-kx-dRW"/>
+                            <constraint firstItem="0UP-X9-VRU" firstAttribute="leading" secondItem="BUn-e5-Dly" secondAttribute="leading" constant="10" id="51v-Jv-PAK"/>
                             <constraint firstAttribute="bottom" secondItem="0UP-X9-VRU" secondAttribute="bottom" constant="10" id="HTM-gl-2Ae"/>
                             <constraint firstItem="vib-ha-eyX" firstAttribute="top" secondItem="BUn-e5-Dly" secondAttribute="top" constant="10" id="YTz-ex-D3x"/>
                             <constraint firstItem="vib-ha-eyX" firstAttribute="leading" secondItem="BUn-e5-Dly" secondAttribute="leading" constant="10" id="g7B-fZ-z0e"/>
@@ -72,8 +72,8 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="BUn-e5-Dly" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="6Mq-hQ-s4s"/>
-                <constraint firstItem="BUn-e5-Dly" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Lz5-Tp-sYb"/>
-                <constraint firstAttribute="trailing" secondItem="BUn-e5-Dly" secondAttribute="trailing" constant="60" id="dhK-XX-ha1"/>
+                <constraint firstItem="BUn-e5-Dly" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="60" id="Lz5-Tp-sYb"/>
+                <constraint firstAttribute="trailing" secondItem="BUn-e5-Dly" secondAttribute="trailing" id="dhK-XX-ha1"/>
                 <constraint firstAttribute="bottom" secondItem="BUn-e5-Dly" secondAttribute="bottom" id="voX-TL-0jO"/>
             </constraints>
             <size key="customSize" width="464" height="74"/>
