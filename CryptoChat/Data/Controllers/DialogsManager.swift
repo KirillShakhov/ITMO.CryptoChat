@@ -98,11 +98,40 @@ public class DialogsManager {
         }
     }
     
+    public func update(recipient: String, update: (Dialog)->Void){
+        guard let context = self.context else { return }
+        if let dialogs = try? context.fetch(Dialog.fetchRequest()){
+            for dialog in dialogs {
+                if dialog.recipient != nil,
+                   let dRecipient = dialog.recipient,
+                   dRecipient == recipient
+                {
+                    update(dialog)
+                }
+            }
+        }
+        DispatchQueue.main.async {
+            do {
+                try context.save()
+            }
+            catch {
+                // Handle Error
+            }
+        }
+    }
+
+    
     public func getData() -> Array<Dialog> {
         guard let context = self.context else { return [] }
         if let dialogs = try? context.fetch(Dialog.fetchRequest()){
             var list = [Dialog]()
             for dialog in dialogs {
+                if let dateExpired = dialog.dateExpired,
+                   Date() > dateExpired
+                {
+                    DialogsManager.shared.delete(dialog: dialog)
+                    continue
+                }
                 if dialog.recipient != nil {
                     list.append(dialog)
                 }
@@ -116,6 +145,12 @@ public class DialogsManager {
         guard let context = self.context else { return nil }
         if let dialogs = try? context.fetch(Dialog.fetchRequest()){
             for dialog in dialogs {
+                if let dateExpired = dialog.dateExpired,
+                   Date() > dateExpired
+                {
+                    DialogsManager.shared.delete(dialog: dialog)
+                    continue
+                }
                 if recipient == dialog.recipient {
                     return dialog
                 }
@@ -124,11 +159,19 @@ public class DialogsManager {
         return nil
     }
     
-    public func update(host: String, completion: (() -> Void)? = nil){
+    public func updateByHost(host: String, completion: (() -> Void)? = nil){
         guard let context = self.context else { return }
         if let dialogs = try? context.fetch(Dialog.fetchRequest()){
             let dispatchGroup = DispatchGroup()
-            for dialog in dialogs {
+            for dialog in dialogs.sorted(by: { (d1, d2) in
+                return d1.messages?.count ?? 0 > d2.messages?.count ?? 0
+            }) {
+                if let dateExpired = dialog.dateExpired,
+                   Date() > dateExpired
+                {
+                    DialogsManager.shared.delete(dialog: dialog)
+                    continue
+                }
                 if dialog.server == host{
                     dispatchGroup.enter()
                     dialog.update(completion: {_ in

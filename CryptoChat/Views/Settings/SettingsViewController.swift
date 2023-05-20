@@ -8,6 +8,7 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+    @IBOutlet weak var realImageView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var serverField: UITextField!
@@ -15,6 +16,11 @@ class SettingsViewController: UIViewController {
     var imagePicker = UIImagePickerController()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
 
@@ -33,7 +39,23 @@ class SettingsViewController: UIViewController {
         view.endEditing(true)
     }
 
-    
+    @objc func keyboardWillShow(notification: NSNotification) {
+            if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+                let keyboardRectangle = keyboardFrame.cgRectValue
+                let keyboardHeight = keyboardRectangle.height
+                self.view.frame.origin.y = -keyboardHeight
+                let screenSize: CGRect = UIScreen.main.bounds
+                self.view.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height - keyboardHeight)
+                realImageView.isHidden = true
+            }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        self.view.frame.origin.y = 0
+        let screenSize: CGRect = UIScreen.main.bounds
+        self.view.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height)
+        realImageView.isHidden = false
+    }
     
     @IBAction func deleteAllData(_ sender: Any) {
         let serviceMessage = ServiceMessage(type: .DialogDelete, data: "")

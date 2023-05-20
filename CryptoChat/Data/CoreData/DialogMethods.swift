@@ -68,6 +68,7 @@ extension Dialog{
                                     self.image = dataDecoded
                                 }
                                 self.dateExpired = nil
+                                DialogsManager.shared.save()
                                 if serviceMessage.type == .AcceptInvite{
                                     var avatarData = "nil"
                                     if let avatar = UserManager.getAvatar(),
@@ -137,6 +138,7 @@ extension Dialog{
                                     self.image = dataDecoded
                                 }
                                 self.dateExpired = nil
+                                DialogsManager.shared.save()
                                 if serviceMessage.type == .AcceptInvite{
                                     var avatarData = "nil"
                                     if let avatar = UserManager.getAvatar(),
