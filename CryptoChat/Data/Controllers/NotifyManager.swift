@@ -38,8 +38,8 @@ public class NotifyManager{
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.httpBody = jsonData
-        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")  // the request is JSON
-        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")        // the expected response is also JSON
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 print(error?.localizedDescription ?? "No data")
@@ -47,7 +47,7 @@ public class NotifyManager{
             }
             if let hash = String(data: data, encoding: .utf8){
                 if hashes[host] != hash {
-                    DialogsManager.shared.update(host: host, completion: {
+                    DialogsManager.shared.updateByHost(host: host, completion: {
                         print("dialog updates")
                         completion?()
                     })
