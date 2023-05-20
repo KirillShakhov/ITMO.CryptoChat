@@ -177,6 +177,7 @@
                     <connections>
                         <outlet property="imageView" destination="9D0-n8-eNf" id="aCP-8F-sdJ"/>
                         <outlet property="nameField" destination="qOz-vO-8vu" id="5zB-oo-BAv"/>
+                        <outlet property="realImageView" destination="qMv-Jk-uiP" id="8v9-VK-2o8"/>
                         <outlet property="serverField" destination="Phv-4y-bNU" id="eTR-pT-hcN"/>
                     </connections>
                 </viewController>
