@@ -23,16 +23,21 @@ public class InviteManager {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "MM/dd/yyyy, h:mm a"
                 let dateExpiredFormatted = dateFormatter.string(from: dateExpired)
-                let data = [
-                    UserManager.getUsername(),
+                var data: [String] = [
+                    UserManager.getUsername() ?? "no name",
                     UserManager.getUuid(),
                     dateExpiredFormatted,
                     "aes",
-                    dialog.aesKey,
-                    dialog.hmacKey,
-                    dialog.server,
-                    dialog.serverKey,
+                    dialog.aesKey!,
+                    dialog.hmacKey!,
+                    dialog.server!,
+                    dialog.serverKey!,
                 ]
+                var hashData = ""
+                for d in data{
+                    hashData += d
+                }
+                data.append(hashData.sha256())
                 return JsonUtil.toJson(data: data)
             }
         }
