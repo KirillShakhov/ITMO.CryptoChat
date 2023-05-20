@@ -10,7 +10,6 @@ import CryptoKit
 
 class InviteAcceptViewController: UIViewController {
 
-    @IBOutlet weak var hashLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var uuidLabel: UILabel!
     @IBOutlet weak var serverLabel: UILabel!
@@ -21,7 +20,6 @@ class InviteAcceptViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        hashLabel.text = ""
         usernameLabel.text = ""
         uuidLabel.text = ""
         serverLabel.text = ""
@@ -39,10 +37,10 @@ class InviteAcceptViewController: UIViewController {
             usernameLabel.text = result[0]
             uuidLabel.text = "uuid: " + result[1]
             
-            var hasher = Hasher()
-            hasher.combine(code)
-            let hash = hasher.finalize()
-            hashLabel.text = String(hash)
+//            var hasher = Hasher()
+//            hasher.combine(code)
+//            let hash = hasher.finalize()
+//            hashLabel.text = String(hash)
             cryptoLabel.text = "crypto: " + result[3]
             serverLabel.text = "server: " + result[6]
             return
