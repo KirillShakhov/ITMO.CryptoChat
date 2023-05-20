@@ -14,6 +14,7 @@ class FirstSettingsViewController: UIViewController {
     @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var uuidLabel: UILabel!
     @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var serverField: UITextField!
     var imagePicker = UIImagePickerController()
 
     private var uuid: String = UUID().uuidString
@@ -36,52 +37,38 @@ class FirstSettingsViewController: UIViewController {
     }
 
     @IBAction func create(_ sender: Any) {
-//        uuid = UUID().uuidString
-//        uuidLabel.text = "uuid: "+uuid
-        
-        
-//        let storyboard = UIStoryboard(name: "Home", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "Home") as! HomeViewController
-//        vc.modalPresentationStyle = .fullScreen
-//        present(vc, animated: true, completion: nil)
-        
-//        var test1 = "Привет    "
-//        var key = "12ra5678901234567890123456789012"
-//        var iv = "abcdefghijklmnop123"
-//        var res1 = test1.aesEncrypt(key: key, iv: iv)
-//        print(res1 ?? "nil")
-//
-//        print(res1?.aesDecrypt(key: key, iv: iv) ?? "nil")
-        
-        
-        if (nameField.text == "") {
+        if serverField.text == "" {
+            let alert = UIAlertController(title: "Адрес сервера", message: "Не может быть пустым", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Закрыть", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        if !UserManager.setHost(host: serverField.text ?? ""){
+            let alert = UIAlertController(title: "Адрес сервера", message: "Введенный вами адрес сервера недействителен или недоступен", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Закрыть", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        if nameField.text == "" {
             let alert = UIAlertController(title: "Имя пользователя", message: "Не может быть пустым", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Закрыть", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             return
         }
-        let defaults = UserDefaults.standard
-        defaults.set(
-            nameField.text,
-            forKey: "user"
-        )
-        if let strBase64 = avatarImage.image?.jpegData(compressionQuality: 0.8)?.base64EncodedString(options: .lineLength64Characters) {
-            defaults.set(
-                strBase64,
-                forKey: "avatar"
-            )
+        guard let username = nameField.text else { return }
+        UserManager.setUsername(name: username)
+        if let image = avatarImage.image{
+            UserManager.setAvatar(image: image)
         }
+        self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
         // handling code
         if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
-            print("Button capture")
-            
             imagePicker.delegate = self
             imagePicker.sourceType = .savedPhotosAlbum
             imagePicker.allowsEditing = false
-            
             present(imagePicker, animated: true, completion: nil)
         }
     }

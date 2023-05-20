@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import UserNotifications
 
 public class NotifyManager{
-    private static var hashes: [String: String] = [ServerManager.GetHost():""]
+    private static var hashes: [String: String] = [UserManager.GetHost():""]
     
     public static func add(host: String){
         if hashes[host] != nil {
@@ -45,9 +46,8 @@ public class NotifyManager{
                 return
             }
             if let hash = String(data: data, encoding: .utf8){
-                print("hash: " + hash)
                 if hashes[host] != hash {
-                    DialogsManager.update(host: host, completion: {
+                    DialogsManager.shared.update(host: host, completion: {
                         print("dialog updates")
                         completion?()
                     })

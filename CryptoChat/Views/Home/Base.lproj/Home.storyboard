@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,6 +19,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Amn-WA-SJv">
                                 <rect key="frame" x="15" y="48" width="384" height="66"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PbL-Yb-WH4">
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="66"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title=""/>
+                                        <connections>
+                                            <action selector="openSettings:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2u6-VI-NSo"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ic-dU-9Aw">
                                         <rect key="frame" x="10" y="8" width="308" height="50"/>
                                         <constraints>
@@ -52,13 +59,17 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.67102975241025076" green="0.66984480368281973" blue="0.74504813762626265" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="PbL-Yb-WH4" secondAttribute="bottom" id="4gb-Ic-xso"/>
                                     <constraint firstItem="2AD-lM-xjP" firstAttribute="bottom" secondItem="8ic-dU-9Aw" secondAttribute="bottom" id="58l-mP-uQZ"/>
+                                    <constraint firstItem="PbL-Yb-WH4" firstAttribute="top" secondItem="Amn-WA-SJv" secondAttribute="top" id="9qE-GO-mod"/>
                                     <constraint firstItem="2AD-lM-xjP" firstAttribute="leading" secondItem="8ic-dU-9Aw" secondAttribute="trailing" constant="8" symbolic="YES" id="Kfo-Px-4Ux"/>
                                     <constraint firstItem="8ic-dU-9Aw" firstAttribute="leading" secondItem="Amn-WA-SJv" secondAttribute="leading" constant="10" id="ZOf-hG-D4P"/>
                                     <constraint firstItem="8ic-dU-9Aw" firstAttribute="bottom" secondItem="Amn-WA-SJv" secondAttribute="bottomMargin" id="amY-tL-cp2"/>
                                     <constraint firstAttribute="trailing" secondItem="2AD-lM-xjP" secondAttribute="trailing" constant="8" id="ifQ-3f-SBc"/>
                                     <constraint firstItem="2AD-lM-xjP" firstAttribute="top" secondItem="8ic-dU-9Aw" secondAttribute="top" id="jW5-KL-zKn"/>
                                     <constraint firstItem="8ic-dU-9Aw" firstAttribute="top" secondItem="Amn-WA-SJv" secondAttribute="topMargin" id="qVx-px-kHH"/>
+                                    <constraint firstItem="PbL-Yb-WH4" firstAttribute="leading" secondItem="Amn-WA-SJv" secondAttribute="leading" id="xO9-MB-Btd"/>
+                                    <constraint firstAttribute="trailing" secondItem="PbL-Yb-WH4" secondAttribute="trailing" id="ybF-P1-wST"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -118,16 +129,7 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="NpC-jS-TJq">
-                                        <rect key="frame" x="0.0" y="0.0" width="384" height="70"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="zn3-8N-D1f">
-                                            <rect key="frame" x="0.0" y="0.0" width="384" height="70"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

@@ -7,47 +7,160 @@
 
 import Foundation
 import UIKit
-
+import CoreData
 
 
 public class DialogsManager {
-    static var dialogs: [Dialog] = []
+    public static let shared = DialogsManager()
+    private var context: NSManagedObjectContext?
     
-    public static func add(dialog: Dialog) {
-        dialogs.append(dialog)
+    init(){
+        DispatchQueue.main.async {
+            self.context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        }
     }
     
-    public static func findByRecipient(recipient: String) -> Dialog? {
-        for dialog in dialogs {
-            if recipient == dialog.recipient {
-                return dialog
+    public func add(username: String? = nil, recipient: String? = nil, aesKey: String, hmacKey: String, server: String, serverKey: String, dateExpired: Date? = nil) -> Dialog? {
+        guard let context = self.context else { return nil }
+        let dialog = Dialog(context: context)
+        dialog.username = username
+        dialog.recipient = recipient
+        dialog.aesKey = aesKey
+        dialog.hmacKey = hmacKey
+        dialog.server = server
+        dialog.serverKey = serverKey
+        DispatchQueue.main.async {
+            do {
+                try context.save()
+            }
+            catch {
+                // Handle Error
+            }
+        }
+        return dialog
+    }
+
+    public func save() {
+        guard let context = self.context else { return }
+        DispatchQueue.main.async {
+            do {
+                try context.save()
+            }
+            catch {
+                // Handle Error
+            }
+        }
+    }
+    
+    public func addMessage(dialog: Dialog, uuid: String?, me: Bool, type: MessageType, state: MessageState, data: String) {
+        guard let context = self.context else { return }
+        
+        if let messages = dialog.messages?.allObjects as? [Message],
+           let uuid = uuid
+            {
+            print("uuid", uuid)
+            for m in messages {
+                if m.uuid == uuid {
+                    print("find")
+                    return
+                }
+            }
+            print("uuid2", uuid)
+        }
+
+        let message = Message(context: context)
+        message.me = me
+        message.type = type
+        message.state = state
+        message.data = data
+        message.date = Date()
+        dialog.addToMessages(message)
+        DispatchQueue.main.async {
+            do {
+                try context.save()
+            }
+            catch {
+                // Handle Error
+            }
+        }
+    }
+    
+    public func delete(dialog: Dialog){
+        guard let context = self.context else { return }
+        context.delete(dialog)
+        DispatchQueue.main.async {
+            do {
+                try context.save()
+            }
+            catch {
+                // Handle Error
+            }
+        }
+    }
+    
+    public func getData() -> Array<Dialog> {
+        guard let context = self.context else { return [] }
+        if let dialogs = try? context.fetch(Dialog.fetchRequest()){
+            var list = [Dialog]()
+            for dialog in dialogs {
+                if dialog.recipient != nil {
+                    list.append(dialog)
+                }
+            }
+            return list
+        }
+        return []
+    }
+    
+    public func findByRecipient(recipient: String) -> Dialog? {
+        guard let context = self.context else { return nil }
+        if let dialogs = try? context.fetch(Dialog.fetchRequest()){
+            for dialog in dialogs {
+                if recipient == dialog.recipient {
+                    return dialog
+                }
             }
         }
         return nil
     }
     
-    public static func getData() -> Array<Dialog> {
-        var list = [Dialog]()
-        for dialog in dialogs {
-            if dialog.recipient != nil {
-                list.append(dialog)
+    public func update(host: String, completion: (() -> Void)? = nil){
+        guard let context = self.context else { return }
+        if let dialogs = try? context.fetch(Dialog.fetchRequest()){
+            let dispatchGroup = DispatchGroup()
+            for dialog in dialogs {
+                if dialog.server == host{
+                    dispatchGroup.enter()
+                    dialog.update(completion: {_ in
+                        dispatchGroup.leave()
+                    })
+                }
             }
+            dispatchGroup.notify(queue: DispatchQueue.main) {
+                completion?()
+            }
+            return
         }
-        return list
+        completion?()
     }
     
-    public static func update(host: String, completion: (() -> Void)? = nil){
-        let dispatchGroup = DispatchGroup()
-        for dialog in dialogs {
-            if dialog.server == host{
-                dispatchGroup.enter()
-                dialog.update(completion: {
-                    dispatchGroup.leave()
-                })
+    func deleteAllData() {
+        guard let context = self.context else { return }
+        do {
+            if let dialogs = try? context.fetch(Dialog.fetchRequest()){
+                for dialog in dialogs {
+                    context.delete(dialog)
+                }
             }
-        }
-        dispatchGroup.notify(queue: DispatchQueue.main) {
-            completion?()
+            if let messages = try? context.fetch(Message.fetchRequest()){
+                for message in messages {
+                    context.delete(message)
+                }
+            }
+            try context.save()
+
+        } catch let error {
+            print("Detele all data error :", error)
         }
     }
 }

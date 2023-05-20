@@ -80,7 +80,6 @@
             <connections>
                 <outlet property="dateLabel" destination="0UP-X9-VRU" id="k19-px-KAt"/>
                 <outlet property="textLabel" destination="vib-ha-eyX" id="b8Z-zo-kDx"/>
-                <outlet property="viewMessage" destination="BUn-e5-Dly" id="zmN-rO-hGM"/>
             </connections>
             <point key="canvasLocation" x="-4.5801526717557248" y="17.605633802816904"/>
         </collectionViewCell>
