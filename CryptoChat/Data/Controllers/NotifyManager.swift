@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UserNotifications
 
 public class NotifyManager{
     private static var hashes: [String: String] = [UserManager.GetHost():""]

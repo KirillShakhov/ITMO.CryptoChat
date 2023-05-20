@@ -49,6 +49,7 @@
 		EDDCBB822A133C4000F8C0CD /* Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDCBB812A133C4000F8C0CD /* Base64.swift */; };
 		EDDD06432A18340100F4AE3A /* RightImageMessage.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDDD06422A18340100F4AE3A /* RightImageMessage.xib */; };
 		EDDD06452A1837E300F4AE3A /* RightMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDDD06442A1837E300F4AE3A /* RightMessageCell.xib */; };
+		EDDD06472A1847E000F4AE3A /* BackgroundTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDD06462A1847E000F4AE3A /* BackgroundTimer.swift */; };
 		EDFD47972A1305C600A074B4 /* AES256.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD47962A1305C600A074B4 /* AES256.swift */; };
 		EDFD47A12A131F2600A074B4 /* DialogsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD47A02A131F2600A074B4 /* DialogsManager.swift */; };
 		EDFD47A92A132DA600A074B4 /* MessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD47A72A132DA600A074B4 /* MessageCollectionViewCell.swift */; };
@@ -101,6 +102,7 @@
 		EDDCBB812A133C4000F8C0CD /* Base64.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base64.swift; sourceTree = "<group>"; };
 		EDDD06422A18340100F4AE3A /* RightImageMessage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightImageMessage.xib; sourceTree = "<group>"; };
 		EDDD06442A1837E300F4AE3A /* RightMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightMessageCell.xib; sourceTree = "<group>"; };
+		EDDD06462A1847E000F4AE3A /* BackgroundTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTimer.swift; sourceTree = "<group>"; };
 		EDFD47962A1305C600A074B4 /* AES256.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AES256.swift; sourceTree = "<group>"; };
 		EDFD47A02A131F2600A074B4 /* DialogsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogsManager.swift; sourceTree = "<group>"; };
 		EDFD47A72A132DA600A074B4 /* MessageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 				EDDCBB7D2A13390800F8C0CD /* UserManager.swift */,
 				ED7F1AD02A15C86900D438BA /* NotifyManager.swift */,
 				ED7F1AD22A15D89600D438BA /* MessageService.swift */,
+				EDDD06462A1847E000F4AE3A /* BackgroundTimer.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 				ED01C9B42A1799FD002E8881 /* Dialog.swift in Sources */,
 				ED01C9A22A1798C9002E8881 /* MessageState.swift in Sources */,
 				ED9273342A115EC200F520C6 /* DialogViewController.swift in Sources */,
+				EDDD06472A1847E000F4AE3A /* BackgroundTimer.swift in Sources */,
 				ED8C84A52A140C5D0031D546 /* HMACUtil.swift in Sources */,
 				EDFD47A12A131F2600A074B4 /* DialogsManager.swift in Sources */,
 				ED8C84A72A1423330031D546 /* CompressUtil.swift in Sources */,

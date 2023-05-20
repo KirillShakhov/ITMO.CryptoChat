@@ -15,6 +15,7 @@ class DialogViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var contextButton: UIButton!
     
+    var homeVC: HomeViewController?
     var dialog: Dialog?
     var timer: Timer?
 
@@ -61,6 +62,21 @@ class DialogViewController: UIViewController {
         self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
             if self.isUpdated { return }
             self.isUpdated = true
+            
+            var i = 0
+            for dialog in DialogsManager.shared.getData(){
+                if dialog == self.dialog {
+                    continue
+                }
+                dialog.updateAndGetNewMessage(completion: {message in
+                    if let username = dialog.username,
+                        let text = message {
+                        self.homeVC?.sendNotification(title: username, text: text, timeInterval: (Double(i) * 5) + 1)
+                        i += 1
+                    }
+                })
+            }
+
             self.dialog?.update(completion: { updated in
                 if updated {
                     DispatchQueue.main.async {

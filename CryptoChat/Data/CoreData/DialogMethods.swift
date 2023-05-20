@@ -98,4 +98,76 @@ extension Dialog{
             })
         }
     }
+    
+    public func updateAndGetNewMessage(completion: ((String?) -> Void)? = nil){
+        if let server = self.server,
+           let serverKey = self.serverKey,
+           let hmacKey = self.hmacKey,
+           let aesKey = self.aesKey
+        {
+            MessageService.findMessages(host: server, pass: serverKey, completion: {messages in
+                var lastMessage: String? = nil
+                for m in messages {
+                    if m.data.count < 64 {
+                        continue
+                    }
+                    let metadata = String(m.data.prefix(108))
+                    
+                    let messageHash = String(metadata.prefix(64))
+                    let messageIv = String(metadata.suffix(44))
+                    
+                    let messageData = String(m.data.suffix(m.data.count-108))
+                    
+                    let hash = HMACUtil.hmac(data: messageIv+messageData, pass: hmacKey)
+                    if hash != messageHash { continue }
+                    
+                    let aes = AES256(key: aesKey, iv: messageIv)
+                    guard let decryptedData = aes.aesDecrypt(messageData) else { continue }
+                    MessageService.delete(host: server, pass: serverKey, uuid: m.uuid)
+                    if let data = decryptedData.data(using: .utf8),
+                       let serviceMessage = try? JSONDecoder().decode(ServiceMessage.self, from: data){
+                        if serviceMessage.type == .UpdateDialog || serviceMessage.type == .AcceptInvite{
+                            if let serviceData = serviceMessage.data.data(using: .utf8),
+                               let array = try? JSONDecoder().decode([String].self, from: serviceData)
+                            {
+                                self.username = array[0]
+                                self.recipient = array[1]
+                                if array[2] != "nil"{
+                                    let dataDecoded : Data = Data(base64Encoded: array[2], options: .ignoreUnknownCharacters)!
+                                    self.image = dataDecoded
+                                }
+                                self.dateExpired = nil
+                                if serviceMessage.type == .AcceptInvite{
+                                    var avatarData = "nil"
+                                    if let avatar = UserManager.getAvatar(),
+                                       let jpegAvatar = avatar.jpegData(compressionQuality: 0.1)
+                                    {
+                                        avatarData = jpegAvatar.base64EncodedString()
+                                    }
+                                    if let json = JsonUtil.toJson(data: [UserManager.getUsername(), UserManager.getUuid(),avatarData])
+                                    {
+                                        let serviceMessage = ServiceMessage(type: .UpdateDialog, data: json)
+                                        self.send(message: serviceMessage)
+                                    }
+                                }
+                            }
+                        }
+                        else if serviceMessage.type == .DialogDelete{
+                            DialogsManager.shared.delete(dialog: self)
+                        }
+                        else if serviceMessage.type == .Text{
+                            lastMessage = serviceMessage.data
+                            DialogsManager.shared.addMessage(dialog: self, uuid: m.uuid, me: false, type: .Text, state: .Delivered, data: serviceMessage.data)
+                        }
+                        else if serviceMessage.type == .Image{
+                            lastMessage = "Вложение"
+                            DialogsManager.shared.addMessage(dialog: self, uuid: m.uuid, me: false, type: .Image, state: .Delivered, data: serviceMessage.data)
+                        }
+                    }
+                }
+                completion?(lastMessage)
+            })
+        }
+    }
+
 }

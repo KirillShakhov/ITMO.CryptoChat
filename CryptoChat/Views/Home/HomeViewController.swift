@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import UserNotifications
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var CreateQrButton: UIButton!
@@ -15,11 +14,15 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var avatarImage: UIImageView!
     
+    let userNotificationCenter = UNUserNotificationCenter.current()
+
     private let refreshControl = UIRefreshControl()
         
     var dialogs: [Dialog] = []
     var timer: Timer?
 
+    private var isNotifyGranted: Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.chatList.register(UINib(nibName: "ChatViewCell", bundle: nil), forCellWithReuseIdentifier: "ChatViewCell")
@@ -44,20 +47,11 @@ class HomeViewController: UIViewController {
         else {
             avatarImage.image = UIImage(systemName: "avatar_mock")
         }
-        
-//        UNUserNotificationCenter.current().requestAuthorization(options: [.badge,.sound]) {(accepted, error) in
-//            if !accepted {
-//                print("Notification access denied")
-//            }
-//        }
-//
-//        let center = UNUserNotificationCenter.current()
-//        center.delegate = self
-//
-//        let show = UNNotificationAction(identifier: "show", title: "Tell me more…", options: .foreground)
-//        let category = UNNotificationCategory(identifier: "alarm", actions: [show], intentIdentifiers: [])
-//
-//        center.setNotificationCategories([category])
+        self.userNotificationCenter.delegate = self
+        self.requestNotificationAuthorization(complete: { granted in
+            self.isNotifyGranted = granted
+        })
+//        self.sendNotification(title: "Title", text: "message")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -112,28 +106,6 @@ extension HomeViewController: UICollectionViewDelegate{
         let dialog = dialogs[indexPath.item]
         cell.dialog = dialog
         cell.update()
-//        cell.kcal.text = String(format: "%.1f", recipe.kcal)
-//        if(cell.imageURL != recipe.image){
-//            cell.image.image = nil
-//            cell.imageURL = recipe.image
-//            cell.activityIndicator.isHidden = false
-//            DispatchQueue.global().async {
-//                if let data = try? Data(contentsOf: URL(string: recipe.image)!) {
-//                    if let image = UIImage(data: data) {
-//                        DispatchQueue.main.async {
-//                            cell.image.image = image
-//                            cell.activityIndicator.isHidden = true
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//        cell.layer.shadowColor = UIColor.gray.cgColor
-//        cell.layer.shadowOffset = CGSize(width: 0, height: 2.0)
-//        cell.layer.shadowRadius = 5.0
-//        cell.layer.shadowOpacity = 1.0
-//        cell.layer.masksToBounds = false
-//        cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.contentView.layer.cornerRadius).cgPath
         return cell
     }
 }
@@ -150,6 +122,7 @@ extension HomeViewController: UICollectionViewDataSource{
         vc.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(vc, animated: true)
         present(vc, animated:true)
+        vc.homeVC = self
         vc.messagesList.reloadData()
         vc.messagesList.performBatchUpdates(nil, completion: {
             (result) in
@@ -168,17 +141,46 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
     }
 }
 
+extension HomeViewController: UNUserNotificationCenterDelegate{
+    func requestNotificationAuthorization(complete: @escaping (Bool) -> Void) {
+        let authOptions = UNAuthorizationOptions.init(arrayLiteral: .alert, .sound)
 
-extension HomeViewController: UNUserNotificationCenterDelegate {
-
-    public func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Swift.Void) {
-        print("userNotificationCenter willPresent")
-        completionHandler( [.badge, .sound])
+        self.userNotificationCenter.requestAuthorization(options: authOptions) { (success, error) in
+            if let error = error {
+                print("Error: ", error)
+                complete(false)
+                return
+            }
+            complete(success)
+        }
     }
 
-    public func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void) {
-        print("Do what ever you want")
+    func sendNotification(title: String, text: String, timeInterval: TimeInterval = 1) {
+        if !isNotifyGranted { return }
+        let notificationContent = UNMutableNotificationContent()
+        notificationContent.title = title
+        notificationContent.body = text
+        notificationContent.badge = NSNumber(value: 3)
 
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval,
+                                                        repeats: false)
+        let request = UNNotificationRequest(identifier: "testNotification",
+                                            content: notificationContent,
+                                            trigger: trigger)
+
+        userNotificationCenter.add(request) { (error) in
+            if let error = error {
+                print("Notification Error: ", error)
+            }
+        }
     }
 
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        completionHandler()
+    }
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .sound])
+    }
 }

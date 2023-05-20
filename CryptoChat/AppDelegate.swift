@@ -36,6 +36,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
     
+    // Local notifications
+    func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
+        UIApplication.shared.applicationIconBadgeNumber = 0
+    }
+    
     lazy var persistentContainer: NSPersistentContainer = {
             /*
              The persistent container for the application. This implementation
